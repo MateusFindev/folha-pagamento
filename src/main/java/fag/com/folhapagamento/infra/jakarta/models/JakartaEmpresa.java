@@ -1,4 +1,4 @@
-package fag.com.folhapagamento.infra.jakarta.model;
+package fag.com.folhapagamento.infra.jakarta.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
