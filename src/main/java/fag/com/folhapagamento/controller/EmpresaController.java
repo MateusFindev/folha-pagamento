@@ -21,9 +21,9 @@ public class EmpresaController {
         this.service = service;
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<EmpresaDTO> findById(@PathVariable Long id) {
-        EmpresaDTO empresa = this.service.findById(id);
+    @GetMapping("{cnpj}")
+    public ResponseEntity<EmpresaDTO> findByCNPJ(@PathVariable String cnpj) {
+        EmpresaDTO empresa = this.service.findByCNPJ(cnpj);
 
         return new ResponseEntity<>(empresa, HttpStatus.OK);
     }
