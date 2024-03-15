@@ -18,8 +18,8 @@ public class EmpresaService {
         this.repository = repository;
     }
 
-    public EmpresaDTO findById(Long id) {
-        JakartaEmpresa empresa = this.repository.findById(id).orElse(null);
+    public EmpresaDTO findByCNPJ(String cnpj) {
+        JakartaEmpresa empresa = this.repository.findById(cnpj).orElse(null);
 
         if (empresa == null) {
             return null;
