@@ -11,9 +11,6 @@ import lombok.Setter;
 public class JakartaEmpresa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "cnpj", nullable = false)
     private String cnpj;
 
