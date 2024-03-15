@@ -1,0 +1,7 @@
+package fag.com.folhapagamento.core.enums;
+
+public enum EnumCategoriaSegurado {
+
+    EMPREGADO, EMPREGADO_SEGURADO, TRABALHADOR_AVULSO, SEGURADO_ESPECIAL, CONTRIBUINTE_INDIVIDUAL, SEGURADO_FACULTATIVO
+
+}
