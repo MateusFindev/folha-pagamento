@@ -19,7 +19,7 @@ public class EmpresaMapper {
         return dto;
     }
 
-    public static EmpresaBO toDTO(EmpresaDTO dto) {
+    public static EmpresaBO toBO(EmpresaDTO dto) {
         EmpresaBO bo = new EmpresaBO();
 
         bo.setCnpj(dto.getCnpj());
