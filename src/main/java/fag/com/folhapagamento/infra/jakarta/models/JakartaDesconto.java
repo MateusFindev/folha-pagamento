@@ -15,7 +15,7 @@ public class JakartaDesconto {
 
     @Id
     @Column(name = "codigo", nullable = false)
-    private int codigo;
+    private String codigo;
 
     @Column(name = "nome", nullable = false)
     private String nome;
