@@ -3,7 +3,7 @@ package fag.com.folhapagamento.core.dtos;
 public class DescontoDTO {
     private String nome;
 
-    private int codigo;
+    private String codigo;
 
     private String descricao;
 
@@ -15,9 +15,9 @@ public class DescontoDTO {
 
     public void setNome(String nome) {this.nome = nome;}
 
-    public int getCodigo() {return codigo;}
+    public String getCodigo() {return codigo;}
 
-    public void setCodigo(int codigo) {this.codigo = codigo;}
+    public void setCodigo(String codigo) {this.codigo = codigo;}
 
     public String getDescricao() {return descricao;}
 
