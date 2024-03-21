@@ -5,13 +5,13 @@ import fag.com.folhapagamento.core.enums.EnumTipoContrato;
 
 public class ContratoDTO {
 
-    public EnumTipoContrato tipo;
+    private EnumTipoContrato tipo;
 
-    public Integer cargaHoraria;
+    private Integer cargaHoraria;
 
-    public EnumCategoriaSegurado tipoFiliacao;
+    private EnumCategoriaSegurado tipoFiliacao;
 
-    public EmpresaDTO empresa;
+    private EmpresaDTO empresa;
 
     public EnumTipoContrato getTipo() {
         return tipo;
