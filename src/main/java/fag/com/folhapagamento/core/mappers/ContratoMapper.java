@@ -16,7 +16,7 @@ public class ContratoMapper {
         return dto;
     }
 
-    public static ContratoBO toDTO(ContratoDTO dto) {
+    public static ContratoBO toBO(ContratoDTO dto) {
         ContratoBO bo = new ContratoBO();
 
         bo.setTipo(dto.getTipo());
