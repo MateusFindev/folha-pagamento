@@ -16,6 +16,8 @@ public class ColaboradorDTO {
 
     private ContratoDTO contrato;
 
+    private CargoDTO cargo;
+
     private Integer dependentes;
 
     public String getCpf() {
@@ -64,6 +66,14 @@ public class ColaboradorDTO {
 
     public void setContrato(ContratoDTO contrato) {
         this.contrato = contrato;
+    }
+
+    public CargoDTO getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargoDTO cargo) {
+        this.cargo = cargo;
     }
 
     public Integer getDependentes() {
