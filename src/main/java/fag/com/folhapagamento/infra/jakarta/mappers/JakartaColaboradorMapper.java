@@ -1,7 +1,6 @@
 package fag.com.folhapagamento.infra.jakarta.mappers;
 
 import fag.com.folhapagamento.core.entities.ColaboradorBO;
-import fag.com.folhapagamento.core.mappers.ContratoMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 
 public class JakartaColaboradorMapper {
@@ -15,6 +14,7 @@ public class JakartaColaboradorMapper {
         domain.setNome(entity.getNome());
         domain.setAdmissao(entity.getAdmissao());
         domain.setContrato(JakartaContratoMapper.toDomain(entity.getContrato()));
+        domain.setCargo(JakartaCargoMapper.toDomain(entity.getCargo()));
         domain.setDependentes(entity.getDependentes());
 
         return domain;
@@ -29,6 +29,7 @@ public class JakartaColaboradorMapper {
         entity.setNome(domain.getNome());
         entity.setAdmissao(domain.getAdmissao());
         entity.setContrato(JakartaContratoMapper.toEntity(domain.getContrato()));
+        entity.setCargo(JakartaCargoMapper.toEntity(domain.getCargo()));
         entity.setDependentes(domain.getDependentes());
 
         return entity;
