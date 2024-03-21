@@ -16,6 +16,8 @@ public class ColaboradorBO {
 
     private ContratoBO contrato;
 
+    private CargoBO cargo;
+
     private Integer dependentes;
 
     public String getCpf() {
@@ -64,6 +66,14 @@ public class ColaboradorBO {
 
     public void setContrato(ContratoBO contrato) {
         this.contrato = contrato;
+    }
+
+    public CargoBO getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargoBO cargo) {
+        this.cargo = cargo;
     }
 
     public Integer getDependentes() {
