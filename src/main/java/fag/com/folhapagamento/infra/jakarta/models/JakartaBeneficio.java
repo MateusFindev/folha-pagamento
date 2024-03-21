@@ -1,9 +1,6 @@
 package fag.com.folhapagamento.infra.jakarta.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +13,10 @@ import java.math.BigDecimal;
 public class JakartaBeneficio {
 
     @Id
-    @Column(name = "codigo", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "codigo", nullable = false, unique = true)
     private String codigo;
 
     @Column(name = "nome", nullable = false)
