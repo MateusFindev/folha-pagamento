@@ -26,7 +26,7 @@ public class CargoController {
 
     @GetMapping
     public ResponseEntity<List<CargoDTO>> list() {
-        List<CargoDTO> cargos = this.service.list();
+        List<CargoDTO> cargos = this.service.listAll();
 
         return new ResponseEntity<>(cargos, HttpStatus.OK);
     }
