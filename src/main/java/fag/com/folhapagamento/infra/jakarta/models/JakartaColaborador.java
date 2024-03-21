@@ -12,7 +12,11 @@ import java.util.Date;
 @Table(name = "colaborador")
 public class JakartaColaborador {
 
-    @Column(name = "cpf", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "rg")
