@@ -11,7 +11,10 @@ import lombok.Setter;
 public class JakartaEmpresa {
 
     @Id
-    @Column(name = "cnpj", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "cnpj", nullable = false, unique = true)
     private String cnpj;
 
     @Column(name = "razao_social", nullable = false)
