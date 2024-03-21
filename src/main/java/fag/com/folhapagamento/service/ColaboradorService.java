@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ColaboradorService {
 
-    public JakartaColaboradorRepository repository;
+    private final JakartaColaboradorRepository repository;
 
     @Autowired
     public ColaboradorService(JakartaColaboradorRepository repository) {
