@@ -2,6 +2,8 @@ package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.CargoDTO;
 import fag.com.folhapagamento.core.mappers.CargoMapper;
+import fag.com.folhapagamento.core.repositories.ICargoRepository;
+import fag.com.folhapagamento.core.usecases.cargo.ListarCargos;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaCargoMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaCargo;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaCargoRepository;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CargoService {
+public class CargoService implements ICargoRepository {
 
     private final JakartaCargoRepository repository;
 
@@ -20,14 +22,11 @@ public class CargoService {
         this.repository = repository;
     }
 
-    public List<CargoDTO> list() {
-        List<JakartaCargo> cargos = this.repository.findAll();
+    @Override
+    public List<CargoDTO> listAll() {
+        ListarCargos listarCargos = new ListarCargos(this.repository);
 
-        if (cargos.isEmpty()) {
-            return null;
-        }
-
-        return cargos.stream().map(cargo -> CargoMapper.toDTO(JakartaCargoMapper.toDomain(cargo))).toList();
+        return listarCargos.execute();
     }
 
 }
