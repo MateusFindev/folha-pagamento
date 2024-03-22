@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class ContratoController {
 
-    public ContratoService service;
+    public final ContratoService service;
 
     @Autowired
     public ContratoController(ContratoService service) {
