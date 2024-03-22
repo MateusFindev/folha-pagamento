@@ -39,7 +39,4 @@ public class JakartaColaborador {
     @JoinColumn(name = "id_cargo", nullable = false)
     private JakartaCargo cargo;
 
-    @Column(name = "dependentes")
-    private Integer dependentes;
-
 }

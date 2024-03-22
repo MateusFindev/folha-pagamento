@@ -18,8 +18,6 @@ public class ColaboradorDTO {
 
     private CargoDTO cargo;
 
-    private Integer dependentes;
-
     public String getCpf() {
         return cpf;
     }
@@ -74,14 +72,6 @@ public class ColaboradorDTO {
 
     public void setCargo(CargoDTO cargo) {
         this.cargo = cargo;
-    }
-
-    public Integer getDependentes() {
-        return dependentes;
-    }
-
-    public void setDependentes(Integer dependentes) {
-        this.dependentes = dependentes;
     }
 
 }
