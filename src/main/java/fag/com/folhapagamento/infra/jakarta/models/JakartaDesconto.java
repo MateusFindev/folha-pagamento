@@ -26,5 +26,4 @@ public class JakartaDesconto {
     @Column(name = "ativo")
     private boolean ativo;
 
-
 }
