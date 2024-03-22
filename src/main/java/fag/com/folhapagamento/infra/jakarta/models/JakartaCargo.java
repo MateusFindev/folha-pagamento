@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,5 +43,12 @@ public class JakartaCargo {
 
     @Column(name = "comissao", nullable = false)
     private boolean comissao;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_departamento", nullable = false)
+    private JakartaDepartamento departamento;
+
+    @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
+    private List<JakartaColaborador> colaboradores;
 
 }
