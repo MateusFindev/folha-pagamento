@@ -1,5 +1,7 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumGenero;
+
 import java.util.Date;
 
 public class ColaboradorBO {
@@ -19,6 +21,8 @@ public class ColaboradorBO {
     private CargoBO cargo;
 
     private Integer dependentes;
+
+    private EnumGenero genero;
 
     public String getCpf() {
         return cpf;
@@ -84,4 +88,11 @@ public class ColaboradorBO {
         this.dependentes = dependentes;
     }
 
+    public EnumGenero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(EnumGenero genero) {
+        this.genero = genero;
+    }
 }

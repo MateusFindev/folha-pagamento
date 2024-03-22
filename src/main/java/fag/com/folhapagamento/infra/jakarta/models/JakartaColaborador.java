@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.infra.jakarta.models;
 
+import fag.com.folhapagamento.core.enums.EnumGenero;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,5 +42,9 @@ public class JakartaColaborador {
 
     @Column(name = "dependentes")
     private Integer dependentes;
+
+    @Column(name = "genero")
+    @Enumerated(EnumType.STRING)
+    private EnumGenero genero;
 
 }
