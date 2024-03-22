@@ -13,7 +13,7 @@ public class ListarCargos {
         this.repository = repository;
     }
 
-    public List<CargoDTO> execute(CargoDTO dto) {
+    public List<CargoDTO> execute() {
         return this.repository.listAll();
     }
 
