@@ -18,17 +18,20 @@ public class JakartaContrato {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-    public EnumTipoContrato tipo;
+    private EnumTipoContrato tipo;
 
     @Column(name = "carga_horaria", nullable = false)
-    public Integer cargaHoraria;
+    private Integer cargaHoraria;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_filiacao", nullable = false)
-    public EnumCategoriaSegurado tipoFiliacao;
+    private EnumCategoriaSegurado tipoFiliacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_empresa", nullable = false, insertable = false)
-    public JakartaEmpresa empresa;
+    private JakartaEmpresa empresa;
+
+    @OneToOne(mappedBy = "contrato", fetch = FetchType.LAZY)
+    private JakartaColaborador colaborador;
 
 }
