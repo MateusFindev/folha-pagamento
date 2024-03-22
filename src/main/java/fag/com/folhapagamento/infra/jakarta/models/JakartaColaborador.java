@@ -40,9 +40,6 @@ public class JakartaColaborador {
     @JoinColumn(name = "id_cargo", nullable = false)
     private JakartaCargo cargo;
 
-    @Column(name = "dependentes")
-    private Integer dependentes;
-
     @Column(name = "genero")
     @Enumerated(EnumType.STRING)
     private EnumGenero genero;

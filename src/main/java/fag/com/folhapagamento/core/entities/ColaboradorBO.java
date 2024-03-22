@@ -20,8 +20,6 @@ public class ColaboradorBO {
 
     private CargoBO cargo;
 
-    private Integer dependentes;
-
     private EnumGenero genero;
 
     public String getCpf() {
@@ -78,14 +76,6 @@ public class ColaboradorBO {
 
     public void setCargo(CargoBO cargo) {
         this.cargo = cargo;
-    }
-
-    public Integer getDependentes() {
-        return dependentes;
-    }
-
-    public void setDependentes(Integer dependentes) {
-        this.dependentes = dependentes;
     }
 
     public EnumGenero getGenero() {

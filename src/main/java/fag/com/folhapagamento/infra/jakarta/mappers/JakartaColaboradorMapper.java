@@ -15,7 +15,6 @@ public class JakartaColaboradorMapper {
         domain.setAdmissao(entity.getAdmissao());
         domain.setContrato(JakartaContratoMapper.toDomain(entity.getContrato()));
         domain.setCargo(JakartaCargoMapper.toDomain(entity.getCargo()));
-        domain.setDependentes(entity.getDependentes());
         domain.setGenero(entity.getGenero());
 
         return domain;
@@ -31,7 +30,6 @@ public class JakartaColaboradorMapper {
         entity.setAdmissao(domain.getAdmissao());
         entity.setContrato(JakartaContratoMapper.toEntity(domain.getContrato()));
         entity.setCargo(JakartaCargoMapper.toEntity(domain.getCargo()));
-        entity.setDependentes(domain.getDependentes());
         entity.setGenero(domain.getGenero());
 
         return entity;
