@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -34,5 +36,11 @@ public class JakartaEmpresa {
 
     @Column(name = "inscricao_municipal")
     private String inscricaoMunicipal;
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    private List<JakartaContrato> contratos;
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    private List<JakartaDepartamento> departamentos;
 
 }
