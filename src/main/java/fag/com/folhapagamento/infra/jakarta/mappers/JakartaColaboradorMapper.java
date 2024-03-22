@@ -5,7 +5,7 @@ import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 
 public class JakartaColaboradorMapper {
 
-    public ColaboradorBO toDomain(JakartaColaborador entity) {
+    public static ColaboradorBO toDomain(JakartaColaborador entity) {
         ColaboradorBO domain = new ColaboradorBO();
 
         domain.setCpf(entity.getCpf());
@@ -20,7 +20,7 @@ public class JakartaColaboradorMapper {
         return domain;
     }
 
-    public JakartaColaborador toEntity(ColaboradorBO domain) {
+    public static JakartaColaborador toEntity(ColaboradorBO domain) {
         JakartaColaborador entity = new JakartaColaborador();
 
         entity.setCpf(domain.getCpf());
