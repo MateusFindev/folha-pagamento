@@ -1,7 +1,6 @@
 package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.CargoDTO;
-import fag.com.folhapagamento.core.repositories.ICargoRepository;
 import fag.com.folhapagamento.core.usecases.cargo.ListarCargos;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaCargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CargoService implements ICargoRepository {
+public class CargoService implements ListarCargos {
 
     private final JakartaCargoRepository repository;
 
@@ -21,9 +20,7 @@ public class CargoService implements ICargoRepository {
 
     @Override
     public List<CargoDTO> listAll() {
-        ListarCargos listarCargos = new ListarCargos(this.repository);
-
-        return listarCargos.execute();
+        return this.repository.listAll();
     }
 
 }
