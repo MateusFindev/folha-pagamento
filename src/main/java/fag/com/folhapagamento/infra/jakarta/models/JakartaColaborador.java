@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,5 +44,8 @@ public class JakartaColaborador {
     @Column(name = "genero")
     @Enumerated(EnumType.STRING)
     private EnumGenero genero;
+
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
+    private List<JakartaDependente> dependentes;
 
 }
