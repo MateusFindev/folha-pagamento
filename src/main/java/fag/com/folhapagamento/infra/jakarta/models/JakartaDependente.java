@@ -20,6 +20,7 @@ public class JakartaDependente {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "nascimento", nullable = false)
     private Date nascimento;
 
