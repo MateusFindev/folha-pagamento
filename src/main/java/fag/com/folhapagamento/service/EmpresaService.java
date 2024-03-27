@@ -19,7 +19,7 @@ public class EmpresaService {
     }
 
     public EmpresaDTO findByCNPJ(String cnpj) {
-        JakartaEmpresa empresa = this.repository.findById(cnpj).orElse(null);
+        JakartaEmpresa empresa = this.repository.findByCNPJ(cnpj);
 
         if (empresa == null) {
             return null;
