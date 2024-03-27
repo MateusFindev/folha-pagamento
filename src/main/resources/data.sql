@@ -6,3 +6,9 @@ VALUES (1, 'Departamento Principal', 'Descrição do departamento principal', tr
 
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
 VALUES (1, 'Cargo de Teste', 'Descricao do Cargo', 1, 'Carregar Sacaria', 2334, false, false, false, false, 1);
+
+INSERT INTO contrato (id, tipo, carga_horaria, tipo_filiacao, id_empresa)
+VALUES (1, 'CLT', 44, 'EMPREGADO', 1);
+
+INSERT INTO colaborador (id, cpf, rg, cnh, nome, admissao, id_contrato, id_cargo, genero)
+VALUES (1, '08640463913', '16487593', '342342', 'Mateus Pfeffer', TIMESTAMP '2020-06-14 00:00:00', 1, 1, 'MASCULINO');
