@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "departamento")
+@Table(name = "dependente")
 public class JakartaDependente {
 
     @Id
