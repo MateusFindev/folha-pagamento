@@ -26,9 +26,9 @@ public class DepartamentoController {
 
     @GetMapping
     public ResponseEntity<List<DepartamentoDTO>> list() {
-        List<DepartamentoDTO> cargos = this.service.listAll();
+        List<DepartamentoDTO> departamentos = this.service.listAll();
 
-        return new ResponseEntity<>(cargos, HttpStatus.OK);
+        return new ResponseEntity<>(departamentos, HttpStatus.OK);
     }
 
 }
