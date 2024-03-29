@@ -30,6 +30,9 @@ public class JakartaColaborador {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "admissao", nullable = false)
     private Date admissao;
