@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class ColaboradorDTO {
 
+    private Long id;
+
     private String cpf;
 
     private String rg;
@@ -14,6 +16,8 @@ public class ColaboradorDTO {
 
     private String nome;
 
+    private String email;
+
     private Date admissao;
 
     private ContratoDTO contrato;
@@ -21,6 +25,14 @@ public class ColaboradorDTO {
     private CargoDTO cargo;
 
     private EnumGenero genero;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCpf() {
         return cpf;
@@ -52,6 +64,14 @@ public class ColaboradorDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getAdmissao() {
