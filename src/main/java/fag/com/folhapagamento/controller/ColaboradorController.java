@@ -5,10 +5,7 @@ import fag.com.folhapagamento.service.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,13 @@ public class ColaboradorController {
         List<ColaboradorDTO> colaboradores = this.service.listAll();
 
         return new ResponseEntity<>(colaboradores, HttpStatus.OK);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<ColaboradorDTO> findById(@PathVariable Long id) {
+        ColaboradorDTO colaborador = this.service.findById(id);
+
+        return new ResponseEntity<>(colaborador, HttpStatus.OK);
     }
 
 }
