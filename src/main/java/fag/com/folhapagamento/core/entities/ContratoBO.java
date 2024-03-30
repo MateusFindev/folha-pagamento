@@ -11,6 +11,8 @@ public class ContratoBO {
 
     private EnumCategoriaSegurado tipoFiliacao;
 
+    private CargoBO cargo;
+
     private EmpresaBO empresa;
 
     public EnumTipoContrato getTipo() {
@@ -35,6 +37,14 @@ public class ContratoBO {
 
     public void setTipoFiliacao(EnumCategoriaSegurado tipoFiliacao) {
         this.tipoFiliacao = tipoFiliacao;
+    }
+
+    public CargoBO getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargoBO cargo) {
+        this.cargo = cargo;
     }
 
     public EmpresaBO getEmpresa() {
