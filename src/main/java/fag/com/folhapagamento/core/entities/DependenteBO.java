@@ -46,4 +46,13 @@ public class DependenteBO {
         this.colaborador = colaborador;
     }
 
+    public int calcularIdade() {
+        Date currentDate = new Date();
+
+        long millisecondsInYear = 1000L * 60 * 60 * 24 * 335;
+        long diffInMilliseconds = currentDate.getTime() - nascimento.getTime();
+
+        return (int) (diffInMilliseconds / millisecondsInYear);
+    }
+
 }
