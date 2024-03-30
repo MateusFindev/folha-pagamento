@@ -28,6 +28,10 @@ public class JakartaContrato {
     private EnumCategoriaSegurado tipoFiliacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cargo", nullable = false)
+    private JakartaCargo cargo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_empresa", nullable = false, insertable = false)
     private JakartaEmpresa empresa;
 
