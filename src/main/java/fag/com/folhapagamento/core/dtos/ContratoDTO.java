@@ -11,6 +11,8 @@ public class ContratoDTO {
 
     private EnumCategoriaSegurado tipoFiliacao;
 
+    private CargoDTO cargo;
+
     private EmpresaDTO empresa;
 
     public EnumTipoContrato getTipo() {
@@ -35,6 +37,14 @@ public class ContratoDTO {
 
     public void setTipoFiliacao(EnumCategoriaSegurado tipoFiliacao) {
         this.tipoFiliacao = tipoFiliacao;
+    }
+
+    public CargoDTO getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargoDTO cargo) {
+        this.cargo = cargo;
     }
 
     public EmpresaDTO getEmpresa() {
