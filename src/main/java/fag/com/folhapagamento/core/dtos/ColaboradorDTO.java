@@ -22,8 +22,6 @@ public class ColaboradorDTO {
 
     private ContratoDTO contrato;
 
-    private CargoDTO cargo;
-
     private EnumGenero genero;
 
     public Long getId() {
@@ -88,14 +86,6 @@ public class ColaboradorDTO {
 
     public void setContrato(ContratoDTO contrato) {
         this.contrato = contrato;
-    }
-
-    public CargoDTO getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(CargoDTO cargo) {
-        this.cargo = cargo;
     }
 
     public EnumGenero getGenero() {
