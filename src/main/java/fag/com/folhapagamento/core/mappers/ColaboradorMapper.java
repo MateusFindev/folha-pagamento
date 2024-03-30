@@ -16,7 +16,6 @@ public class ColaboradorMapper {
         dto.setEmail(bo.getEmail());
         dto.setAdmissao(bo.getAdmissao());
         dto.setContrato(ContratoMapper.toDTO(bo.getContrato()));
-        dto.setCargo(CargoMapper.toDTO(bo.getCargo()));
         dto.setGenero(bo.getGenero());
 
         return dto;
@@ -33,7 +32,6 @@ public class ColaboradorMapper {
         bo.setEmail(dto.getEmail());
         bo.setAdmissao(dto.getAdmissao());
         bo.setContrato(ContratoMapper.toBO(dto.getContrato()));
-        bo.setCargo(CargoMapper.toBO(dto.getCargo()));
         bo.setGenero(dto.getGenero());
 
         return bo;
