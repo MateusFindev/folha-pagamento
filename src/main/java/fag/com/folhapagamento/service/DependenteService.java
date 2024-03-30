@@ -2,6 +2,7 @@ package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.DependenteDTO;
 import fag.com.folhapagamento.core.usecases.dependente.ListarDependentes;
+import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaDependenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class DependenteService implements ListarDependentes {
     @Override
     public List<DependenteDTO> listAll() {
         return this.repository.listAll();
+    }
+
+    public List<DependenteDTO> listAllByColaborador(JakartaColaborador colaborador) {
+        return this.repository.listAllByColaborador(colaborador);
     }
 
 }
