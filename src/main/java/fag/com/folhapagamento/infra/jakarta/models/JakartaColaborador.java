@@ -41,10 +41,6 @@ public class JakartaColaborador {
     @JoinColumn(name = "id_contrato", nullable = false)
     private JakartaContrato contrato;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cargo", nullable = false)
-    private JakartaCargo cargo;
-
     @Column(name = "genero")
     @Enumerated(EnumType.STRING)
     private EnumGenero genero;
