@@ -49,6 +49,6 @@ public class JakartaCargo {
     private JakartaDepartamento departamento;
 
     @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
-    private List<JakartaColaborador> colaboradores;
+    private List<JakartaContrato> contratos;
 
 }
