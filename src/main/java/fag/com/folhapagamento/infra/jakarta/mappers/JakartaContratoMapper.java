@@ -11,6 +11,7 @@ public class JakartaContratoMapper {
         domain.setTipo(entity.getTipo());
         domain.setCargaHoraria(entity.getCargaHoraria());
         domain.setTipoFiliacao(entity.getTipoFiliacao());
+        domain.setCargo(JakartaCargoMapper.toDomain(entity.getCargo()));
         domain.setEmpresa(JakartaEmpresaMapper.toDomain(entity.getEmpresa()));
 
         return domain;
@@ -22,6 +23,7 @@ public class JakartaContratoMapper {
         entity.setTipo(domain.getTipo());
         entity.setCargaHoraria(domain.getCargaHoraria());
         entity.setTipoFiliacao(domain.getTipoFiliacao());
+        entity.setCargo(JakartaCargoMapper.toEntity(domain.getCargo()));
         entity.setEmpresa(JakartaEmpresaMapper.toEntity(domain.getEmpresa()));
 
         return entity;
