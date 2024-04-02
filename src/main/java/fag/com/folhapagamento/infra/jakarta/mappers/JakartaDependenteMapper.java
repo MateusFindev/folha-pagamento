@@ -26,4 +26,5 @@ public class JakartaDependenteMapper {
 
         return entity;
     }
+
 }

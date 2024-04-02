@@ -11,4 +11,5 @@ public class BeneficioService {
 
     @Autowired
     public BeneficioService (JakartaBeneficioRepository repository) {this.repository = repository;}
+
 }

@@ -29,4 +29,5 @@ public class BeneficioMapper {
 
         return bo;
     }
+
 }

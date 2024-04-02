@@ -95,4 +95,5 @@ public class ColaboradorBO {
     public void setGenero(EnumGenero genero) {
         this.genero = genero;
     }
+
 }

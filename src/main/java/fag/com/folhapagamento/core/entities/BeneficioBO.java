@@ -52,4 +52,5 @@ public class BeneficioBO {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
 }

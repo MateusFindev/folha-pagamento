@@ -27,4 +27,5 @@ public class JakartaDescontoMapper {
 
         return entity;
     }
+
 }

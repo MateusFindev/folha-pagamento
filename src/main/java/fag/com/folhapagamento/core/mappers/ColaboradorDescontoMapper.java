@@ -4,6 +4,7 @@ import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
 
 public class ColaboradorDescontoMapper {
+
     public static ColaboradorDescontoDTO toDTO(ColaboradorDescontoBO bo) {
         ColaboradorDescontoDTO dto = new ColaboradorDescontoDTO();
 
@@ -25,4 +26,5 @@ public class ColaboradorDescontoMapper {
 
         return bo;
     }
+
 }
