@@ -25,7 +25,7 @@ public class JakartaBeneficio {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "valorPadrao")
+    @Column(name = "valor_padrao")
     private BigDecimal valorPadrao;
 
     @Column(name = "ativo")
