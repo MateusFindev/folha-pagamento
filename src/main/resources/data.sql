@@ -5,7 +5,7 @@ INSERT INTO departamento (id, nome, descricao, ativo, id_empresa)
 VALUES (1, 'Departamento Principal', 'Descrição do departamento principal', TRUE, 1);
 
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
-VALUES (1, 'Cargo de Teste', 'Descricao do Cargo', 1, 'Carregar Sacaria', 2334, FALSE, FALSE, FALSE, FALSE, 1);
+VALUES (1, 'Cargo de Teste', 'Dadwadawescricao do Cargo', 1, 'Carregar Sacaria', 2334, FALSE, FALSE, FALSE, FALSE, 1);
 
 INSERT INTO contrato (id, tipo, carga_horaria, tipo_filiacao, id_cargo, id_empresa)
 VALUES (1, 'CLT', 44, 'EMPREGADO', 1, 1);
