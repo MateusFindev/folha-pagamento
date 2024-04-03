@@ -78,3 +78,6 @@ VALUES (11, '08640463923', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer11@m
 
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (12, '08640463933', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer12@minha.fag.edu.br', TIMESTAMP '2020-06-14 00:00:00', 12, 'MASCULINO');
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valorPadrao, ativo)
+VALUES (1, '55555', 'Vale-Alimentação', 'Para gastos com alimentação', 800.95, true);
