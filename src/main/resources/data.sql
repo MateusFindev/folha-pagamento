@@ -2,10 +2,10 @@ INSERT INTO empresa (id, cnpj, razao_social, nome_fantasia, endereco, regime_tri
 VALUES (1, '12345678901234', 'Empresa Exemplo', 'Exemplo LTDA', 'Rua Exemplo, 123', 'Simples Nacional', '123456789', '987654321');
 
 INSERT INTO departamento (id, nome, descricao, ativo, id_empresa)
-VALUES (1, 'Departamento Principal', 'Descrição do departamento principal', true, 1);
+VALUES (1, 'Departamento Principal', 'Descrição do departamento principal', TRUE, 1);
 
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
-VALUES (1, 'Cargo de Teste', 'Descricao do Cargo', 1, 'Carregar Sacaria', 2334, false, false, false, false, 1);
+VALUES (1, 'Cargo de Teste', 'Descrição do Cargo', 1, 'Carregar Sacaria', 2334, FALSE, FALSE, FALSE, FALSE, 1);
 
 INSERT INTO contrato (id, tipo, carga_horaria, tipo_filiacao, id_cargo, id_empresa)
 VALUES (1, 'CLT', 44, 'EMPREGADO', 1, 1);
@@ -79,5 +79,10 @@ VALUES (11, '08640463923', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer11@m
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (12, '08640463933', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer12@minha.fag.edu.br', TIMESTAMP '2020-06-14 00:00:00', 12, 'MASCULINO');
 
-INSERT INTO beneficio (id, codigo, nome, descricao, valorPadrao, ativo)
-VALUES (1, '55555', 'Vale-Alimentação', 'Para gastos com alimentação', 800.95, true);
+-- Por dia
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, ativo)
+VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentação', 25, TRUE);
+
+-- Por mês
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, ativo)
+VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, TRUE);
