@@ -23,4 +23,9 @@ public class ColaboradorDescontoService implements ListarColaboradorDesconto {
         return this.repository.listAll();
     }
 
+    @Override
+    public List<ColaboradorDescontoDTO> listAllByColaboradorId(Long id) {
+        return this.repository.listAllByColaboradorId(id);
+    }
+
 }
