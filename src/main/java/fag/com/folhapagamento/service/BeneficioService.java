@@ -20,4 +20,5 @@ public class BeneficioService implements ListarBeneficios {
     public List<BeneficioDTO> listAll() {
         return this.repository.listAll();
     }
+
 }

@@ -1,27 +1,27 @@
-package fag.com.folhapagamento.core.dtos;
+package fag.com.folhapagamento.core.entities;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class FolhaPagamentoDTO {
+public class FolhaPagamentoBO {
 
-    ColaboradorDTO colaborador;
+    ColaboradorBO colaborador;
 
     BigDecimal salarioBruto;
 
     BigDecimal salarioLiquido;
 
-    List<ColaboradorDescontoDTO> descontos;
+    List<ColaboradorDescontoBO> descontos;
 
     String mes;
 
     Integer diasUteis;
 
-    public ColaboradorDTO getColaborador() {
+    public ColaboradorBO getColaborador() {
         return colaborador;
     }
 
-    public void setColaborador(ColaboradorDTO colaborador) {
+    public void setColaborador(ColaboradorBO colaborador) {
         this.colaborador = colaborador;
     }
 
@@ -41,11 +41,11 @@ public class FolhaPagamentoDTO {
         this.salarioLiquido = salarioLiquido;
     }
 
-    public List<ColaboradorDescontoDTO> getDescontos() {
+    public List<ColaboradorDescontoBO> getDescontos() {
         return descontos;
     }
 
-    public void setDescontos(List<ColaboradorDescontoDTO> descontos) {
+    public void setDescontos(List<ColaboradorDescontoBO> descontos) {
         this.descontos = descontos;
     }
 
