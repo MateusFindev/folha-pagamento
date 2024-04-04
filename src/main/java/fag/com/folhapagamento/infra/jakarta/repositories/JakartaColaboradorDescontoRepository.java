@@ -25,8 +25,9 @@ public class JakartaColaboradorDescontoRepository extends SimpleJpaRepository<Ja
 
     @Override
     public List<ColaboradorDescontoDTO> listAll() {
-        List<JakartaColaboradorDesconto> beneficios = this.findAll();
+        List<JakartaColaboradorDesconto> colaboradorDescontos = this.findAll();
 
-        return beneficios.stream().map(beneficio -> ColaboradorDescontoMapper.toDTO(JakartaColaboradorDescontoMapper.toDomain(beneficio))).toList();
+        return colaboradorDescontos.stream().map(colaboradorDesconto -> ColaboradorDescontoMapper.toDTO(JakartaColaboradorDescontoMapper.toDomain(colaboradorDesconto))).toList();
     }
+
 }
