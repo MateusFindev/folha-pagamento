@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class BeneficioService implements ListarBeneficios {
+
     private final JakartaBeneficioRepository repository;
 
     @Autowired
