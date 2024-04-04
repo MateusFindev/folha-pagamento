@@ -79,6 +79,8 @@ VALUES (11, '08640463923', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer11@m
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (12, '08640463933', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer12@minha.fag.edu.br', TIMESTAMP '2020-06-14 00:00:00', 12, 'MASCULINO');
 
+--  BENEFÍCIOS
+
 -- Por dia
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, ativo)
 VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentação', 25, TRUE);
@@ -86,3 +88,14 @@ VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentaç
 -- Por mês
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, ativo)
 VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, TRUE);
+
+
+--  DESCONTOS
+
+-- Por dia/ %
+INSERT INTO desconto (id, codigo, nome, descricao, ativo)
+VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', TRUE);
+
+-- Por mês/ %
+INSERT INTO desconto (id, codigo, nome, descricao, ativo)
+VALUES (2, 'INSS', 'INSS', 'imposto de INSS', TRUE);
