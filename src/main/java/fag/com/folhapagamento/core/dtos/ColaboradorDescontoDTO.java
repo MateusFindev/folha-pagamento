@@ -5,8 +5,11 @@ import java.math.BigDecimal;
 public class ColaboradorDescontoDTO {
 
     private ColaboradorDTO colaborador;
+
     private DescontoDTO desconto;
+
     private BigDecimal valor;
+
     private boolean ativo;
 
     public ColaboradorDTO getColaborador() {
@@ -40,4 +43,5 @@ public class ColaboradorDescontoDTO {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
 }

@@ -1,15 +1,17 @@
 package fag.com.folhapagamento.core.entities;
 
-import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
-import fag.com.folhapagamento.core.dtos.DescontoDTO;
-
 import java.math.BigDecimal;
 
 public class ColaboradorDescontoBO {
+
     private ColaboradorBO colaborador;
+
     private DescontoBO desconto;
+
     private BigDecimal valor;
+
     private boolean ativo;
+
 
     public ColaboradorBO getColaborador() {
         return colaborador;
