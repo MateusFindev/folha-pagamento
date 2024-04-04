@@ -30,7 +30,7 @@ public class ColaboradorController {
 
     @GetMapping("{id}")
     public ResponseEntity<ColaboradorDTO> findById(@PathVariable Long id) {
-        ColaboradorDTO colaborador = this.service.findById(id);
+        ColaboradorDTO colaborador = this.service.customFindById(id);
 
         return new ResponseEntity<>(colaborador, HttpStatus.OK);
     }

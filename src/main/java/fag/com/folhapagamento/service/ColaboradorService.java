@@ -28,7 +28,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
     }
 
     @Override
-    public ColaboradorDTO findById(Long id) {
+    public ColaboradorDTO customFindById(Long id) {
         JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
 
         if (colaborador == null) {
