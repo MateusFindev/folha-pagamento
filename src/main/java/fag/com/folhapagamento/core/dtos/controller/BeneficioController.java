@@ -1,4 +1,4 @@
-package fag.com.folhapagamento.controller;
+package fag.com.folhapagamento.core.dtos.controller;
 
 import fag.com.folhapagamento.core.dtos.BeneficioDTO;
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
