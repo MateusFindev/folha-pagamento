@@ -1,7 +1,6 @@
 package fag.com.folhapagamento.controller;
 
 import fag.com.folhapagamento.core.dtos.BeneficioDTO;
-import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
 import fag.com.folhapagamento.service.BeneficioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
