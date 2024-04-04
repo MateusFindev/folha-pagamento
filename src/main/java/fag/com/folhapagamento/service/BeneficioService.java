@@ -14,7 +14,9 @@ public class BeneficioService implements ListarBeneficios {
     private final JakartaBeneficioRepository repository;
 
     @Autowired
-    public BeneficioService (JakartaBeneficioRepository repository) {this.repository = repository;}
+    public BeneficioService(JakartaBeneficioRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<BeneficioDTO> listAll() {
