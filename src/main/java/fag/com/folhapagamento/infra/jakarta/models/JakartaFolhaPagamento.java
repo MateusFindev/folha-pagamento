@@ -27,7 +27,7 @@ public class JakartaFolhaPagamento {
     @Column(name = "salario_liquido")
     private BigDecimal salarioLiquido;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_colaborador_desconto", nullable = false)
     private List<JakartaColaboradorDesconto> colaboradorDescontos;
 
