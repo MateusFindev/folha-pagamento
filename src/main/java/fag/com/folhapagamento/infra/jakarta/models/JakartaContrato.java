@@ -35,7 +35,7 @@ public class JakartaContrato {
     @JoinColumn(name = "id_empresa", nullable = false, insertable = false)
     private JakartaEmpresa empresa;
 
-    @OneToOne(mappedBy = "contrato", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "contrato")
     private JakartaColaborador colaborador;
 
 }
