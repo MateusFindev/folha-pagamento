@@ -1,5 +1,7 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumTipoValor;
+
 public class DescontoBO {
     private String nome;
 
@@ -7,22 +9,48 @@ public class DescontoBO {
 
     private String descricao;
 
+    private EnumTipoValor tipoValor;
+
     private boolean ativo;
 
-    public String getNome() {return nome;}
+    public String getNome() {
+        return nome;
+    }
 
-    public void setNome(String nome) {this.nome = nome;}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public String getCodigo() {return codigo;}
+    public String getCodigo() {
+        return codigo;
+    }
 
-    public void setCodigo(String codigo) {this.codigo = codigo;}
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
-    public String getDescricao() {return descricao;}
+    public String getDescricao() {
+        return descricao;
+    }
 
-    public void setDescricao(String descricao) {this.descricao = descricao;}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-    public boolean isAtivo() {return ativo;}
+    public EnumTipoValor getTipoValor() {
+        return tipoValor;
+    }
 
-    public void setAtivo(boolean ativo) {this.ativo = ativo;}
+    public void setTipoValor(EnumTipoValor tipoValor) {
+        this.tipoValor = tipoValor;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
 }
