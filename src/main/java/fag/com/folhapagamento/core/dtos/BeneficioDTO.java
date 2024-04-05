@@ -1,8 +1,14 @@
 package fag.com.folhapagamento.core.dtos;
 
+import fag.com.folhapagamento.core.enums.EnumPrazo;
+import fag.com.folhapagamento.core.enums.EnumTipoValor;
+
 import java.math.BigDecimal;
 
 public class BeneficioDTO {
+
+    private Long id;
+
     private String nome;
 
     private String codigo;
@@ -11,7 +17,19 @@ public class BeneficioDTO {
 
     private BigDecimal valorPadrao;
 
+    private EnumTipoValor tipoValor;
+
+    private EnumPrazo prazo;
+
     private boolean ativo;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -45,6 +63,22 @@ public class BeneficioDTO {
         this.valorPadrao = valorPadrao;
     }
 
+    public EnumTipoValor getTipoValor() {
+        return tipoValor;
+    }
+
+    public void setTipoValor(EnumTipoValor tipoValor) {
+        this.tipoValor = tipoValor;
+    }
+
+    public EnumPrazo getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(EnumPrazo prazo) {
+        this.prazo = prazo;
+    }
+
     public boolean isAtivo() {
         return ativo;
     }
@@ -52,4 +86,5 @@ public class BeneficioDTO {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
 }

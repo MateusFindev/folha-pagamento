@@ -8,6 +8,7 @@ public class JakartaDepartamentoMapper {
     public static DepartamentoBO toDomain(JakartaDepartamento entity) {
         DepartamentoBO domain = new DepartamentoBO();
 
+        domain.setId(entity.getId());
         domain.setNome(entity.getNome());
         domain.setDescricao(entity.getDescricao());
         domain.setAtivo(entity.isAtivo());
@@ -19,6 +20,7 @@ public class JakartaDepartamentoMapper {
     public static JakartaDepartamento toEntity(DepartamentoBO domain) {
         JakartaDepartamento entity = new JakartaDepartamento();
 
+        entity.setId(domain.getId());
         entity.setNome(domain.getNome());
         entity.setDescricao(domain.getDescricao());
         entity.setAtivo(domain.isAtivo());

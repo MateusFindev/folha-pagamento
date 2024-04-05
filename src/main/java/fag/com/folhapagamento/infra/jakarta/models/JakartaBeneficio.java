@@ -1,5 +1,7 @@
 package fag.com.folhapagamento.infra.jakarta.models;
 
+import fag.com.folhapagamento.core.enums.EnumPrazo;
+import fag.com.folhapagamento.core.enums.EnumTipoValor;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,14 @@ public class JakartaBeneficio {
 
     @Column(name = "valor_padrao")
     private BigDecimal valorPadrao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_valor", nullable = false)
+    private EnumTipoValor tipoValor;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "prazo", nullable = false)
+    private EnumPrazo prazo;
 
     @Column(name = "ativo")
     private boolean ativo;

@@ -2,6 +2,8 @@ package fag.com.folhapagamento.core.entities;
 
 public class DepartamentoBO {
 
+    private Long id;
+
     private String nome;
 
     private String descricao;
@@ -9,6 +11,14 @@ public class DepartamentoBO {
     private boolean ativo;
 
     private EmpresaBO empresa;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

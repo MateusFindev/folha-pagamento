@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class CargoBO {
 
+    private Long id;
+
     private String nome;
 
     private String descricao;
@@ -21,6 +23,14 @@ public class CargoBO {
     private boolean adFuncao;
 
     private boolean comissao;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

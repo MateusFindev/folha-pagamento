@@ -8,6 +8,7 @@ public class JakartaEmpresaMapper {
     public static EmpresaBO toDomain(JakartaEmpresa entity) {
         EmpresaBO domain = new EmpresaBO();
 
+        domain.setId(entity.getId());
         domain.setCnpj(entity.getCnpj());
         domain.setRazaoSocial(entity.getRazaoSocial());
         domain.setNomeFantasia(entity.getNomeFantasia());
@@ -22,6 +23,7 @@ public class JakartaEmpresaMapper {
     public static JakartaEmpresa toEntity(EmpresaBO domain) {
         JakartaEmpresa entity = new JakartaEmpresa();
 
+        entity.setId(domain.getId());
         entity.setCnpj(domain.getCnpj());
         entity.setRazaoSocial(domain.getRazaoSocial());
         entity.setNomeFantasia(domain.getNomeFantasia());

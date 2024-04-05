@@ -8,6 +8,7 @@ public class JakartaCargoMapper {
     public static CargoBO toDomain(JakartaCargo entity) {
         CargoBO domain = new CargoBO();
 
+        domain.setId(entity.getId());
         domain.setNome(entity.getNome());
         domain.setDescricao(entity.getDescricao());
         domain.setNivel(entity.getNivel());
@@ -24,6 +25,7 @@ public class JakartaCargoMapper {
     public static JakartaCargo toEntity(CargoBO domain) {
         JakartaCargo entity = new JakartaCargo();
 
+        entity.setId(domain.getId());
         entity.setNome(domain.getNome());
         entity.setDescricao(domain.getDescricao());
         entity.setNivel(domain.getNivel());

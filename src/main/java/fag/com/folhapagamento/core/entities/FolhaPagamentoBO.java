@@ -5,6 +5,8 @@ import java.util.List;
 
 public class FolhaPagamentoBO {
 
+    private Long id;
+
     ColaboradorBO colaborador;
 
     BigDecimal salarioBruto;
@@ -16,6 +18,14 @@ public class FolhaPagamentoBO {
     String mes;
 
     Integer diasUteis;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ColaboradorBO getColaborador() {
         return colaborador;

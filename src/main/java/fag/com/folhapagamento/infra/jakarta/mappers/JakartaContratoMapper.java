@@ -8,6 +8,7 @@ public class JakartaContratoMapper {
     public static ContratoBO toDomain(JakartaContrato entity) {
         ContratoBO domain = new ContratoBO();
 
+        domain.setId(entity.getId());
         domain.setTipo(entity.getTipo());
         domain.setCargaHoraria(entity.getCargaHoraria());
         domain.setTipoFiliacao(entity.getTipoFiliacao());
@@ -20,6 +21,7 @@ public class JakartaContratoMapper {
     public static JakartaContrato toEntity(ContratoBO domain) {
         JakartaContrato entity = new JakartaContrato();
 
+        entity.setId(domain.getId());
         entity.setTipo(domain.getTipo());
         entity.setCargaHoraria(domain.getCargaHoraria());
         entity.setTipoFiliacao(domain.getTipoFiliacao());

@@ -17,6 +17,7 @@ public class ColaboradorMapper {
         dto.setAdmissao(bo.getAdmissao());
         dto.setContrato(ContratoMapper.toDTO(bo.getContrato()));
         dto.setGenero(bo.getGenero());
+        dto.setDependentes(bo.getDependentes().stream().map(DependenteMapper::toDTO).toList());
 
         return dto;
     }
@@ -33,6 +34,7 @@ public class ColaboradorMapper {
         bo.setAdmissao(dto.getAdmissao());
         bo.setContrato(ContratoMapper.toBO(dto.getContrato()));
         bo.setGenero(dto.getGenero());
+        bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
 
         return bo;
     }

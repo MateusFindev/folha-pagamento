@@ -8,6 +8,7 @@ public class FolhaPagamentoMapper {
     public static FolhaPagamentoDTO toDTO(FolhaPagamentoBO bo) {
         FolhaPagamentoDTO dto = new FolhaPagamentoDTO();
 
+        dto.setId(bo.getId());
         dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
         dto.setSalarioBruto(bo.getSalarioBruto());
         dto.setSalarioLiquido(bo.getSalarioLiquido());
@@ -21,6 +22,7 @@ public class FolhaPagamentoMapper {
     public static FolhaPagamentoBO toBO(FolhaPagamentoDTO dto) {
         FolhaPagamentoBO bo = new FolhaPagamentoBO();
 
+        bo.setId(dto.getId());
         bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
         bo.setSalarioBruto(dto.getSalarioBruto());
         bo.setSalarioLiquido(dto.getSalarioLiquido());

@@ -2,6 +2,8 @@ package fag.com.folhapagamento.core.dtos;
 
 public class EmpresaDTO {
 
+    private Long id;
+
     private String cnpj;
 
     private String razaoSocial;
@@ -15,6 +17,14 @@ public class EmpresaDTO {
     private String inscricaoEstadual;
 
     private String inscricaoMunicipal;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCnpj() {
         return cnpj;

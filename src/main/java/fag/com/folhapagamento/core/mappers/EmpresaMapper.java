@@ -8,6 +8,7 @@ public class EmpresaMapper {
     public static EmpresaDTO toDTO(EmpresaBO bo) {
         EmpresaDTO dto = new EmpresaDTO();
 
+        dto.setId(bo.getId());
         dto.setCnpj(bo.getCnpj());
         dto.setRazaoSocial(bo.getRazaoSocial());
         dto.setNomeFantasia(bo.getNomeFantasia());
@@ -22,6 +23,7 @@ public class EmpresaMapper {
     public static EmpresaBO toBO(EmpresaDTO dto) {
         EmpresaBO bo = new EmpresaBO();
 
+        bo.setId(dto.getId());
         bo.setCnpj(dto.getCnpj());
         bo.setRazaoSocial(dto.getRazaoSocial());
         bo.setNomeFantasia(dto.getNomeFantasia());
