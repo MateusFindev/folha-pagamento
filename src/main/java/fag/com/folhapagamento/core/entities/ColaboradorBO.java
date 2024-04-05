@@ -2,6 +2,7 @@ package fag.com.folhapagamento.core.entities;
 
 import fag.com.folhapagamento.core.enums.EnumGenero;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class ColaboradorBO {
@@ -94,6 +95,10 @@ public class ColaboradorBO {
 
     public void setGenero(EnumGenero genero) {
         this.genero = genero;
+    }
+
+    public BigDecimal getSalarioBase() {
+        return contrato.getCargo().getSalarioBase();
     }
 
 }
