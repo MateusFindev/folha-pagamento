@@ -8,6 +8,7 @@ public class JakartaDependenteMapper {
     public static DependenteBO toDomain(JakartaDependente entity) {
         DependenteBO domain = new DependenteBO();
 
+        domain.setId(entity.getId());
         domain.setNome(entity.getNome());
         domain.setNascimento(entity.getNascimento());
         domain.setParentesco(entity.getParentesco());
@@ -19,6 +20,7 @@ public class JakartaDependenteMapper {
     public static JakartaDependente toEntity(DependenteBO domain) {
         JakartaDependente entity = new JakartaDependente();
 
+        entity.setId(domain.getId());
         entity.setNome(domain.getNome());
         entity.setNascimento(domain.getNascimento());
         entity.setParentesco(domain.getParentesco());
