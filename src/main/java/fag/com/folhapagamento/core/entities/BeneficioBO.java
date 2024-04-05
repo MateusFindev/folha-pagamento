@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumPrazo;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 
 import java.math.BigDecimal;
@@ -14,6 +15,8 @@ public class BeneficioBO {
     private BigDecimal valorPadrao;
 
     private EnumTipoValor tipoValor;
+
+    private EnumPrazo prazo;
 
     private boolean ativo;
 
@@ -55,6 +58,14 @@ public class BeneficioBO {
 
     public void setTipoValor(EnumTipoValor tipoValor) {
         this.tipoValor = tipoValor;
+    }
+
+    public EnumPrazo getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(EnumPrazo prazo) {
+        this.prazo = prazo;
     }
 
     public boolean isAtivo() {

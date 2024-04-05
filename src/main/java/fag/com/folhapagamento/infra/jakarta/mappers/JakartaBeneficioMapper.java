@@ -15,6 +15,7 @@ public class JakartaBeneficioMapper {
         domain.setDescricao(entity.getDescricao());
         domain.setValorPadrao(entity.getValorPadrao());
         domain.setTipoValor(entity.getTipoValor());
+        domain.setPrazo(entity.getPrazo());
         domain.setAtivo(entity.isAtivo());
 
         return domain;
@@ -28,6 +29,7 @@ public class JakartaBeneficioMapper {
         entity.setDescricao(domain.getDescricao());
         entity.setValorPadrao(domain.getValorPadrao());
         entity.setTipoValor(domain.getTipoValor());
+        entity.setPrazo(domain.getPrazo());
         entity.setAtivo(domain.isAtivo());
 
         return entity;

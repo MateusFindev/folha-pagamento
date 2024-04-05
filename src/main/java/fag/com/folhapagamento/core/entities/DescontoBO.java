@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumPrazo;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 
 public class DescontoBO {
@@ -10,6 +11,8 @@ public class DescontoBO {
     private String descricao;
 
     private EnumTipoValor tipoValor;
+
+    private EnumPrazo prazo;
 
     private boolean ativo;
 
@@ -43,6 +46,14 @@ public class DescontoBO {
 
     public void setTipoValor(EnumTipoValor tipoValor) {
         this.tipoValor = tipoValor;
+    }
+
+    public EnumPrazo getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(EnumPrazo prazo) {
+        this.prazo = prazo;
     }
 
     public boolean isAtivo() {

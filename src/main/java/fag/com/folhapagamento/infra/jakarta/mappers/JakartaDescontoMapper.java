@@ -13,6 +13,7 @@ public class JakartaDescontoMapper {
         domain.setDescricao(entity.getDescricao());
         domain.setAtivo(entity.isAtivo());
         domain.setTipoValor(entity.getTipoValor());
+        domain.setPrazo(entity.getPrazo());
         domain.setCodigo(entity.getCodigo());
 
         return domain;
@@ -25,6 +26,7 @@ public class JakartaDescontoMapper {
         entity.setCodigo(domain.getCodigo());
         entity.setNome(domain.getNome());
         entity.setTipoValor(domain.getTipoValor());
+        entity.setPrazo(domain.getPrazo());
         entity.setDescricao(domain.getDescricao());
 
         return entity;
