@@ -4,6 +4,7 @@ import fag.com.folhapagamento.core.enums.EnumGenero;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class ColaboradorBO {
 
@@ -24,6 +25,8 @@ public class ColaboradorBO {
     private ContratoBO contrato;
 
     private EnumGenero genero;
+
+    private List<DependenteBO> dependentes;
 
     public Long getId() {
         return id;
@@ -99,6 +102,14 @@ public class ColaboradorBO {
 
     public BigDecimal getSalarioBase() {
         return contrato.getCargo().getSalarioBase();
+    }
+
+    public List<DependenteBO> getDependentes() {
+        return dependentes;
+    }
+
+    public void setDependentes(List<DependenteBO> dependentes) {
+        this.dependentes = dependentes;
     }
 
 }
