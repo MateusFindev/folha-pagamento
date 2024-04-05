@@ -8,6 +8,7 @@ public class JakartaFolhaPagamentoMapper {
     public static FolhaPagamentoBO toDomain(JakartaFolhaPagamento entity) {
         FolhaPagamentoBO domain = new FolhaPagamentoBO();
 
+        domain.setId(entity.getId());
         domain.setColaborador(JakartaColaboradorMapper.toDomain(entity.getColaborador()));
         domain.setSalarioBruto(entity.getSalarioBruto());
         domain.setSalarioLiquido(entity.getSalarioLiquido());
@@ -21,6 +22,7 @@ public class JakartaFolhaPagamentoMapper {
     public static JakartaFolhaPagamento toEntity(FolhaPagamentoBO domain) {
         JakartaFolhaPagamento entity = new JakartaFolhaPagamento();
 
+        entity.setId(domain.getId());
         entity.setColaborador(JakartaColaboradorMapper.toEntity(domain.getColaborador()));
         entity.setSalarioBruto(domain.getSalarioBruto());
         entity.setSalarioLiquido(domain.getSalarioLiquido());

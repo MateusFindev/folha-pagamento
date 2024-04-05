@@ -8,6 +8,7 @@ public class ContratoMapper {
     public static ContratoDTO toDTO(ContratoBO bo) {
         ContratoDTO dto = new ContratoDTO();
 
+        dto.setId(bo.getId());
         dto.setTipo(bo.getTipo());
         dto.setCargaHoraria(bo.getCargaHoraria());
         dto.setTipoFiliacao(bo.getTipoFiliacao());
@@ -20,6 +21,7 @@ public class ContratoMapper {
     public static ContratoBO toBO(ContratoDTO dto) {
         ContratoBO bo = new ContratoBO();
 
+        bo.setId(dto.getId());
         bo.setTipo(dto.getTipo());
         bo.setCargaHoraria(dto.getCargaHoraria());
         bo.setTipoFiliacao(dto.getTipoFiliacao());

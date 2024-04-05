@@ -8,6 +8,7 @@ public class JakartaColaboradorPontoMapper {
     public static ColaboradorPontoBO toDomain(JakartaColaboradorPonto entity) {
         ColaboradorPontoBO domain = new ColaboradorPontoBO();
 
+        domain.setId(entity.getId());
         domain.setColaborador(JakartaColaboradorMapper.toDomain(entity.getColaborador()));
         domain.setDiasTrabalhados(entity.getDiasTrabalhados());
         domain.setFaltas(entity.getFaltas());
@@ -22,6 +23,7 @@ public class JakartaColaboradorPontoMapper {
     public static JakartaColaboradorPonto toEntity(ColaboradorPontoBO domain) {
         JakartaColaboradorPonto entity = new JakartaColaboradorPonto();
 
+        entity.setId(domain.getId());
         entity.setColaborador(JakartaColaboradorMapper.toEntity(domain.getColaborador()));
         entity.setDiasTrabalhados(domain.getDiasTrabalhados());
         entity.setFaltas(domain.getFaltas());

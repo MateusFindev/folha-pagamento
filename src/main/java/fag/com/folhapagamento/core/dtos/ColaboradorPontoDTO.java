@@ -4,6 +4,8 @@ import fag.com.folhapagamento.core.enums.EnumMes;
 
 public class ColaboradorPontoDTO {
 
+    private Long id;
+
     private ColaboradorDTO colaborador;
 
     private Integer diasTrabalhados;
@@ -17,6 +19,14 @@ public class ColaboradorPontoDTO {
     private Integer horas100;
 
     private EnumMes mes;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ColaboradorDTO getColaborador() {
         return colaborador;

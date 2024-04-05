@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class ColaboradorDescontoBO {
 
+    private Long id;
+
     private ColaboradorBO colaborador;
 
     private DescontoBO desconto;
@@ -12,6 +14,13 @@ public class ColaboradorDescontoBO {
 
     private boolean ativo;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ColaboradorBO getColaborador() {
         return colaborador;

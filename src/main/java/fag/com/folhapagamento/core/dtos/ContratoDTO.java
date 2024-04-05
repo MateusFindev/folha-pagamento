@@ -5,6 +5,8 @@ import fag.com.folhapagamento.core.enums.EnumTipoContrato;
 
 public class ContratoDTO {
 
+    private Long id;
+
     private EnumTipoContrato tipo;
 
     private Integer cargaHoraria;
@@ -14,6 +16,14 @@ public class ContratoDTO {
     private CargoDTO cargo;
 
     private EmpresaDTO empresa;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public EnumTipoContrato getTipo() {
         return tipo;

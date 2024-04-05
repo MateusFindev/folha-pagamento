@@ -9,6 +9,7 @@ public class BeneficioMapper {
     public static BeneficioDTO toDTO(BeneficioBO bo) {
         BeneficioDTO dto = new BeneficioDTO();
 
+        dto.setId(bo.getId());
         dto.setCodigo(bo.getCodigo());
         dto.setDescricao(bo.getDescricao());
         dto.setAtivo(bo.isAtivo());
@@ -22,6 +23,7 @@ public class BeneficioMapper {
     public static BeneficioBO toBO(BeneficioDTO dto) {
         BeneficioBO bo = new BeneficioBO();
 
+        bo.setId(dto.getId());
         bo.setCodigo(dto.getCodigo());
         bo.setDescricao(dto.getDescricao());
         bo.setAtivo(dto.isAtivo());

@@ -6,6 +6,9 @@ import fag.com.folhapagamento.core.enums.EnumTipoValor;
 import java.math.BigDecimal;
 
 public class BeneficioBO {
+
+    private Long id;
+
     private String nome;
 
     private String codigo;
@@ -19,6 +22,14 @@ public class BeneficioBO {
     private EnumPrazo prazo;
 
     private boolean ativo;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

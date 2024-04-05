@@ -4,6 +4,9 @@ import fag.com.folhapagamento.core.enums.EnumPrazo;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 
 public class DescontoBO {
+
+    private Long id;
+
     private String nome;
 
     private String codigo;
@@ -15,6 +18,14 @@ public class DescontoBO {
     private EnumPrazo prazo;
 
     private boolean ativo;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

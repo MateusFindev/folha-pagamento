@@ -8,6 +8,7 @@ public class ColaboradorPontoMapper {
     public static ColaboradorPontoDTO toDTO(ColaboradorPontoBO bo) {
         ColaboradorPontoDTO dto = new ColaboradorPontoDTO();
 
+        dto.setId(bo.getId());
         dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
         dto.setDiasTrabalhados(bo.getDiasTrabalhados());
         dto.setFaltas(bo.getFaltas());
@@ -22,6 +23,7 @@ public class ColaboradorPontoMapper {
     public static ColaboradorPontoBO toBO(ColaboradorPontoDTO dto) {
         ColaboradorPontoBO bo = new ColaboradorPontoBO();
 
+        bo.setId(dto.getId());
         bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
         bo.setDiasTrabalhados(dto.getDiasTrabalhados());
         bo.setFaltas(dto.getFaltas());

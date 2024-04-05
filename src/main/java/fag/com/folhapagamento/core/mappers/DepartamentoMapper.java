@@ -8,6 +8,7 @@ public class DepartamentoMapper {
     public static DepartamentoDTO toDTO(DepartamentoBO bo) {
         DepartamentoDTO dto = new DepartamentoDTO();
 
+        dto.setId(bo.getId());
         dto.setNome(bo.getNome());
         dto.setDescricao(bo.getDescricao());
         dto.setAtivo(bo.isAtivo());
@@ -19,6 +20,7 @@ public class DepartamentoMapper {
     public static DepartamentoBO toBO(DepartamentoDTO dto) {
         DepartamentoBO bo = new DepartamentoBO();
 
+        bo.setId(dto.getId());
         bo.setNome(dto.getNome());
         bo.setDescricao(dto.getDescricao());
         bo.setAtivo(dto.isAtivo());
