@@ -2,6 +2,9 @@ package fag.com.folhapagamento.core.entities;
 
 import fag.com.folhapagamento.core.enums.EnumMes;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class ColaboradorPontoBO {
 
     private ColaboradorBO colaborador;
@@ -17,6 +20,39 @@ public class ColaboradorPontoBO {
     private Integer horas100;
 
     private EnumMes mes;
+
+    private BigDecimal calcularValorHora() {
+        BigDecimal salarioBase = colaborador.getSalarioBase();
+        Integer cargaHoraria = colaborador.getContrato().getCargaHoraria();
+
+        int horasTrabalhadas = diasTrabalhados * (cargaHoraria / 7);
+
+        return salarioBase.divide(new BigDecimal(horasTrabalhadas), RoundingMode.HALF_EVEN);
+    }
+
+    public BigDecimal calcularValorHorasExtras() {
+        BigDecimal valorHora = this.calcularValorHora();
+        BigDecimal valorExtra50 = valorHora.multiply(new BigDecimal("1.5"));
+
+        BigDecimal extra50 = valorExtra50.multiply(new BigDecimal(horas50));
+        BigDecimal extra100 = valorHora.multiply(new BigDecimal(2));
+
+        return extra50.add(extra100);
+    }
+
+    public BigDecimal calcularValorFaltas() {
+        BigDecimal salarioBase = colaborador.getSalarioBase();
+
+        BigDecimal valorDia = salarioBase.divide(new BigDecimal(diasTrabalhados), RoundingMode.HALF_EVEN);
+
+        return valorDia.multiply(new BigDecimal(faltas));
+    }
+
+    public BigDecimal calcularValorHorasAtraso() {
+        BigDecimal valorHora = this.calcularValorHora();
+
+        return colaborador.getSalarioBase().multiply(new BigDecimal(horasAtraso));
+    }
 
     public ColaboradorBO getColaborador() {
         return colaborador;
