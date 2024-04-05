@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class DependenteDTO {
 
+    private Long id;
+
     private String nome;
 
     private Date nascimento;
@@ -13,6 +15,14 @@ public class DependenteDTO {
     private EnumParentesco parentesco;
 
     private ColaboradorDTO colaborador;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
