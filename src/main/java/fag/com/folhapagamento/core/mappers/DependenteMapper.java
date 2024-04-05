@@ -8,6 +8,7 @@ public class DependenteMapper {
     public static DependenteDTO toDTO(DependenteBO bo) {
         DependenteDTO dto = new DependenteDTO();
 
+        dto.setId(bo.getId());
         dto.setNome(bo.getNome());
         dto.setNascimento(bo.getNascimento());
         dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
@@ -19,6 +20,7 @@ public class DependenteMapper {
     public static DependenteBO toBO(DependenteDTO dto) {
         DependenteBO bo = new DependenteBO();
 
+        bo.setId(dto.getId());
         bo.setNome(dto.getNome());
         bo.setNascimento(dto.getNascimento());
         bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
