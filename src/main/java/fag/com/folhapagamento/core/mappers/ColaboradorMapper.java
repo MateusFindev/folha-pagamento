@@ -18,6 +18,8 @@ public class ColaboradorMapper {
         dto.setContrato(ContratoMapper.toDTO(bo.getContrato()));
         dto.setGenero(bo.getGenero());
         dto.setDependentes(bo.getDependentes().stream().map(DependenteMapper::toDTO).toList());
+        dto.setBeneficios(bo.getBeneficios().stream().map(ColaboradorBeneficioMapper::toDTO).toList());
+        dto.setDescontos(bo.getDescontos().stream().map(ColaboradorDescontoMapper::toDTO).toList());
 
         return dto;
     }
@@ -35,6 +37,8 @@ public class ColaboradorMapper {
         bo.setContrato(ContratoMapper.toBO(dto.getContrato()));
         bo.setGenero(dto.getGenero());
         bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
+        bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
+        bo.setDescontos(dto.getDescontos().stream().map(ColaboradorDescontoMapper::toBO).toList());
 
         return bo;
     }
