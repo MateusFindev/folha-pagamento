@@ -1,0 +1,17 @@
+package fag.com.folhapagamento.core.enums;
+
+public enum EnumTipoBeneficio {
+
+    ADICIONAL_PERICULOSIDADE,
+    ADICIONAL_FUNCAO,
+    VALE_ALIMENTACAO,
+    VALE_TRANSPORTE,
+    PLANO_SAUDE,
+    PLANO_ODONTOLOGICO,
+    AUXILIO_CRECHE,
+    AUXILIO_EDUCACAO,
+    VALE_ACADEMIA,
+    VALE_CULTURA,
+    OUTRO
+
+}
