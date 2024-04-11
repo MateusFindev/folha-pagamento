@@ -19,6 +19,8 @@ public class JakartaColaboradorMapper {
         domain.setContrato(JakartaContratoMapper.toDomain(entity.getContrato()));
         domain.setGenero(entity.getGenero());
         domain.setDependentes(entity.getDependentes().stream().map(JakartaDependenteMapper::toDomain).toList());
+        domain.setBeneficios(entity.getBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toDomain).toList());
+        domain.setDescontos(entity.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).toList());
 
         return domain;
     }
@@ -36,6 +38,8 @@ public class JakartaColaboradorMapper {
         entity.setContrato(JakartaContratoMapper.toEntity(domain.getContrato()));
         entity.setGenero(domain.getGenero());
         entity.setDependentes(domain.getDependentes().stream().map(JakartaDependenteMapper::toEntity).toList());
+        entity.setBeneficios(domain.getBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toEntity).toList());
+        entity.setDescontos(domain.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toEntity).toList());
 
         return entity;
     }
