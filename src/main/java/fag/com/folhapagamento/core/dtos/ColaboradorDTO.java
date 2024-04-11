@@ -27,6 +27,10 @@ public class ColaboradorDTO {
 
     private List<DependenteDTO> dependentes;
 
+    private List<BeneficioDTO> beneficios;
+
+    private List<DescontoDTO> descontos;
+
     public Long getId() {
         return id;
     }
@@ -105,6 +109,22 @@ public class ColaboradorDTO {
 
     public void setDependentes(List<DependenteDTO> dependentes) {
         this.dependentes = dependentes;
+    }
+
+    public List<BeneficioDTO> getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(List<BeneficioDTO> beneficios) {
+        this.beneficios = beneficios;
+    }
+
+    public List<DescontoDTO> getDescontos() {
+        return descontos;
+    }
+
+    public void setDescontos(List<DescontoDTO> descontos) {
+        this.descontos = descontos;
     }
 
 }
