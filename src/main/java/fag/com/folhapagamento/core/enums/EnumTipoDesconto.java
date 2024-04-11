@@ -8,6 +8,6 @@ public enum EnumTipoDesconto {
     VALE_TRANSPORTE,
     VALE_ALIMENTACAO,
     PENSAO_JUDICIAL,
-    OUTRO;
+    OUTRO
 
 }
