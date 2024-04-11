@@ -48,4 +48,10 @@ public class JakartaColaborador {
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
     private List<JakartaDependente> dependentes;
 
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
+    private List<JakartaColaboradorBeneficio> beneficios;
+
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
+    private List<JakartaColaboradorDesconto> descontos;
+
 }
