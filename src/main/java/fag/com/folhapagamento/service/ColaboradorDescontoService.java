@@ -1,8 +1,11 @@
 package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
+import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
+import fag.com.folhapagamento.core.mappers.ColaboradorDescontoMapper;
 import fag.com.folhapagamento.core.usecases.colaborador.desconto.ListarColaboradorDesconto;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaColaboradorDescontoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,13 @@ public class ColaboradorDescontoService implements ListarColaboradorDesconto {
     @Override
     public List<ColaboradorDescontoDTO> listAllByColaboradorId(Long id) {
         return this.repository.listAllByColaboradorId(id);
+    }
+
+    @Transactional
+    public ColaboradorDescontoDTO create(ColaboradorDescontoBO bo) {
+        ColaboradorDescontoBO entity = this.repository.persist(bo);
+
+        return ColaboradorDescontoMapper.toDTO(entity);
     }
 
 }
