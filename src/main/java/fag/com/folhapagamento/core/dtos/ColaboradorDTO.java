@@ -26,7 +26,7 @@ public class ColaboradorDTO {
 
     private EnumGenero genero;
 
-    private List<DependenteDTO> dependentes;
+    private List<DependenteDTO> dependentes = new ArrayList<>();
 
     private List<ColaboradorBeneficioDTO> beneficios = new ArrayList<>();
 
