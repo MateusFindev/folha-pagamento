@@ -1,7 +1,6 @@
 package fag.com.folhapagamento.infra.jakarta.mappers;
 
 import fag.com.folhapagamento.core.entities.ColaboradorBO;
-import fag.com.folhapagamento.core.mappers.DependenteMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 
 import java.util.stream.Collectors;
@@ -26,9 +25,15 @@ public class JakartaColaboradorMapper {
         domain.setGenero(entity.getGenero());
 
         if (includeAll) {
-            domain.setDependentes(entity.getDependentes().stream().map(dependente -> JakartaDependenteMapper.toDomain(dependente)).collect(Collectors.toList()));
-            domain.setBeneficios(entity.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toDomain(beneficio)).collect(Collectors.toList()));
-            domain.setDescontos(entity.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toDomain(desconto)).collect(Collectors.toList()));
+            if (entity.getDependentes() != null && !entity.getDependentes().isEmpty()) {
+                domain.setDependentes(entity.getDependentes().stream().map(JakartaDependenteMapper::toDomain).collect(Collectors.toList()));
+            }
+            if (entity.getBeneficios() != null && !entity.getBeneficios().isEmpty()) {
+                domain.setBeneficios(entity.getBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toDomain).collect(Collectors.toList()));
+            }
+            if (entity.getDescontos() != null && !entity.getDescontos().isEmpty()) {
+                domain.setDescontos(entity.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).collect(Collectors.toList()));
+            }
         }
 
         return domain;
@@ -52,9 +57,15 @@ public class JakartaColaboradorMapper {
         entity.setGenero(domain.getGenero());
 
         if (includeAll) {
-            entity.setDependentes(domain.getDependentes().stream().map(dependente -> JakartaDependenteMapper.toEntity(dependente, false)).collect(Collectors.toList()));
-            entity.setBeneficios(domain.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toEntity(beneficio, false)).collect(Collectors.toList()));
-            entity.setDescontos(domain.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toEntity(desconto, false)).collect(Collectors.toList()));
+            if (domain.getDependentes() != null && !domain.getDependentes().isEmpty()) {
+                entity.setDependentes(domain.getDependentes().stream().map(dependente -> JakartaDependenteMapper.toEntity(dependente, false)).collect(Collectors.toList()));
+            }
+            if (domain.getBeneficios() != null && !domain.getBeneficios().isEmpty()) {
+                entity.setBeneficios(domain.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toEntity(beneficio, false)).collect(Collectors.toList()));
+            }
+            if (domain.getDescontos() != null && !domain.getDescontos().isEmpty()) {
+                entity.setDescontos(domain.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toEntity(desconto, false)).collect(Collectors.toList()));
+            }
         }
 
         return entity;
