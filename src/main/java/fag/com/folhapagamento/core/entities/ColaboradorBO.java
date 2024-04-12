@@ -37,7 +37,10 @@ public class ColaboradorBO {
             return;
         }
 
-        // TODO
+        ColaboradorBeneficioBO colaboradorBeneficio = ColaboradorBeneficioBO.criar(beneficio);
+        colaboradorBeneficio.setColaborador(this);
+
+        beneficios.add(colaboradorBeneficio);
     }
 
     public void adicionarDesconto(DescontoBO desconto) {
@@ -45,7 +48,10 @@ public class ColaboradorBO {
             return;
         }
 
-        // TODO
+        ColaboradorDescontoBO colaboradorDesconto = ColaboradorDescontoBO.criar(desconto);
+        colaboradorDesconto.setColaborador(this);
+
+        descontos.add(colaboradorDesconto);
     }
 
     private boolean validaSeBeneficioNaoExiste(BeneficioBO beneficio) {
