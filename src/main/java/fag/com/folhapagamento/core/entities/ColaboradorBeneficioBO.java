@@ -16,6 +16,17 @@ public class ColaboradorBeneficioBO {
 
     private boolean ativo;
 
+    public static ColaboradorBeneficioBO criar(BeneficioBO beneficio) {
+        ColaboradorBeneficioBO colaboradorBeneficio = new ColaboradorBeneficioBO();
+
+        colaboradorBeneficio.setBeneficio(beneficio);
+        colaboradorBeneficio.setValor(beneficio.getValorPadrao());
+        colaboradorBeneficio.setUsarPadrao(true);
+        colaboradorBeneficio.setAtivo(true);
+
+        return colaboradorBeneficio;
+    }
+
     public Long getId() {
         return id;
     }
