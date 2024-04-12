@@ -13,6 +13,8 @@ public class FolhaPagamentoDTO {
 
     BigDecimal salarioLiquido;
 
+    List<ColaboradorBeneficioDTO> beneficios;
+
     List<ColaboradorDescontoDTO> descontos;
 
     String mes;
@@ -49,6 +51,14 @@ public class FolhaPagamentoDTO {
 
     public void setSalarioLiquido(BigDecimal salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
+    }
+
+    public List<ColaboradorBeneficioDTO> getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(List<ColaboradorBeneficioDTO> beneficios) {
+        this.beneficios = beneficios;
     }
 
     public List<ColaboradorDescontoDTO> getDescontos() {
