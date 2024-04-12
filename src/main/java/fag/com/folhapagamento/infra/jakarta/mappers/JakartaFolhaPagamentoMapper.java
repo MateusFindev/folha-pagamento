@@ -3,6 +3,8 @@ package fag.com.folhapagamento.infra.jakarta.mappers;
 import fag.com.folhapagamento.core.entities.FolhaPagamentoBO;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaFolhaPagamento;
 
+import java.util.stream.Collectors;
+
 public class JakartaFolhaPagamentoMapper {
 
     public static FolhaPagamentoBO toDomain(JakartaFolhaPagamento entity) {
@@ -12,7 +14,7 @@ public class JakartaFolhaPagamentoMapper {
         domain.setColaborador(JakartaColaboradorMapper.toDomain(entity.getColaborador()));
         domain.setSalarioBruto(entity.getSalarioBruto());
         domain.setSalarioLiquido(entity.getSalarioLiquido());
-        domain.setDescontos(entity.getColaboradorDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).toList());
+        domain.setDescontos(entity.getColaboradorDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).collect(Collectors.toList()));
         domain.setMes(entity.getMes());
         domain.setDiasUteis(entity.getDiasUteis());
 
@@ -26,7 +28,7 @@ public class JakartaFolhaPagamentoMapper {
         entity.setColaborador(JakartaColaboradorMapper.toEntity(domain.getColaborador()));
         entity.setSalarioBruto(domain.getSalarioBruto());
         entity.setSalarioLiquido(domain.getSalarioLiquido());
-        entity.setColaboradorDescontos(domain.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toEntity).toList());
+        entity.setColaboradorDescontos(domain.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toEntity).collect(Collectors.toList()));
         entity.setMes(domain.getMes());
         entity.setDiasUteis(domain.getDiasUteis());
 

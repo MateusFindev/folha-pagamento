@@ -9,7 +9,7 @@ public class ColaboradorDescontoMapper {
         ColaboradorDescontoDTO dto = new ColaboradorDescontoDTO();
 
         dto.setId(bo.getId());
-        dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
+        dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador(), false));
         dto.setDesconto(DescontoMapper.toDTO(bo.getDesconto()));
         dto.setValor(bo.getValor());
         dto.setAtivo(bo.isAtivo());
@@ -21,7 +21,7 @@ public class ColaboradorDescontoMapper {
         ColaboradorDescontoBO bo = new ColaboradorDescontoBO();
 
         bo.setId(dto.getId());
-        bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
+        bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador(), false));
         bo.setDesconto(DescontoMapper.toBO(dto.getDesconto()));
         bo.setValor(dto.getValor());
         bo.setAtivo(dto.isAtivo());

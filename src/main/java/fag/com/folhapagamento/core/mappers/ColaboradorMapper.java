@@ -3,9 +3,15 @@ package fag.com.folhapagamento.core.mappers;
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorBO;
 
+import java.util.ArrayList;
+
 public class ColaboradorMapper {
 
     public static ColaboradorDTO toDTO(ColaboradorBO bo) {
+        return toDTO(bo, true);
+    }
+
+    public static ColaboradorDTO toDTO(ColaboradorBO bo, boolean includeAll) {
         ColaboradorDTO dto = new ColaboradorDTO();
 
         dto.setId(bo.getId());
@@ -17,14 +23,29 @@ public class ColaboradorMapper {
         dto.setAdmissao(bo.getAdmissao());
         dto.setContrato(ContratoMapper.toDTO(bo.getContrato()));
         dto.setGenero(bo.getGenero());
-        dto.setDependentes(bo.getDependentes().stream().map(DependenteMapper::toDTO).toList());
-        dto.setBeneficios(bo.getBeneficios().stream().map(ColaboradorBeneficioMapper::toDTO).toList());
-        dto.setDescontos(bo.getDescontos().stream().map(ColaboradorDescontoMapper::toDTO).toList());
+
+        if (includeAll) {
+            if (bo.getDependentes() != null && !bo.getDependentes().isEmpty()) {
+                dto.setDependentes(bo.getDependentes().stream().map(DependenteMapper::toDTO).toList());
+            }
+
+            if (bo.getBeneficios() != null && !bo.getBeneficios().isEmpty()) {
+                dto.setBeneficios(bo.getBeneficios().stream().map(ColaboradorBeneficioMapper::toDTO).toList());
+            }
+
+            if (bo.getDescontos() != null && !bo.getDescontos().isEmpty()) {
+                dto.setDescontos(bo.getDescontos().stream().map(ColaboradorDescontoMapper::toDTO).toList());
+            }
+        }
 
         return dto;
     }
 
     public static ColaboradorBO toBO(ColaboradorDTO dto) {
+        return toBO(dto, true);
+    }
+
+    public static ColaboradorBO toBO(ColaboradorDTO dto, boolean includeAll) {
         ColaboradorBO bo = new ColaboradorBO();
 
         bo.setId(dto.getId());
@@ -36,9 +57,20 @@ public class ColaboradorMapper {
         bo.setAdmissao(dto.getAdmissao());
         bo.setContrato(ContratoMapper.toBO(dto.getContrato()));
         bo.setGenero(dto.getGenero());
-        bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
-        bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
-        bo.setDescontos(dto.getDescontos().stream().map(ColaboradorDescontoMapper::toBO).toList());
+
+        if (includeAll) {
+            if (dto.getDependentes() != null && !dto.getDependentes().isEmpty()) {
+                bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
+            }
+
+            if (dto.getBeneficios() != null && !dto.getBeneficios().isEmpty()) {
+                bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
+            }
+
+            if (dto.getDescontos() != null && !dto.getDescontos().isEmpty()) {
+                bo.setDescontos(dto.getDescontos().stream().map(ColaboradorDescontoMapper::toBO).toList());
+            }
+        }
 
         return bo;
     }

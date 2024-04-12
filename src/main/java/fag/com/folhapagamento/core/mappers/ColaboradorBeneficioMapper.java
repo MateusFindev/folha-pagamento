@@ -9,11 +9,14 @@ public class ColaboradorBeneficioMapper {
         ColaboradorBeneficioDTO dto = new ColaboradorBeneficioDTO();
 
         dto.setId(bo.getId());
-        dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
         dto.setBeneficio(BeneficioMapper.toDTO(bo.getBeneficio()));
         dto.setValor(bo.getValor());
         dto.setUsarPadrao(bo.isUsarPadrao());
         dto.setAtivo(bo.isAtivo());
+
+        if (bo.getColaborador() != null) {
+            dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador(), false));
+        }
 
         return dto;
     }
@@ -22,11 +25,14 @@ public class ColaboradorBeneficioMapper {
         ColaboradorBeneficioBO bo = new ColaboradorBeneficioBO();
 
         bo.setId(dto.getId());
-        bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
         bo.setBeneficio(BeneficioMapper.toBO(dto.getBeneficio()));
         bo.setValor(dto.getValor());
         bo.setUsarPadrao(dto.isUsarPadrao());
         bo.setAtivo(dto.isAtivo());
+
+        if (bo.getColaborador() != null) {
+            bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador(), false));
+        }
 
         return bo;
     }
