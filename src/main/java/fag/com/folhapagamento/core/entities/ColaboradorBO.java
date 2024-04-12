@@ -27,7 +27,7 @@ public class ColaboradorBO {
 
     private EnumGenero genero;
 
-    private List<DependenteBO> dependentes;
+    private List<DependenteBO> dependentes = new ArrayList<>();
 
     private List<ColaboradorBeneficioBO> beneficios = new ArrayList<>();
 
@@ -51,8 +51,6 @@ public class ColaboradorBO {
 
         ColaboradorDescontoBO colaboradorDesconto = ColaboradorDescontoBO.criar(desconto);
         colaboradorDesconto.setColaborador(this);
-
-        descontos.add(colaboradorDesconto);
 
         return colaboradorDesconto;
     }
