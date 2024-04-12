@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DescontoService implements ListarDescontos, BuscarDescontos {
@@ -36,8 +37,8 @@ public class DescontoService implements ListarDescontos, BuscarDescontos {
         return DescontoMapper.toDTO(JakartaDescontoMapper.toDomain(desconto));
     }
 
-    public JakartaDesconto findByCodigo(String codigo) {
-        return this.repository.findByCodigo(codigo);
+    public Optional<JakartaDesconto> findByCodigo(String codigo) {
+        return Optional.of(this.repository.findByCodigo(codigo));
     }
 
 }
