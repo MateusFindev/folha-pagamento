@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,10 +29,10 @@ public class JakartaFolhaPagamento {
     private BigDecimal salarioLiquido;
 
     @OneToMany(mappedBy = "folhaPagamento", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorBeneficio> colaboradorBeneficios;
+    private List<JakartaColaboradorBeneficio> colaboradorBeneficios = new ArrayList<>();
 
     @OneToMany(mappedBy = "folhaPagamento", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorDesconto> colaboradorDescontos;
+    private List<JakartaColaboradorDesconto> colaboradorDescontos = new ArrayList<>();
 
     @Column(name = "mes")
     private String mes;

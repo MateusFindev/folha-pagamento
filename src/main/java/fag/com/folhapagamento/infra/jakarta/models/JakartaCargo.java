@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -49,6 +50,6 @@ public class JakartaCargo {
     private JakartaDepartamento departamento;
 
     @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
-    private List<JakartaContrato> contratos;
+    private List<JakartaContrato> contratos = new ArrayList<>();
 
 }

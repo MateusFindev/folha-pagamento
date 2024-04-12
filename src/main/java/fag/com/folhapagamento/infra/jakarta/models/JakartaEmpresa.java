@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -38,9 +39,9 @@ public class JakartaEmpresa {
     private String inscricaoMunicipal;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
-    private List<JakartaContrato> contratos;
+    private List<JakartaContrato> contratos = new ArrayList<>();
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
-    private List<JakartaDepartamento> departamentos;
+    private List<JakartaDepartamento> departamentos = new ArrayList<>();
 
 }

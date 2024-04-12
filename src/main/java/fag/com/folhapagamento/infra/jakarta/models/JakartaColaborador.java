@@ -36,7 +36,7 @@ public class JakartaColaborador {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "admissao", nullable = false)
-    private Date admissao;
+    private Date admissao = new Date();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_contrato", nullable = false)
@@ -47,7 +47,7 @@ public class JakartaColaborador {
     private EnumGenero genero;
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
-    private List<JakartaDependente> dependentes;
+    private List<JakartaDependente> dependentes = new ArrayList<>();
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
     private List<JakartaColaboradorBeneficio> beneficios = new ArrayList<>();
