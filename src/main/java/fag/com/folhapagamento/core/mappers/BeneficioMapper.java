@@ -11,6 +11,7 @@ public class BeneficioMapper {
 
         dto.setId(bo.getId());
         dto.setCodigo(bo.getCodigo());
+        dto.setNome(bo.getNome());
         dto.setDescricao(bo.getDescricao());
         dto.setAtivo(bo.isAtivo());
         dto.setNome(bo.getNome());
@@ -27,6 +28,7 @@ public class BeneficioMapper {
 
         bo.setId(dto.getId());
         bo.setCodigo(dto.getCodigo());
+        bo.setNome(dto.getNome());
         bo.setDescricao(dto.getDescricao());
         bo.setAtivo(dto.isAtivo());
         bo.setNome(bo.getNome());
