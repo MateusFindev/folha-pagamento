@@ -1,14 +1,13 @@
 package fag.com.folhapagamento.service;
 
-import fag.com.folhapagamento.core.dtos.BeneficioDTO;
-import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
-import fag.com.folhapagamento.core.dtos.DescontoDTO;
-import fag.com.folhapagamento.core.entities.ColaboradorBO;
-import fag.com.folhapagamento.core.entities.ColaboradorBeneficioBO;
-import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
-import fag.com.folhapagamento.core.exceptions.beneficio.BeneficioNotFoundException;
-import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorNotFoundException;
-import fag.com.folhapagamento.core.exceptions.desconto.DescontoNotFoundException;
+import fag.com.folhapagamento.core.dtos.*;
+import fag.com.folhapagamento.core.entities.*;
+import fag.com.folhapagamento.core.exceptions.beneficio.BeneficioNaoEncontrado;
+import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorJaPossuiBeneficio;
+import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorNaoEncontrado;
+import fag.com.folhapagamento.core.exceptions.desconto.DescontoNaoEncontrado;
+import fag.com.folhapagamento.core.mappers.ColaboradorBeneficioMapper;
+import fag.com.folhapagamento.core.mappers.ColaboradorDescontoMapper;
 import fag.com.folhapagamento.core.mappers.ColaboradorMapper;
 import fag.com.folhapagamento.core.usecases.colaborador.BuscarColaborador;
 import fag.com.folhapagamento.core.usecases.colaborador.ListarColaborador;
@@ -32,11 +31,17 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
 
     private final DescontoService descontoService;
 
+    private final ColaboradorBeneficioService colaboradorBeneficioService;
+
+    private final ColaboradorDescontoService colaboradorDescontoService;
+
     @Autowired
-    public ColaboradorService(JakartaColaboradorRepository repository, BeneficioService beneficioService, DescontoService descontoService) {
+    public ColaboradorService(JakartaColaboradorRepository repository, BeneficioService beneficioService, DescontoService descontoService, ColaboradorBeneficioService colaboradorBeneficioService, ColaboradorDescontoService colaboradorDescontoService) {
         this.repository = repository;
         this.beneficioService = beneficioService;
         this.descontoService = descontoService;
+        this.colaboradorBeneficioService = colaboradorBeneficioService;
+        this.colaboradorDescontoService = colaboradorDescontoService;
     }
 
     @Override
@@ -52,51 +57,59 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
             return null;
         }
 
-        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador));
+        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador, true));
     }
 
     @Transactional
     public ColaboradorDTO adicionarBeneficio(Long id, BeneficioDTO dto) {
-        JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
+        JakartaColaborador colaborador = this.repository.findById(id)
+                .orElseThrow(ColaboradorNaoEncontrado::new);
 
-        if (colaborador == null) {
-            throw new ColaboradorNotFoundException();
-        }
-
-        JakartaBeneficio beneficio = this.beneficioService.findByCodigo(dto.getCodigo());
-
-        if (beneficio == null) {
-            throw new BeneficioNotFoundException();
-        }
+        JakartaBeneficio beneficio = this.beneficioService.findByCodigo(dto.getCodigo())
+                .orElseThrow(BeneficioNaoEncontrado::new);
 
         ColaboradorBO colaboradorBO = JakartaColaboradorMapper.toDomain(colaborador);
-        ColaboradorBeneficioBO colaboradorBeneficio = colaboradorBO.adicionarBeneficio(JakartaBeneficioMapper.toDomain(beneficio));
+        BeneficioBO beneficioBO = JakartaBeneficioMapper.toDomain(beneficio);
 
-        colaborador.adicionarBeneficio(JakartaColaboradorBeneficioMapper.toEntity(colaboradorBeneficio));
+        ColaboradorBeneficioBO colaboradorBeneficio = colaboradorBO.adicionarBeneficio(beneficioBO);
 
-        return this.repository.update(colaborador);
+        if (colaboradorBeneficio == null) {
+            throw new ColaboradorJaPossuiBeneficio();
+        }
+
+        colaboradorBeneficio.setColaborador(colaboradorBO);
+
+        ColaboradorBeneficioDTO colaboradorBeneficioDTO = colaboradorBeneficioService.create(colaboradorBeneficio);
+
+        colaboradorBO.getBeneficios().add(ColaboradorBeneficioMapper.toBO(colaboradorBeneficioDTO));
+
+        return ColaboradorMapper.toDTO(colaboradorBO);
     }
 
     @Transactional
     public ColaboradorDTO adicionarDesconto(Long id, DescontoDTO dto) {
-        JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
+        JakartaColaborador colaborador = this.repository.findById(id)
+                .orElseThrow(ColaboradorNaoEncontrado::new);
 
-        if (colaborador == null) {
-            throw new ColaboradorNotFoundException();
-        }
-
-        JakartaDesconto desconto = this.descontoService.findByCodigo(dto.getCodigo());
-
-        if (desconto == null) {
-            throw new DescontoNotFoundException();
-        }
+        JakartaDesconto desconto = this.descontoService.findByCodigo(dto.getCodigo())
+                .orElseThrow(DescontoNaoEncontrado::new);
 
         ColaboradorBO colaboradorBO = JakartaColaboradorMapper.toDomain(colaborador);
-        ColaboradorDescontoBO colaboradorDesconto = colaboradorBO.adicionarDesconto(JakartaDescontoMapper.toDomain(desconto));
+        DescontoBO descontoBO = JakartaDescontoMapper.toDomain(desconto);
 
-        colaborador.adicionarDesconto(JakartaColaboradorDescontoMapper.toEntity(colaboradorDesconto));
+        ColaboradorDescontoBO colaboradorDesconto = colaboradorBO.adicionarDesconto(descontoBO);
 
-        return this.repository.update(colaborador);
+        if (colaboradorDesconto == null) {
+            throw new ColaboradorJaPossuiBeneficio();
+        }
+
+        colaboradorDesconto.setColaborador(colaboradorBO);
+
+        ColaboradorDescontoDTO colaboradorBeneficioDTO = colaboradorDescontoService.create(colaboradorDesconto);
+
+        colaboradorBO.getDescontos().add(ColaboradorDescontoMapper.toBO(colaboradorBeneficioDTO));
+
+        return ColaboradorMapper.toDTO(colaboradorBO);
     }
 
 }
