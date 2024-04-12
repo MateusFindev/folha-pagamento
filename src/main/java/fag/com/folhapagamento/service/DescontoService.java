@@ -2,6 +2,7 @@ package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.DescontoDTO;
 import fag.com.folhapagamento.core.usecases.desconto.ListarDescontos;
+import fag.com.folhapagamento.infra.jakarta.models.JakartaDesconto;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaDescontoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class DescontoService implements ListarDescontos {
     @Override
     public List<DescontoDTO> listAll() {
         return this.repository.listAll();
+    }
+
+    public JakartaDesconto findByCodigo(String codigo) {
+        return this.repository.findByCodigo(codigo);
     }
 
 }
