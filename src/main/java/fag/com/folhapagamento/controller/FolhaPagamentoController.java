@@ -32,10 +32,10 @@ public class FolhaPagamentoController {
     public ResponseEntity<FolhaPagamentoDTO> findById(@PathVariable Long id) {
         FolhaPagamentoDTO folha = this.service.customFindById(id);
 
-        return new ResponseEntity<>(folha, HttpStatus.OK);
+        return new ResponseEntity<>(folha, folha == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<FolhaPagamentoDTO> create(@RequestBody FolhaPagamentoDTO dto) {
         FolhaPagamentoDTO folha = this.service.create(dto);
 
