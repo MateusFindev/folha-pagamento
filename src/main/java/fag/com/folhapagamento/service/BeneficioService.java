@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BeneficioService implements ListarBeneficios {
@@ -24,8 +25,8 @@ public class BeneficioService implements ListarBeneficios {
         return this.repository.listAll();
     }
 
-    public JakartaBeneficio findByCodigo(String codigo) {
-        return this.repository.findByCodigo(codigo);
+    public Optional<JakartaBeneficio> findByCodigo(String codigo) {
+        return Optional.of(this.repository.findByCodigo(codigo));
     }
 
 }
