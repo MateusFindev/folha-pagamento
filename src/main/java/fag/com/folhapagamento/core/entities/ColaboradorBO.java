@@ -3,6 +3,7 @@ package fag.com.folhapagamento.core.entities;
 import fag.com.folhapagamento.core.enums.EnumGenero;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,40 +29,44 @@ public class ColaboradorBO {
 
     private List<DependenteBO> dependentes;
 
-    private List<ColaboradorBeneficioBO> beneficios;
+    private List<ColaboradorBeneficioBO> beneficios = new ArrayList<>();
 
-    private List<ColaboradorDescontoBO> descontos;
+    private List<ColaboradorDescontoBO> descontos = new ArrayList<>();
 
-    public void adicionarBeneficio(BeneficioBO beneficio) {
+    public ColaboradorBeneficioBO adicionarBeneficio(BeneficioBO beneficio) {
         if (validaSeBeneficioNaoExiste(beneficio)) {
-            return;
+            return null;
         }
 
         ColaboradorBeneficioBO colaboradorBeneficio = ColaboradorBeneficioBO.criar(beneficio);
         colaboradorBeneficio.setColaborador(this);
 
         beneficios.add(colaboradorBeneficio);
+
+        return colaboradorBeneficio;
     }
 
-    public void adicionarDesconto(DescontoBO desconto) {
+    public ColaboradorDescontoBO adicionarDesconto(DescontoBO desconto) {
         if (validaSeDescontoNaoExiste(desconto)) {
-            return;
+            return null;
         }
 
         ColaboradorDescontoBO colaboradorDesconto = ColaboradorDescontoBO.criar(desconto);
         colaboradorDesconto.setColaborador(this);
 
         descontos.add(colaboradorDesconto);
+
+        return colaboradorDesconto;
     }
 
     private boolean validaSeBeneficioNaoExiste(BeneficioBO beneficio) {
         return beneficios.stream()
-                .noneMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()));
+                .anyMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()));
     }
 
     private boolean validaSeDescontoNaoExiste(DescontoBO desconto) {
         return descontos.stream()
-                .noneMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()));
+                .anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()));
     }
 
 //    public void adicionarBeneficio(TipoBeneficio tipo) {
