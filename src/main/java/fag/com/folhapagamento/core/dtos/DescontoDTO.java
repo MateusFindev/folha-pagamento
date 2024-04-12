@@ -1,6 +1,7 @@
 package fag.com.folhapagamento.core.dtos;
 
 import fag.com.folhapagamento.core.enums.EnumPrazo;
+import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 
 public class DescontoDTO {
@@ -16,6 +17,8 @@ public class DescontoDTO {
     private EnumTipoValor tipoValor;
 
     private EnumPrazo prazo;
+
+    private EnumTipoDesconto tipoDesconto;
 
     private boolean ativo;
 
@@ -65,6 +68,14 @@ public class DescontoDTO {
 
     public void setPrazo(EnumPrazo prazo) {
         this.prazo = prazo;
+    }
+
+    public EnumTipoDesconto getTipoDesconto() {
+        return tipoDesconto;
+    }
+
+    public void setTipoDesconto(EnumTipoDesconto tipoDesconto) {
+        this.tipoDesconto = tipoDesconto;
     }
 
     public boolean isAtivo() {
