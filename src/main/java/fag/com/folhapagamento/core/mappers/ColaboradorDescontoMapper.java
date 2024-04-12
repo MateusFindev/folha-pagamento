@@ -9,10 +9,13 @@ public class ColaboradorDescontoMapper {
         ColaboradorDescontoDTO dto = new ColaboradorDescontoDTO();
 
         dto.setId(bo.getId());
-        dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador(), false));
         dto.setDesconto(DescontoMapper.toDTO(bo.getDesconto()));
         dto.setValor(bo.getValor());
         dto.setAtivo(bo.isAtivo());
+
+        if (bo.getColaborador() != null) {
+            dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador(), false));
+        }
 
         return dto;
     }
@@ -21,10 +24,13 @@ public class ColaboradorDescontoMapper {
         ColaboradorDescontoBO bo = new ColaboradorDescontoBO();
 
         bo.setId(dto.getId());
-        bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador(), false));
         bo.setDesconto(DescontoMapper.toBO(dto.getDesconto()));
         bo.setValor(dto.getValor());
         bo.setAtivo(dto.isAtivo());
+
+        if (dto.getColaborador() != null) {
+            bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador(), false));
+        }
 
         return bo;
     }
