@@ -79,7 +79,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
 
         colaboradorBeneficio.setColaborador(colaboradorBO);
 
-        ColaboradorBeneficioDTO colaboradorBeneficioDTO = colaboradorBeneficioService.create(colaboradorBeneficio);
+        ColaboradorBeneficioDTO colaboradorBeneficioDTO = colaboradorBeneficioService.create(ColaboradorBeneficioMapper.toDTO(colaboradorBeneficio));
 
         colaboradorBO.getBeneficios().add(ColaboradorBeneficioMapper.toBO(colaboradorBeneficioDTO));
 
@@ -105,7 +105,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
 
         colaboradorDesconto.setColaborador(colaboradorBO);
 
-        ColaboradorDescontoDTO colaboradorBeneficioDTO = colaboradorDescontoService.create(colaboradorDesconto);
+        ColaboradorDescontoDTO colaboradorBeneficioDTO = colaboradorDescontoService.create(ColaboradorDescontoMapper.toDTO(colaboradorDesconto));
 
         colaboradorBO.getDescontos().add(ColaboradorDescontoMapper.toBO(colaboradorBeneficioDTO));
 

@@ -32,15 +32,15 @@ public class ColaboradorBeneficioService implements ListarColaboradorBeneficio {
     }
 
     @Transactional
-    public ColaboradorBeneficioDTO create(ColaboradorBeneficioBO bo) {
-        ColaboradorBeneficioBO entity = this.repository.create(bo);
+    public ColaboradorBeneficioDTO create(ColaboradorBeneficioDTO dto) {
+        ColaboradorBeneficioBO entity = this.repository.create(ColaboradorBeneficioMapper.toBO(dto));
 
         return ColaboradorBeneficioMapper.toDTO(entity);
     }
 
     @Transactional
-    public ColaboradorBeneficioDTO update(Long id, ColaboradorBeneficioBO bo) {
-        ColaboradorBeneficioBO entity = this.repository.update(id, bo);
+    public ColaboradorBeneficioDTO update(Long id, ColaboradorBeneficioDTO dto) {
+        ColaboradorBeneficioBO entity = this.repository.update(id, ColaboradorBeneficioMapper.toBO(dto));
 
         return ColaboradorBeneficioMapper.toDTO(entity);
     }

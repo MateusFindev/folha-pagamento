@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -33,15 +34,19 @@ public class ColaboradorDescontoService implements ListarColaboradorDesconto {
     }
 
     @Transactional
-    public ColaboradorDescontoDTO create(ColaboradorDescontoBO bo) {
-        ColaboradorDescontoBO entity = this.repository.create(bo);
+    public ColaboradorDescontoDTO create(ColaboradorDescontoDTO dto) {
+        if (dto.getValor() == null) {
+            dto.setValor(BigDecimal.ZERO);
+        }
+
+        ColaboradorDescontoBO entity = this.repository.create(ColaboradorDescontoMapper.toBO(dto));
 
         return ColaboradorDescontoMapper.toDTO(entity);
     }
 
     @Transactional
-    public ColaboradorDescontoDTO update(Long id, ColaboradorDescontoBO bo) {
-        ColaboradorDescontoBO entity = this.repository.update(id, bo);
+    public ColaboradorDescontoDTO update(Long id, ColaboradorDescontoDTO dto) {
+        ColaboradorDescontoBO entity = this.repository.update(id, ColaboradorDescontoMapper.toBO(dto));
 
         return ColaboradorDescontoMapper.toDTO(entity);
     }

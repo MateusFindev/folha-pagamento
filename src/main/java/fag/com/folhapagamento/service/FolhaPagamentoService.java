@@ -41,8 +41,8 @@ public class FolhaPagamentoService  implements ListarFolhaPagamento, BuscarFolha
     }
 
     @Transactional
-    public FolhaPagamentoDTO create(FolhaPagamentoBO bo) {
-        FolhaPagamentoBO entity = this.repository.create(bo);
+    public FolhaPagamentoDTO create(FolhaPagamentoDTO dto) {
+        FolhaPagamentoBO entity = this.repository.create(FolhaPagamentoMapper.toBO(dto));
 
         return FolhaPagamentoMapper.toDTO(entity);
     }
