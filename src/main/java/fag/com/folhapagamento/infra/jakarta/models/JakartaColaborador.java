@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,9 +50,17 @@ public class JakartaColaborador {
     private List<JakartaDependente> dependentes;
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorBeneficio> beneficios;
+    private List<JakartaColaboradorBeneficio> beneficios = new ArrayList<>();
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorDesconto> descontos;
+    private List<JakartaColaboradorDesconto> descontos = new ArrayList<>();
+
+    public void adicionarBeneficio(JakartaColaboradorBeneficio beneficio) {
+        this.beneficios.add(beneficio);
+    }
+
+    public void adicionarDesconto(JakartaColaboradorDesconto desconto) {
+        this.descontos.add(desconto);
+    }
 
 }
