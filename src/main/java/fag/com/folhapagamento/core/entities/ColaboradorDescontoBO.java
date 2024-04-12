@@ -14,6 +14,15 @@ public class ColaboradorDescontoBO {
 
     private boolean ativo;
 
+    public static ColaboradorDescontoBO criar(DescontoBO desconto) {
+        ColaboradorDescontoBO colaboradorBeneficio = new ColaboradorDescontoBO();
+
+        colaboradorBeneficio.setDesconto(desconto);
+        colaboradorBeneficio.setAtivo(true);
+
+        return colaboradorBeneficio;
+    }
+
     public Long getId() {
         return id;
     }
