@@ -1,6 +1,5 @@
 package fag.com.folhapagamento.infra.jakarta.models;
 
-import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
