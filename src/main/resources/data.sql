@@ -81,17 +81,17 @@ VALUES (12, '08640463933', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer12@m
 
 --  BENEFÍCIOS
 
-INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, ativo)
-VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentação', 25, 'MOEDA', 'DIA', TRUE);
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentação', 25, 'MOEDA', 'DIA', 'VALE_ALIMENTACAO', TRUE);
 
-INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, ativo)
-VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, 'MOEDA', 'MES', TRUE);
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_TRANSPORTE', TRUE);
 
 
 --  DESCONTOS
 
-INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, ativo)
-VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', 'MOEDA', 'DIA', TRUE);
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', 'MOEDA', 'DIA', 'VALE_ALIMENTACAO', TRUE);
 
-INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, ativo)
-VALUES (2, 'INSS', 'INSS', 'imposto de INSS', 'PORCENTAGEM', 'MES', TRUE);
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (2, 'INSS', 'INSS', 'imposto de INSS', 'PORCENTAGEM', 'MES', 'INSS', TRUE);

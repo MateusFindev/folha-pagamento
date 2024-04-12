@@ -2,22 +2,26 @@ package fag.com.folhapagamento.core.entities;
 
 import java.math.BigDecimal;
 
-public class ColaboradorDescontoBO {
+public class ColaboradorBeneficioBO {
 
     private Long id;
 
     private ColaboradorBO colaborador;
 
-    private DescontoBO desconto;
+    private BeneficioBO beneficio;
 
     private BigDecimal valor;
 
+    private boolean usarPadrao;
+
     private boolean ativo;
 
-    public static ColaboradorDescontoBO criar(DescontoBO desconto) {
-        ColaboradorDescontoBO colaboradorBeneficio = new ColaboradorDescontoBO();
+    public static ColaboradorBeneficioBO criar(BeneficioBO beneficio) {
+        ColaboradorBeneficioBO colaboradorBeneficio = new ColaboradorBeneficioBO();
 
-        colaboradorBeneficio.setDesconto(desconto);
+        colaboradorBeneficio.setBeneficio(beneficio);
+        colaboradorBeneficio.setValor(beneficio.getValorPadrao());
+        colaboradorBeneficio.setUsarPadrao(true);
         colaboradorBeneficio.setAtivo(true);
 
         return colaboradorBeneficio;
@@ -39,12 +43,12 @@ public class ColaboradorDescontoBO {
         this.colaborador = colaborador;
     }
 
-    public DescontoBO getDesconto() {
-        return desconto;
+    public BeneficioBO getBeneficio() {
+        return beneficio;
     }
 
-    public void setDesconto(DescontoBO desconto) {
-        this.desconto = desconto;
+    public void setBeneficio(BeneficioBO beneficio) {
+        this.beneficio = beneficio;
     }
 
     public BigDecimal getValor() {
@@ -53,6 +57,14 @@ public class ColaboradorDescontoBO {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public boolean isUsarPadrao() {
+        return usarPadrao;
+    }
+
+    public void setUsarPadrao(boolean usarPadrao) {
+        this.usarPadrao = usarPadrao;
     }
 
     public boolean isAtivo() {

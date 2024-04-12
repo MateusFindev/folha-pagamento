@@ -3,6 +3,7 @@ package fag.com.folhapagamento.core.entities;
 import fag.com.folhapagamento.core.enums.EnumGenero;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,57 @@ public class ColaboradorBO {
     private EnumGenero genero;
 
     private List<DependenteBO> dependentes;
+
+    private List<ColaboradorBeneficioBO> beneficios = new ArrayList<>();
+
+    private List<ColaboradorDescontoBO> descontos = new ArrayList<>();
+
+    public ColaboradorBeneficioBO adicionarBeneficio(BeneficioBO beneficio) {
+        if (validaSeBeneficioNaoExiste(beneficio)) {
+            return null;
+        }
+
+        ColaboradorBeneficioBO colaboradorBeneficio = ColaboradorBeneficioBO.criar(beneficio);
+        colaboradorBeneficio.setColaborador(this);
+
+        beneficios.add(colaboradorBeneficio);
+
+        return colaboradorBeneficio;
+    }
+
+    public ColaboradorDescontoBO adicionarDesconto(DescontoBO desconto) {
+        if (validaSeDescontoNaoExiste(desconto)) {
+            return null;
+        }
+
+        ColaboradorDescontoBO colaboradorDesconto = ColaboradorDescontoBO.criar(desconto);
+        colaboradorDesconto.setColaborador(this);
+
+        descontos.add(colaboradorDesconto);
+
+        return colaboradorDesconto;
+    }
+
+    private boolean validaSeBeneficioNaoExiste(BeneficioBO beneficio) {
+        return beneficios.stream()
+                .anyMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()));
+    }
+
+    private boolean validaSeDescontoNaoExiste(DescontoBO desconto) {
+        return descontos.stream()
+                .anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()));
+    }
+
+//    public void adicionarBeneficio(TipoBeneficio tipo) {
+//        if (tipo == TipoBeneficio.ADICIONAL_PERICULOSIDADE && cargo.isAdicionalPericulosidade()) {
+//            Beneficio beneficio = new Beneficio(tipo);
+//            // Adicionar o benefício ao colaborador
+//        } else if (tipo == TipoBeneficio.ADICIONAL_FUNCAO && cargo.isAdicionalFuncao()) {
+//            Beneficio beneficio = new Beneficio(tipo);
+//            // Adicionar o benefício ao colaborador
+//        }
+//        // Outros tipos de benefício e verificações
+//    }
 
     public Long getId() {
         return id;
@@ -110,6 +162,22 @@ public class ColaboradorBO {
 
     public void setDependentes(List<DependenteBO> dependentes) {
         this.dependentes = dependentes;
+    }
+
+    public List<ColaboradorBeneficioBO> getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(List<ColaboradorBeneficioBO> beneficios) {
+        this.beneficios = beneficios;
+    }
+
+    public List<ColaboradorDescontoBO> getDescontos() {
+        return descontos;
+    }
+
+    public void setDescontos(List<ColaboradorDescontoBO> descontos) {
+        this.descontos = descontos;
     }
 
 }

@@ -37,4 +37,9 @@ public class DescontoService implements ListarDescontos, BuscarDescontos {
 
         return DescontoMapper.toDTO(JakartaDescontoMapper.toDomain(desconto));
     }
+
+    public JakartaDesconto findByCodigo(String codigo) {
+        return this.repository.findByCodigo(codigo);
+    }
+
 }
