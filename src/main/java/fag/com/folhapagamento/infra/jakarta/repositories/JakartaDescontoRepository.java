@@ -6,6 +6,8 @@ import fag.com.folhapagamento.core.usecases.desconto.ListarDescontos;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaDescontoMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaDesconto;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,17 @@ public class JakartaDescontoRepository extends SimpleJpaRepository<JakartaDescon
         }
 
         return descontos.stream().map(desconto -> DescontoMapper.toDTO(JakartaDescontoMapper.toDomain(desconto))).toList();
+    }
+
+    public JakartaDesconto findByCodigo(String codigo) {
+        TypedQuery<JakartaDesconto> query = em.createQuery("SELECT e FROM JakartaBeneficio e WHERE e.codigo = :codigo", JakartaDesconto.class)
+                .setParameter("codigo", codigo);
+
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
 }
