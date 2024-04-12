@@ -6,6 +6,7 @@ import fag.com.folhapagamento.core.usecases.colaborador.ListarColaborador;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaColaboradorMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,13 @@ public class JakartaColaboradorRepository extends SimpleJpaRepository<JakartaCol
         List<JakartaColaborador> colaboradores = this.findAll();
 
         return colaboradores.stream().map(colaborador -> ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador))).toList();
+    }
+
+    @Transactional
+    public ColaboradorDTO update(JakartaColaborador colaborador) {
+        JakartaColaborador entity = em.merge(colaborador);
+
+        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(entity));
     }
 
 }
