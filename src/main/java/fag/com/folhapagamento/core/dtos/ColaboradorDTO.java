@@ -2,6 +2,7 @@ package fag.com.folhapagamento.core.dtos;
 
 import fag.com.folhapagamento.core.enums.EnumGenero;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +28,9 @@ public class ColaboradorDTO {
 
     private List<DependenteDTO> dependentes;
 
-    private List<ColaboradorBeneficioDTO> beneficios;
+    private List<ColaboradorBeneficioDTO> beneficios = new ArrayList<>();
 
-    private List<ColaboradorDescontoDTO> descontos;
+    private List<ColaboradorDescontoDTO> descontos = new ArrayList<>();
 
     public Long getId() {
         return id;
