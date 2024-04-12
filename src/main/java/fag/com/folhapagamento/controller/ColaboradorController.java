@@ -34,7 +34,7 @@ public class ColaboradorController {
     public ResponseEntity<ColaboradorDTO> findById(@PathVariable Long id) {
         ColaboradorDTO colaborador = this.service.customFindById(id);
 
-        return new ResponseEntity<>(colaborador, HttpStatus.OK);
+        return new ResponseEntity<>(colaborador, colaborador == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
     @PostMapping("{id}/beneficios")
