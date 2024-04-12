@@ -12,6 +12,7 @@ public class FolhaPagamentoMapper {
         dto.setColaborador(ColaboradorMapper.toDTO(bo.getColaborador()));
         dto.setSalarioBruto(bo.getSalarioBruto());
         dto.setSalarioLiquido(bo.getSalarioLiquido());
+        dto.setBeneficios(bo.getBeneficios().stream().map(ColaboradorBeneficioMapper::toDTO).toList());
         dto.setDescontos(bo.getDescontos().stream().map(ColaboradorDescontoMapper::toDTO).toList());
         dto.setMes(bo.getMes());
         dto.setDiasUteis(bo.getDiasUteis());
@@ -26,6 +27,7 @@ public class FolhaPagamentoMapper {
         bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador()));
         bo.setSalarioBruto(dto.getSalarioBruto());
         bo.setSalarioLiquido(dto.getSalarioLiquido());
+        bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
         bo.setDescontos(dto.getDescontos().stream().map(ColaboradorDescontoMapper::toBO).toList());
         bo.setMes(dto.getMes());
         bo.setDiasUteis(dto.getDiasUteis());
