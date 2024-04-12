@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JakartaBeneficioRepository extends SimpleJpaRepository<JakartaBeneficio,Long> implements ListarBeneficios {
@@ -29,7 +30,7 @@ public class JakartaBeneficioRepository extends SimpleJpaRepository<JakartaBenef
     public List<BeneficioDTO> listAll() {
         List<JakartaBeneficio> beneficios = this.findAll();
 
-        return beneficios.stream().map(beneficio -> BeneficioMapper.toDTO(JakartaBeneficioMapper.toDomain(beneficio))).toList();
+        return beneficios.stream().map(beneficio -> BeneficioMapper.toDTO(JakartaBeneficioMapper.toDomain(beneficio))).collect(Collectors.toList());
     }
 
     public JakartaBeneficio findByCodigo(String codigo) {

@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JakartaColaboradorRepository extends SimpleJpaRepository<JakartaColaborador, Long> implements ListarColaborador {
@@ -28,14 +29,14 @@ public class JakartaColaboradorRepository extends SimpleJpaRepository<JakartaCol
     public List<ColaboradorDTO> listAll() {
         List<JakartaColaborador> colaboradores = this.findAll();
 
-        return colaboradores.stream().map(colaborador -> ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador))).toList();
+        return colaboradores.stream().map(colaborador -> ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador))).collect(Collectors.toList());
     }
 
     @Transactional
     public ColaboradorDTO update(JakartaColaborador colaborador) {
-        JakartaColaborador entity = em.merge(colaborador);
+        this.em.merge(colaborador);
 
-        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(entity));
+        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador));
     }
 
 }

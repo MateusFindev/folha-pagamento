@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class JakartaDependenteRepository extends SimpleJpaRepository<JakartaDependente, Long> implements ListarDependentes {
@@ -30,7 +31,7 @@ public class JakartaDependenteRepository extends SimpleJpaRepository<JakartaDepe
     public List<DependenteDTO> listAll() {
         List<JakartaDependente> dependentes = this.findAll();
 
-        return dependentes.stream().map(dependente -> DependenteMapper.toDTO(JakartaDependenteMapper.toDomain(dependente))).toList();
+        return dependentes.stream().map(dependente -> DependenteMapper.toDTO(JakartaDependenteMapper.toDomain(dependente))).collect(Collectors.toList());
     }
 
     public List<DependenteDTO> listAllByColaborador(JakartaColaborador colaborador) {
@@ -44,7 +45,7 @@ public class JakartaDependenteRepository extends SimpleJpaRepository<JakartaDepe
                 return null;
             }
 
-            return dependentes.stream().map(dependente -> DependenteMapper.toDTO(JakartaDependenteMapper.toDomain(dependente))).toList();
+            return dependentes.stream().map(dependente -> DependenteMapper.toDTO(JakartaDependenteMapper.toDomain(dependente))).collect(Collectors.toList());
         } catch (NoResultException e) {
             return null;
         }

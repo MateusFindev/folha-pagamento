@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JakartaCargoRepository extends SimpleJpaRepository<JakartaCargo, Long> implements ListarCargos {
@@ -25,7 +26,7 @@ public class JakartaCargoRepository extends SimpleJpaRepository<JakartaCargo, Lo
     public List<CargoDTO> listAll() {
         List<JakartaCargo> cargos = this.findAll();
 
-        return cargos.stream().map(cargo -> CargoMapper.toDTO(JakartaCargoMapper.toDomain(cargo))).toList();
+        return cargos.stream().map(cargo -> CargoMapper.toDTO(JakartaCargoMapper.toDomain(cargo))).collect(Collectors.toList());
     }
 
 }

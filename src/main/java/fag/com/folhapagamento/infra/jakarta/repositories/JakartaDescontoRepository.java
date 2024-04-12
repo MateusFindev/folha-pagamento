@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JakartaDescontoRepository extends SimpleJpaRepository<JakartaDesconto, Long> implements ListarDescontos {
@@ -33,11 +34,11 @@ public class JakartaDescontoRepository extends SimpleJpaRepository<JakartaDescon
             return null;
         }
 
-        return descontos.stream().map(desconto -> DescontoMapper.toDTO(JakartaDescontoMapper.toDomain(desconto))).toList();
+        return descontos.stream().map(desconto -> DescontoMapper.toDTO(JakartaDescontoMapper.toDomain(desconto))).collect(Collectors.toList());
     }
 
     public JakartaDesconto findByCodigo(String codigo) {
-        TypedQuery<JakartaDesconto> query = em.createQuery("SELECT e FROM JakartaBeneficio e WHERE e.codigo = :codigo", JakartaDesconto.class)
+        TypedQuery<JakartaDesconto> query = em.createQuery("SELECT e FROM JakartaDesconto e WHERE e.codigo = :codigo", JakartaDesconto.class)
                 .setParameter("codigo", codigo);
 
         try {

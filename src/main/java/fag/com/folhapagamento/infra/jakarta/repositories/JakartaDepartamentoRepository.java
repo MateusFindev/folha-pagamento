@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JakartaDepartamentoRepository extends SimpleJpaRepository<JakartaDepartamento, Long> implements ListarDepartamentos {
@@ -27,7 +28,7 @@ public class JakartaDepartamentoRepository extends SimpleJpaRepository<JakartaDe
     public List<DepartamentoDTO> listAll() {
         List<JakartaDepartamento> departamentos = this.findAll();
 
-        return departamentos.stream().map(departamento -> DepartamentoMapper.toDTO(JakartaDepartamentoMapper.toDomain(departamento))).toList();
+        return departamentos.stream().map(departamento -> DepartamentoMapper.toDTO(JakartaDepartamentoMapper.toDomain(departamento))).collect(Collectors.toList());
     }
 
 }
