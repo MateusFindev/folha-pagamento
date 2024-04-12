@@ -1,6 +1,7 @@
 package fag.com.folhapagamento.infra.jakarta.models;
 
 import fag.com.folhapagamento.core.enums.EnumPrazo;
+import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,6 +33,10 @@ public class JakartaDesconto {
     @Enumerated(EnumType.STRING)
     @Column(name = "prazo", nullable = false)
     private EnumPrazo prazo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", nullable = false)
+    private EnumTipoDesconto tipoDesconto;
 
     @Column(name = "ativo")
     private boolean ativo;
