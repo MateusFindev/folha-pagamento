@@ -41,8 +41,6 @@ public class ColaboradorBO {
         ColaboradorBeneficioBO colaboradorBeneficio = ColaboradorBeneficioBO.criar(beneficio);
         colaboradorBeneficio.setColaborador(this);
 
-        beneficios.add(colaboradorBeneficio);
-
         return colaboradorBeneficio;
     }
 
