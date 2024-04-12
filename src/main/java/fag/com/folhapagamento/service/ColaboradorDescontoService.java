@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.service;
 
+import fag.com.folhapagamento.core.dtos.ColaboradorBeneficioDTO;
 import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
 import fag.com.folhapagamento.core.mappers.ColaboradorDescontoMapper;
@@ -33,7 +34,14 @@ public class ColaboradorDescontoService implements ListarColaboradorDesconto {
 
     @Transactional
     public ColaboradorDescontoDTO create(ColaboradorDescontoBO bo) {
-        ColaboradorDescontoBO entity = this.repository.persist(bo);
+        ColaboradorDescontoBO entity = this.repository.create(bo);
+
+        return ColaboradorDescontoMapper.toDTO(entity);
+    }
+
+    @Transactional
+    public ColaboradorDescontoDTO update(Long id, ColaboradorDescontoBO bo) {
+        ColaboradorDescontoBO entity = this.repository.update(id, bo);
 
         return ColaboradorDescontoMapper.toDTO(entity);
     }
