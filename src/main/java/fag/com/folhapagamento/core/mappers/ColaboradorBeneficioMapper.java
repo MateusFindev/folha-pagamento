@@ -30,7 +30,7 @@ public class ColaboradorBeneficioMapper {
         bo.setUsarPadrao(dto.isUsarPadrao());
         bo.setAtivo(dto.isAtivo());
 
-        if (bo.getColaborador() != null) {
+        if (dto.getColaborador() != null) {
             bo.setColaborador(ColaboradorMapper.toBO(dto.getColaborador(), false));
         }
 
