@@ -29,10 +29,10 @@ public class JakartaColaboradorMapper {
                 domain.setDependentes(entity.getDependentes().stream().map(JakartaDependenteMapper::toDomain).collect(Collectors.toList()));
             }
             if (entity.getBeneficios() != null && !entity.getBeneficios().isEmpty()) {
-                domain.setBeneficios(entity.getBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toDomain).collect(Collectors.toList()));
+                domain.setBeneficios(entity.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toDomain(beneficio, false)).collect(Collectors.toList()));
             }
             if (entity.getDescontos() != null && !entity.getDescontos().isEmpty()) {
-                domain.setDescontos(entity.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).collect(Collectors.toList()));
+                domain.setDescontos(entity.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toDomain(desconto, false)).collect(Collectors.toList()));
             }
         }
 
@@ -58,7 +58,7 @@ public class JakartaColaboradorMapper {
 
         if (includeAll) {
             if (domain.getDependentes() != null && !domain.getDependentes().isEmpty()) {
-                entity.setDependentes(domain.getDependentes().stream().map(dependente -> JakartaDependenteMapper.toEntity(dependente, false)).collect(Collectors.toList()));
+                entity.setDependentes(domain.getDependentes().stream().map(JakartaDependenteMapper::toEntity).collect(Collectors.toList()));
             }
             if (domain.getBeneficios() != null && !domain.getBeneficios().isEmpty()) {
                 entity.setBeneficios(domain.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toEntity(beneficio, false)).collect(Collectors.toList()));
