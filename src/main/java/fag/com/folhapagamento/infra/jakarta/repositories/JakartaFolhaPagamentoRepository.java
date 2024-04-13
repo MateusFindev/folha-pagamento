@@ -36,6 +36,8 @@ public class JakartaFolhaPagamentoRepository extends SimpleJpaRepository<Jakarta
 
     @Override
     public FolhaPagamentoBO create(FolhaPagamentoBO bo) {
+        bo.calcularSalarioLiquido();
+
         JakartaFolhaPagamento entity = JakartaFolhaPagamentoMapper.toEntity(bo);
         entity.setColaborador(JakartaColaboradorMapper.toEntity(bo.getColaborador(), true));
 
