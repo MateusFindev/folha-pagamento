@@ -3,8 +3,6 @@ package fag.com.folhapagamento.core.mappers;
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorBO;
 
-import java.util.ArrayList;
-
 public class ColaboradorMapper {
 
     public static ColaboradorDTO toDTO(ColaboradorBO bo) {

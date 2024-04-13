@@ -1,7 +1,6 @@
 package fag.com.folhapagamento.core.dtos;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class FolhaPagamentoDTO {
 

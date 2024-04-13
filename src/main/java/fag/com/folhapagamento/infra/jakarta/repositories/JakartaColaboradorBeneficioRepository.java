@@ -8,14 +8,11 @@ import fag.com.folhapagamento.core.usecases.colaborador.beneficio.AtualizarColab
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.CriarColaboradorBeneficio;
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.ListarColaboradorBeneficio;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaColaboradorBeneficioMapper;
-import fag.com.folhapagamento.infra.jakarta.mappers.JakartaColaboradorDescontoMapper;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaColaboradorMapper;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaColaboradorBeneficio;
-import fag.com.folhapagamento.infra.jakarta.models.JakartaColaboradorDesconto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;

@@ -65,17 +65,6 @@ public class ColaboradorBO {
                 .anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()));
     }
 
-//    public void adicionarBeneficio(TipoBeneficio tipo) {
-//        if (tipo == TipoBeneficio.ADICIONAL_PERICULOSIDADE && cargo.isAdicionalPericulosidade()) {
-//            Beneficio beneficio = new Beneficio(tipo);
-//            // Adicionar o benefício ao colaborador
-//        } else if (tipo == TipoBeneficio.ADICIONAL_FUNCAO && cargo.isAdicionalFuncao()) {
-//            Beneficio beneficio = new Beneficio(tipo);
-//            // Adicionar o benefício ao colaborador
-//        }
-//        // Outros tipos de benefício e verificações
-//    }
-
     public Long getId() {
         return id;
     }

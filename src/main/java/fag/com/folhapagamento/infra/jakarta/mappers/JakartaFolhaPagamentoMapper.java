@@ -3,8 +3,6 @@ package fag.com.folhapagamento.infra.jakarta.mappers;
 import fag.com.folhapagamento.core.entities.FolhaPagamentoBO;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaFolhaPagamento;
 
-import java.util.stream.Collectors;
-
 public class JakartaFolhaPagamentoMapper {
 
     public static FolhaPagamentoBO toDomain(JakartaFolhaPagamento entity) {

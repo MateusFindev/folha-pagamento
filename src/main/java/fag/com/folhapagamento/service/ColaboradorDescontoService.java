@@ -1,6 +1,5 @@
 package fag.com.folhapagamento.service;
 
-import fag.com.folhapagamento.core.dtos.ColaboradorBeneficioDTO;
 import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
 import fag.com.folhapagamento.core.mappers.ColaboradorDescontoMapper;

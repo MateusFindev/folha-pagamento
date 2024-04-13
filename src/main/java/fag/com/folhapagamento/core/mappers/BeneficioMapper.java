@@ -1,9 +1,7 @@
 package fag.com.folhapagamento.core.mappers;
 
 import fag.com.folhapagamento.core.dtos.BeneficioDTO;
-import fag.com.folhapagamento.core.dtos.DescontoDTO;
 import fag.com.folhapagamento.core.entities.BeneficioBO;
-import fag.com.folhapagamento.core.entities.DescontoBO;
 
 public class BeneficioMapper {
     public static BeneficioDTO toDTO(BeneficioBO bo) {

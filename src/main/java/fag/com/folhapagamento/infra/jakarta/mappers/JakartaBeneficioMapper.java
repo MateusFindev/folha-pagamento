@@ -1,9 +1,7 @@
 package fag.com.folhapagamento.infra.jakarta.mappers;
 
 import fag.com.folhapagamento.core.entities.BeneficioBO;
-import fag.com.folhapagamento.core.entities.DescontoBO;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaBeneficio;
-import fag.com.folhapagamento.infra.jakarta.models.JakartaDesconto;
 
 public class JakartaBeneficioMapper {
 
