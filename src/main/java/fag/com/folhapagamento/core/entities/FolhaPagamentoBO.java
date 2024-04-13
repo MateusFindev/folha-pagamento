@@ -13,10 +13,6 @@ public class FolhaPagamentoBO {
 
     BigDecimal salarioLiquido;
 
-    List<ColaboradorBeneficioBO> beneficios;
-
-    List<ColaboradorDescontoBO> descontos;
-
     String mes;
 
     Integer diasUteis;
@@ -51,22 +47,6 @@ public class FolhaPagamentoBO {
 
     public void setSalarioLiquido(BigDecimal salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
-    }
-
-    public List<ColaboradorBeneficioBO> getBeneficios() {
-        return beneficios;
-    }
-
-    public void setBeneficios(List<ColaboradorBeneficioBO> beneficios) {
-        this.beneficios = beneficios;
-    }
-
-    public List<ColaboradorDescontoBO> getDescontos() {
-        return descontos;
-    }
-
-    public void setDescontos(List<ColaboradorDescontoBO> descontos) {
-        this.descontos = descontos;
     }
 
     public String getMes() {
