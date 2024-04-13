@@ -91,7 +91,29 @@ VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 2
 --  DESCONTOS
 
 INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
-VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', 'MOEDA', 'DIA', 'VALE_ALIMENTACAO', TRUE);
+VALUES (1, 'INSS', 'INSS', 'Instituto Nacional do Seguro Social', 'PORCENTAGEM', 'MES', 'INSS', TRUE);
 
 INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
-VALUES (2, 'INSS', 'INSS', 'imposto de INSS', 'PORCENTAGEM', 'MES', 'INSS', TRUE);
+VALUES (2, 'IRRF', 'IRRF', 'Imposto de Renda Retido na Fonte', 'PORCENTAGEM', 'MES', 'IRRF', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (3, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', 'PORCENTAGEM', 'MES', 'VALE_ALIMENTACAO', TRUE);
+
+-- COLABORADOR BENEFICIOS
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (1, 1, 1, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (2, 1, 2, 0, 275, TRUE);
+
+-- COLABORADOR DESCONTOS
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
+VALUES (1, 1, 1, 0, TRUE);
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
+VALUES (2, 1, 2, 0, TRUE);
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
+VALUES (3, 1, 3, 5, TRUE);
