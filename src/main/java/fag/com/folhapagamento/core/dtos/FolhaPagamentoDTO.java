@@ -1,5 +1,7 @@
 package fag.com.folhapagamento.core.dtos;
 
+import fag.com.folhapagamento.core.enums.EnumMes;
+
 import java.math.BigDecimal;
 
 public class FolhaPagamentoDTO {
@@ -12,7 +14,7 @@ public class FolhaPagamentoDTO {
 
     BigDecimal salarioLiquido;
 
-    String mes;
+    EnumMes mes;
 
     Integer diasUteis;
 
@@ -48,11 +50,11 @@ public class FolhaPagamentoDTO {
         this.salarioLiquido = salarioLiquido;
     }
 
-    public String getMes() {
+    public EnumMes getMes() {
         return mes;
     }
 
-    public void setMes(String mes) {
+    public void setMes(EnumMes mes) {
         this.mes = mes;
     }
 
