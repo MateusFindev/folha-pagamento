@@ -28,12 +28,6 @@ public class JakartaFolhaPagamento {
     @Column(name = "salario_liquido")
     private BigDecimal salarioLiquido;
 
-    @OneToMany(mappedBy = "folhaPagamento", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorBeneficio> colaboradorBeneficios = new ArrayList<>();
-
-    @OneToMany(mappedBy = "folhaPagamento", fetch = FetchType.LAZY)
-    private List<JakartaColaboradorDesconto> colaboradorDescontos = new ArrayList<>();
-
     @Column(name = "mes")
     private String mes;
 
