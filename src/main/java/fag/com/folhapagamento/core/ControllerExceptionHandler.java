@@ -1,7 +1,9 @@
 package fag.com.folhapagamento.core;
 
 import fag.com.folhapagamento.core.dtos.ExceptionDTO;
+import fag.com.folhapagamento.core.exceptions.AbstractException;
 import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorException;
+import fag.com.folhapagamento.core.exceptions.folhapagamento.FolhaPagamentoException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,10 +27,19 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(ColaboradorException.class)
-    public ResponseEntity<ExceptionDTO> threatInventoryException(ColaboradorException exception) {
-        ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), String.valueOf(exception.getStatusCode()));
+    public ResponseEntity<ExceptionDTO> threatColaboradorException(ColaboradorException exception) {
+        return getExceptionDTOResponseEntity(exception.getMessage(), exception.getStatusCode(), exception);
+    }
 
-        return switch (exception.getStatusCode()) {
+    @ExceptionHandler(FolhaPagamentoException.class)
+    public ResponseEntity<ExceptionDTO> threatFolhaPagamentoException(FolhaPagamentoException exception) {
+        return getExceptionDTOResponseEntity(exception.getMessage(), exception.getStatusCode(), exception);
+    }
+
+    private ResponseEntity<ExceptionDTO> getExceptionDTOResponseEntity(String message, Integer statusCode, AbstractException exception) {
+        ExceptionDTO exceptionDTO = new ExceptionDTO(message, String.valueOf(statusCode));
+
+        return switch (statusCode) {
             case 400 -> ResponseEntity.badRequest().body(exceptionDTO);
             case 404 -> ResponseEntity.notFound().build();
             default -> ResponseEntity.internalServerError().body(exceptionDTO);
