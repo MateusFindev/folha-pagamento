@@ -12,6 +12,7 @@ public enum EnumTipoBeneficio {
     AUXILIO_EDUCACAO,
     VALE_ACADEMIA,
     VALE_CULTURA,
+    SALARIO_FAMILIA,
     OUTRO
 
 }
