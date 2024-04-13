@@ -1,6 +1,10 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumMes;
+import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public class FolhaPagamentoBO {
 
@@ -12,9 +16,27 @@ public class FolhaPagamentoBO {
 
     BigDecimal salarioLiquido;
 
-    String mes;
+    EnumMes mes;
 
     Integer diasUteis;
+
+    public void calcularSalarioLiquido() {
+        List<DescontoBO> descontos = colaborador.getDescontos().stream().map(ColaboradorDescontoBO::getDesconto).toList();
+
+        BigDecimal totalDescontos = BigDecimal.ZERO;
+
+        for (DescontoBO desconto : descontos) {
+            if (desconto.getTipoDesconto() == EnumTipoDesconto.INSS) {
+                totalDescontos = totalDescontos.add(desconto.calcularDescontoINSS(colaborador.getSalarioBase()));
+            }
+
+            if (desconto.getTipoDesconto() == EnumTipoDesconto.IRRF) {
+                totalDescontos = totalDescontos.add(desconto.calcularDescontoIRRF(colaborador.getSalarioBase()));
+            }
+        }
+
+        this.salarioLiquido = colaborador.getSalarioBase().subtract(totalDescontos);
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +70,11 @@ public class FolhaPagamentoBO {
         this.salarioLiquido = salarioLiquido;
     }
 
-    public String getMes() {
+    public EnumMes getMes() {
         return mes;
     }
 
-    public void setMes(String mes) {
+    public void setMes(EnumMes mes) {
         this.mes = mes;
     }
 
