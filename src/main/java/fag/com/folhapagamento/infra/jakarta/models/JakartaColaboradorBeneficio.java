@@ -33,7 +33,4 @@ public class JakartaColaboradorBeneficio {
     @Column(name = "ativo", nullable = false)
     private boolean ativo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private JakartaFolhaPagamento folhaPagamento;
-
 }
