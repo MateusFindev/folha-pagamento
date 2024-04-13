@@ -22,8 +22,6 @@ public class JakartaFolhaPagamentoMapper {
 
         if (includeAll) {
             domain.setColaborador(JakartaColaboradorMapper.toDomain(entity.getColaborador()));
-            domain.setBeneficios(entity.getColaboradorBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toDomain).collect(Collectors.toList()));
-            domain.setDescontos(entity.getColaboradorDescontos().stream().map(JakartaColaboradorDescontoMapper::toDomain).collect(Collectors.toList()));
         }
 
         return domain;
@@ -44,8 +42,6 @@ public class JakartaFolhaPagamentoMapper {
 
         if (includeAll) {
             entity.setColaborador(JakartaColaboradorMapper.toEntity(domain.getColaborador()));
-            entity.setColaboradorBeneficios(domain.getBeneficios().stream().map(JakartaColaboradorBeneficioMapper::toEntity).collect(Collectors.toList()));
-            entity.setColaboradorDescontos(domain.getDescontos().stream().map(JakartaColaboradorDescontoMapper::toEntity).collect(Collectors.toList()));
         }
 
         return entity;
