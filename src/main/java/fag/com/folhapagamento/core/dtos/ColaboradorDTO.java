@@ -2,6 +2,7 @@ package fag.com.folhapagamento.core.dtos;
 
 import fag.com.folhapagamento.core.enums.EnumGenero;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -126,6 +127,10 @@ public class ColaboradorDTO {
 
     public void setDescontos(List<ColaboradorDescontoDTO> descontos) {
         this.descontos = descontos;
+    }
+
+    public BigDecimal getSalarioBase() {
+        return contrato.getCargo().getSalarioBase();
     }
 
 }

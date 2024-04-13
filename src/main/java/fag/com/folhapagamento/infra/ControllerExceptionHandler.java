@@ -1,4 +1,4 @@
-package fag.com.folhapagamento.core;
+package fag.com.folhapagamento.infra;
 
 import fag.com.folhapagamento.core.dtos.ExceptionDTO;
 import fag.com.folhapagamento.core.exceptions.AbstractException;

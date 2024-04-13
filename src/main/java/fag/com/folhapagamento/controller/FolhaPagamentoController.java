@@ -42,4 +42,11 @@ public class FolhaPagamentoController {
         return new ResponseEntity<>(folha, HttpStatus.CREATED);
     }
 
+    @PostMapping("/colaborador/{id}")
+    public ResponseEntity<FolhaPagamentoDTO> create(@PathVariable Long id) {
+        FolhaPagamentoDTO folha = this.service.create(id);
+
+        return new ResponseEntity<>(folha, HttpStatus.CREATED);
+    }
+
 }

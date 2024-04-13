@@ -4,6 +4,8 @@ import fag.com.folhapagamento.core.enums.EnumMes;
 import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 public class FolhaPagamentoBO {
@@ -36,6 +38,21 @@ public class FolhaPagamentoBO {
         }
 
         this.salarioLiquido = colaborador.getSalarioBase().subtract(totalDescontos);
+    }
+
+    public static int calcularDiasUteis(int ano, int mes) {
+        int totalDiasUteis = 0;
+        LocalDate data = LocalDate.of(ano, mes, 1);
+
+        while (data.getMonthValue() == mes) {
+            if (data.getDayOfWeek() != DayOfWeek.SATURDAY && data.getDayOfWeek() != DayOfWeek.SUNDAY) {
+                totalDiasUteis++;
+            }
+
+            data = data.plusDays(1);
+        }
+
+        return totalDiasUteis;
     }
 
     public Long getId() {
