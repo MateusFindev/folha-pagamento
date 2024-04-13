@@ -58,11 +58,11 @@ public class ColaboradorMapper {
 
         if (includeAll) {
             if (dto.getDependentes() != null && !dto.getDependentes().isEmpty()) {
-                bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
+                bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
             }
 
             if (dto.getBeneficios() != null && !dto.getBeneficios().isEmpty()) {
-                bo.setDependentes(dto.getDependentes().stream().map(DependenteMapper::toBO).toList());
+                bo.setBeneficios(dto.getBeneficios().stream().map(ColaboradorBeneficioMapper::toBO).toList());
             }
 
             if (dto.getDescontos() != null && !dto.getDescontos().isEmpty()) {
