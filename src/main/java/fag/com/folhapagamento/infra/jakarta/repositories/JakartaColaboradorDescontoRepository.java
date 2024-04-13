@@ -63,8 +63,11 @@ public class JakartaColaboradorDescontoRepository extends SimpleJpaRepository<Ja
 
     @Override
     public ColaboradorDescontoBO update(Long id, ColaboradorDescontoBO colaboradorDescontoBO) {
-        JakartaColaboradorDesconto colaboradorDesconto = this.findById(id)
-                .orElseThrow(ColaboradorDescontoNaoEncontrado::new);
+        JakartaColaboradorDesconto colaboradorDesconto = this.findById(id).orElse(null);
+
+        if (colaboradorDesconto == null) {
+            throw new ColaboradorDescontoNaoEncontrado("Não foi possível encontrar esse benefício para o colaborador", 400);
+        }
 
         JakartaColaboradorDesconto entity = JakartaColaboradorDescontoMapper.toEntity(colaboradorDescontoBO);
         entity.setId(colaboradorDesconto.getId());

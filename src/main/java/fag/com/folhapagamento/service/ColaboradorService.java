@@ -4,6 +4,7 @@ import fag.com.folhapagamento.core.dtos.*;
 import fag.com.folhapagamento.core.entities.*;
 import fag.com.folhapagamento.core.exceptions.beneficio.BeneficioNaoEncontrado;
 import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorJaPossuiBeneficio;
+import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorJaPossuiDesconto;
 import fag.com.folhapagamento.core.exceptions.colaborador.ColaboradorNaoEncontrado;
 import fag.com.folhapagamento.core.exceptions.desconto.DescontoNaoEncontrado;
 import fag.com.folhapagamento.core.mappers.ColaboradorBeneficioMapper;
@@ -54,7 +55,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
         JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
 
         if (colaborador == null) {
-            return null;
+            throw new ColaboradorNaoEncontrado("Não foi possível encontrar um colaborador para o ID informado", 400);
         }
 
         return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador, true));
@@ -62,8 +63,11 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
 
     @Transactional
     public ColaboradorDTO adicionarBeneficio(Long id, BeneficioDTO dto) {
-        JakartaColaborador colaborador = this.repository.findById(id)
-                .orElseThrow(ColaboradorNaoEncontrado::new);
+        JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
+
+        if (colaborador == null) {
+            throw new ColaboradorNaoEncontrado("Não foi possível encontrar o colaborador", 400);
+        }
 
         JakartaBeneficio beneficio = this.beneficioService.findByCodigo(dto.getCodigo())
                 .orElseThrow(BeneficioNaoEncontrado::new);
@@ -74,7 +78,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
         ColaboradorBeneficioBO colaboradorBeneficio = colaboradorBO.adicionarBeneficio(beneficioBO);
 
         if (colaboradorBeneficio == null) {
-            throw new ColaboradorJaPossuiBeneficio();
+            throw new ColaboradorJaPossuiBeneficio("O colaborador já possui esse benefício aplicado", 400);
         }
 
         colaboradorBeneficio.setColaborador(colaboradorBO);
@@ -88,8 +92,11 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
 
     @Transactional
     public ColaboradorDTO adicionarDesconto(Long id, DescontoDTO dto) {
-        JakartaColaborador colaborador = this.repository.findById(id)
-                .orElseThrow(ColaboradorNaoEncontrado::new);
+        JakartaColaborador colaborador = this.repository.findById(id).orElse(null);
+
+        if (colaborador == null) {
+            throw new ColaboradorNaoEncontrado("Não foi possível encontrar o colaborador", 400);
+        }
 
         JakartaDesconto desconto = this.descontoService.findByCodigo(dto.getCodigo())
                 .orElseThrow(DescontoNaoEncontrado::new);
@@ -100,7 +107,7 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
         ColaboradorDescontoBO colaboradorDesconto = colaboradorBO.adicionarDesconto(descontoBO);
 
         if (colaboradorDesconto == null) {
-            throw new ColaboradorJaPossuiBeneficio();
+            throw new ColaboradorJaPossuiDesconto("O colaborador já possui esse desconto aplicado", 400);
         }
 
         colaboradorDesconto.setColaborador(colaboradorBO);
