@@ -34,7 +34,7 @@ public class ColaboradorBO {
     private List<ColaboradorDescontoBO> descontos = new ArrayList<>();
 
     public ColaboradorBeneficioBO adicionarBeneficio(BeneficioBO beneficio) {
-        if (validaSeBeneficioNaoExiste(beneficio)) {
+        if (beneficios.stream().anyMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()))) {
             return null;
         }
 
@@ -45,7 +45,7 @@ public class ColaboradorBO {
     }
 
     public ColaboradorDescontoBO adicionarDesconto(DescontoBO desconto) {
-        if (validaSeDescontoNaoExiste(desconto)) {
+        if (descontos.stream().anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()))) {
             return null;
         }
 
@@ -53,16 +53,6 @@ public class ColaboradorBO {
         colaboradorDesconto.setColaborador(this);
 
         return colaboradorDesconto;
-    }
-
-    private boolean validaSeBeneficioNaoExiste(BeneficioBO beneficio) {
-        return beneficios.stream()
-                .anyMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()));
-    }
-
-    private boolean validaSeDescontoNaoExiste(DescontoBO desconto) {
-        return descontos.stream()
-                .anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()));
     }
 
     public Long getId() {
