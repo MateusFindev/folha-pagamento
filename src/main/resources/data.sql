@@ -111,6 +111,35 @@ VALUES (1, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Para gastos com alimentaç
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
 VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_TRANSPORTE', TRUE);
 
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (3, 'ADICIONAL_PERICULOSIDADE', 'Adicional de Periculosidade', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'ADICIONAL_PERICULOSIDADE', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (4, 'ADICIONAL_FUNCAO', 'Adicional de Função', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'ADICIONAL_FUNCAO', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (5, 'PLANO_SAUDE', 'Plano de Saúde', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'PLANO_SAUDE', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (6, 'PLANO_ODONTOLOGICO', 'Plano Odontológico', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'PLANO_ODONTOLOGICO', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (7, 'AUXILIO_CRECHE', 'Auxílio Creche', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_CRECHE', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (8, 'AUXILIO_EDUCACAO', 'Auxílio Educação', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_EDUCACAO', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (9, 'VALE_ACADEMIA', 'Gym Pass', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_ACADEMIA', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (10, 'VALE_CULTURA', 'Vale Cultura', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_CULTURA', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (11, 'SALARIO_FAMILIA', 'Salário Família', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'SALARIO_FAMILIA', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (12, 'AUXILIO_MATERNIDADE', 'Auxílio Maternidade', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_MATERNIDADE', TRUE);
 
 --  DESCONTOS
 
@@ -121,7 +150,22 @@ INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativ
 VALUES (2, 'IRRF', 'IRRF', 'Imposto de Renda Retido na Fonte', 'PORCENTAGEM', 'MES', 'IRRF', TRUE);
 
 INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
-VALUES (3, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de Vale alimentação', 'PORCENTAGEM', 'MES', 'VALE_ALIMENTACAO', TRUE);
+VALUES (3, 'VALE_ALIMENTACAO', 'Vale-Alimentação', 'Desconto de vale alimentação', 'PORCENTAGEM', 'MES', 'VALE_ALIMENTACAO', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (4, 'SINDICATO', 'Sindicato', 'Contribuição Sindical', 'PORCENTAGEM', 'MES', 'SINDICATO', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (5, 'VALE_TRANSPORTE', 'Vale Transporte', 'Desconto de vale transporte', 'PORCENTAGEM', 'MES', 'VALE_TRANSPORTE', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (6, 'ASSISTENCIA_MEDIA', 'Assistência Médica', 'Desconto de assistência médica', 'PORCENTAGEM', 'MES', 'ASSISTENCIA_MEDIA', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (7, 'ASSISTENCIA_ODONTOLOGICA', 'Assistência Odontológica', 'Desconto de assistência odontológica', 'PORCENTAGEM', 'MES', 'ASSISTENCIA_ODONTOLOGICA', TRUE);
+
+INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
+VALUES (8, 'PENSAO_JUDICIAL', 'Pensão Judicial', 'Desconto de pensão judicial', 'PORCENTAGEM', 'MES', 'PENSAO_JUDICIAL', TRUE);
 
 
 
