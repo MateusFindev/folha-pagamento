@@ -13,6 +13,7 @@ public enum EnumTipoBeneficio {
     VALE_ACADEMIA,
     VALE_CULTURA,
     SALARIO_FAMILIA,
+    AUXILIO_MATERNIDADE,
     OUTRO
 
 }
