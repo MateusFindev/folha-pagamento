@@ -167,8 +167,6 @@ VALUES (7, 'ASSISTENCIA_ODONTOLOGICA', 'Assistência Odontológica', 'Desconto d
 INSERT INTO desconto (id, codigo, nome, descricao, tipo_valor, prazo, tipo, ativo)
 VALUES (8, 'PENSAO_JUDICIAL', 'Pensão Judicial', 'Desconto de pensão judicial', 'PORCENTAGEM', 'MES', 'PENSAO_JUDICIAL', TRUE);
 
-
-
 -- COLABORADOR BENEFICIOS
 
 INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)

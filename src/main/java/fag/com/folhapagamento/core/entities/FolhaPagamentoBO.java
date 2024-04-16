@@ -23,19 +23,8 @@ public class FolhaPagamentoBO {
     Integer diasUteis;
 
     public void calcularSalarioLiquido() {
-        List<DescontoBO> descontos = colaborador.getDescontos().stream().map(ColaboradorDescontoBO::getDesconto).toList();
-
-        BigDecimal totalDescontos = BigDecimal.ZERO;
-
-        for (DescontoBO desconto : descontos) {
-            if (desconto.getTipoDesconto() == EnumTipoDesconto.INSS) {
-                totalDescontos = totalDescontos.add(desconto.calcularDescontoINSS(colaborador.getSalarioBase()));
-            }
-
-            if (desconto.getTipoDesconto() == EnumTipoDesconto.IRRF) {
-                totalDescontos = totalDescontos.add(desconto.calcularDescontoIRRF(colaborador.getSalarioBase()));
-            }
-        }
+        BigDecimal totalDescontos = calcularDescontos();
+        BigDecimal totalBeneficios = calcularBeneficios();
 
         this.salarioLiquido = colaborador.getSalarioBase().subtract(totalDescontos);
     }
@@ -53,6 +42,28 @@ public class FolhaPagamentoBO {
         }
 
         return totalDiasUteis;
+    }
+
+    private BigDecimal calcularDescontos() {
+        List<DescontoBO> descontos = colaborador.getDescontos().stream().map(ColaboradorDescontoBO::getDesconto).toList();
+
+        BigDecimal totalDescontos = BigDecimal.ZERO;
+
+        for (DescontoBO desconto : descontos) {
+            if (desconto.getTipoDesconto() == EnumTipoDesconto.INSS) {
+                totalDescontos = totalDescontos.add(desconto.calcularDescontoINSS(colaborador.getSalarioBase()));
+            }
+
+            if (desconto.getTipoDesconto() == EnumTipoDesconto.IRRF) {
+                totalDescontos = totalDescontos.add(desconto.calcularDescontoIRRF(colaborador.getSalarioBase()));
+            }
+        }
+
+        return totalDescontos;
+    }
+
+    private BigDecimal calcularBeneficios() {
+        return BigDecimal.ZERO;
     }
 
     public Long getId() {
