@@ -33,28 +33,6 @@ public class ColaboradorBO {
 
     private List<ColaboradorDescontoBO> descontos = new ArrayList<>();
 
-    public ColaboradorBeneficioBO adicionarBeneficio(BeneficioBO beneficio) {
-        if (beneficios.stream().anyMatch(b -> b.getBeneficio().getCodigo().equals(beneficio.getCodigo()))) {
-            return null;
-        }
-
-        ColaboradorBeneficioBO colaboradorBeneficio = ColaboradorBeneficioBO.criar(beneficio);
-        colaboradorBeneficio.setColaborador(this);
-
-        return colaboradorBeneficio;
-    }
-
-    public ColaboradorDescontoBO adicionarDesconto(DescontoBO desconto) {
-        if (descontos.stream().anyMatch(b -> b.getDesconto().getCodigo().equals(desconto.getCodigo()))) {
-            return null;
-        }
-
-        ColaboradorDescontoBO colaboradorDesconto = ColaboradorDescontoBO.criar(desconto);
-        colaboradorDesconto.setColaborador(this);
-
-        return colaboradorDesconto;
-    }
-
     public Long getId() {
         return id;
     }

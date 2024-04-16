@@ -1,8 +1,6 @@
 package fag.com.folhapagamento.controller;
 
-import fag.com.folhapagamento.core.dtos.BeneficioDTO;
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
-import fag.com.folhapagamento.core.dtos.DescontoDTO;
 import fag.com.folhapagamento.service.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,20 +33,6 @@ public class ColaboradorController {
         ColaboradorDTO colaborador = this.service.customFindById(id);
 
         return new ResponseEntity<>(colaborador, colaborador == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
-    }
-
-    @PostMapping("{id}/beneficios")
-    public ResponseEntity<ColaboradorDTO> adicionarBeneficio(@PathVariable Long id, @RequestBody BeneficioDTO dto) {
-        ColaboradorDTO colaborador = this.service.adicionarBeneficio(id, dto);
-
-        return new ResponseEntity<>(colaborador, HttpStatus.OK);
-    }
-
-    @PostMapping("{id}/descontos")
-    public ResponseEntity<ColaboradorDTO> adicionarDesconto(@PathVariable Long id, @RequestBody DescontoDTO dto) {
-        ColaboradorDTO colaborador = this.service.adicionarDesconto(id, dto);
-
-        return new ResponseEntity<>(colaborador, HttpStatus.OK);
     }
 
 }

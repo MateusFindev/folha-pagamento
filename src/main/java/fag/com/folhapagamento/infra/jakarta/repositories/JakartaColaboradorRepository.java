@@ -32,11 +32,4 @@ public class JakartaColaboradorRepository extends SimpleJpaRepository<JakartaCol
         return colaboradores.stream().map(colaborador -> ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador))).collect(Collectors.toList());
     }
 
-    @Transactional
-    public ColaboradorDTO update(JakartaColaborador colaborador) {
-        this.em.merge(colaborador);
-
-        return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador));
-    }
-
 }
