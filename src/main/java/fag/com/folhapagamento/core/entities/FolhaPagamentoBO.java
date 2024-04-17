@@ -69,7 +69,7 @@ public class FolhaPagamentoBO {
                 .toList().stream().findFirst().orElse(null);
 
         if (salarioFamilia != null) {
-            totalBeneficios = salarioFamilia.calcularSalarioFamilia(salarioBase.add(totalBeneficios));
+            totalBeneficios = totalBeneficios.add(salarioFamilia.calcularSalarioFamilia(salarioBase.add(totalBeneficios)));
         }
 
         return totalBeneficios;
