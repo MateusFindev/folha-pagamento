@@ -3,6 +3,7 @@ package fag.com.folhapagamento.service;
 import fag.com.folhapagamento.core.dtos.ColaboradorBeneficioDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorBeneficioBO;
 import fag.com.folhapagamento.core.mappers.ColaboradorBeneficioMapper;
+import fag.com.folhapagamento.core.usecases.colaborador.beneficio.BuscarColaboradorBeneficio;
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.ListarColaboradorBeneficio;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaColaboradorBeneficioRepository;
 import jakarta.transaction.Transactional;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ColaboradorBeneficioService implements ListarColaboradorBeneficio {
+public class ColaboradorBeneficioService implements ListarColaboradorBeneficio, BuscarColaboradorBeneficio {
 
     private final JakartaColaboradorBeneficioRepository repository;
 
@@ -43,6 +44,16 @@ public class ColaboradorBeneficioService implements ListarColaboradorBeneficio {
         ColaboradorBeneficioBO entity = this.repository.update(id, ColaboradorBeneficioMapper.toBO(dto));
 
         return ColaboradorBeneficioMapper.toDTO(entity);
+    }
+
+    @Override
+    public ColaboradorBeneficioDTO findByColaboradorIdAndId(Long colaboradorId, Long beneficioId) {
+        return this.repository.findByColaboradorIdAndId(colaboradorId, beneficioId);
+    }
+
+    @Override
+    public ColaboradorBeneficioDTO customFindById(Long id) {
+        return this.repository.customFindById(id);
     }
 
 }

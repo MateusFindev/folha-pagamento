@@ -5,6 +5,7 @@ import fag.com.folhapagamento.core.entities.ColaboradorBeneficioBO;
 import fag.com.folhapagamento.core.exceptions.colaborador.beneficio.ColaboradorBeneficioNaoEncontado;
 import fag.com.folhapagamento.core.mappers.ColaboradorBeneficioMapper;
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.AtualizarColaboradorBeneficio;
+import fag.com.folhapagamento.core.usecases.colaborador.beneficio.BuscarColaboradorBeneficio;
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.CriarColaboradorBeneficio;
 import fag.com.folhapagamento.core.usecases.colaborador.beneficio.ListarColaboradorBeneficio;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaColaboradorBeneficioMapper;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class JakartaColaboradorBeneficioRepository extends SimpleJpaRepository<JakartaColaboradorBeneficio, Long> implements ListarColaboradorBeneficio, CriarColaboradorBeneficio, AtualizarColaboradorBeneficio {
+public class JakartaColaboradorBeneficioRepository extends SimpleJpaRepository<JakartaColaboradorBeneficio, Long> implements ListarColaboradorBeneficio, CriarColaboradorBeneficio, AtualizarColaboradorBeneficio, BuscarColaboradorBeneficio {
 
     private final EntityManager em;
 
@@ -75,6 +76,30 @@ public class JakartaColaboradorBeneficioRepository extends SimpleJpaRepository<J
         this.em.merge(entity);
 
         return JakartaColaboradorBeneficioMapper.toDomain(entity);
+    }
+
+    @Override
+    public ColaboradorBeneficioDTO findByColaboradorIdAndId(Long colaboradorId, Long beneficioId) {
+        TypedQuery<JakartaColaboradorBeneficio> query = em.createQuery("SELECT e FROM JakartaColaboradorBeneficio e WHERE e.id = :beneficio AND e.colaborador.id = :colaborador", JakartaColaboradorBeneficio.class)
+                .setParameter("beneficio", beneficioId)
+                .setParameter("colaborador", colaboradorId);
+
+        try {
+            return ColaboradorBeneficioMapper.toDTO(JakartaColaboradorBeneficioMapper.toDomain(query.getSingleResult()));
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public ColaboradorBeneficioDTO customFindById(Long id) {
+        JakartaColaboradorBeneficio beneficio = this.findById(id).orElse(null);
+
+        if (beneficio == null) {
+            return null;
+        }
+
+        return ColaboradorBeneficioMapper.toDTO(JakartaColaboradorBeneficioMapper.toDomain(beneficio));
     }
 
 }

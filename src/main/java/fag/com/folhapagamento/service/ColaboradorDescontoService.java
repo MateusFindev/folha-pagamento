@@ -3,6 +3,7 @@ package fag.com.folhapagamento.service;
 import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorDescontoBO;
 import fag.com.folhapagamento.core.mappers.ColaboradorDescontoMapper;
+import fag.com.folhapagamento.core.usecases.colaborador.desconto.BuscarColaboradorDesconto;
 import fag.com.folhapagamento.core.usecases.colaborador.desconto.ListarColaboradorDesconto;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaColaboradorDescontoRepository;
 import jakarta.transaction.Transactional;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class ColaboradorDescontoService implements ListarColaboradorDesconto {
+public class ColaboradorDescontoService implements ListarColaboradorDesconto, BuscarColaboradorDesconto {
 
     private final JakartaColaboradorDescontoRepository repository;
 
@@ -48,6 +49,16 @@ public class ColaboradorDescontoService implements ListarColaboradorDesconto {
         ColaboradorDescontoBO entity = this.repository.update(id, ColaboradorDescontoMapper.toBO(dto));
 
         return ColaboradorDescontoMapper.toDTO(entity);
+    }
+
+    @Override
+    public ColaboradorDescontoDTO findByColaboradorIdAndId(Long colaboradorId, Long beneficioId) {
+        return this.repository.findByColaboradorIdAndId(colaboradorId, beneficioId);
+    }
+
+    @Override
+    public ColaboradorDescontoDTO customFindById(Long id) {
+        return this.repository.customFindById(id);
     }
 
 }
