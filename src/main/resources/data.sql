@@ -7,7 +7,7 @@ VALUES (1, 'Departamento Principal', 'Descrição do departamento principal', TR
 
 -- CARGOS
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
-VALUES (1, 'Cargo de Teste', 'Descrição do Cargo', 1, 'Carregar Sacaria', 2334, FALSE, FALSE, FALSE, FALSE, 1);
+VALUES (1, 'Cargo de Teste', 'Descrição do Cargo', 1, 'Carregar Sacaria', 1450, FALSE, FALSE, FALSE, FALSE, 1);
 
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
 VALUES (2, 'Auxiliar Administrativo', 'Responsável por tarefas administrativas básicas', 1, 'Auxiliar Administrativo', 2000, FALSE, FALSE, FALSE, FALSE, 1);
@@ -62,13 +62,13 @@ VALUES (11, 'CLT', 30, 'EMPREGADO', 5, 1);
 INSERT INTO contrato (id, tipo, carga_horaria, tipo_filiacao, id_cargo, id_empresa)
 VALUES (12, 'CLT', 30, 'EMPREGADO', 6, 1);
 
+-- COLABORADORES
+
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (1, '08640463913', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer@minha.fag.edu.br', TIMESTAMP '2020-06-14 00:00:00', 1, 'MASCULINO');
 
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (2, '08640463931', '16487593', '342342', 'Rafael Mendes', 'rafaelmendes@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 2, 'MASCULINO');
-
--- COLABORADORES
 
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (3, '08640463920', '16487593', '342342', 'João Silva', 'joaosilva@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 3, 'MASCULINO');
@@ -176,15 +176,6 @@ INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_
 VALUES (3, 1, 5, 100, FALSE, TRUE);
 
 INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
-VALUES (4, 1, 8, 150, FALSE, TRUE);
-
-INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
-VALUES (5, 1, 6, 200, FALSE, TRUE);
-
-INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
-VALUES (6, 1, 10, 100, FALSE, TRUE);
-
-INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
 VALUES (7, 1, 11, 0, TRUE, TRUE);
 
 -- COLABORADOR DESCONTOS
@@ -197,3 +188,13 @@ VALUES (2, 1, 2, 0, TRUE);
 
 INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
 VALUES (3, 1, 3, 5, TRUE);
+
+-- DEPENDENTES
+
+INSERT INTO dependente(id, nome, nascimento, parentesco, id_colaborador)
+VALUES (1, 'Mateus Pfeffer Júnior', NOW(), 'FILHO', 1);
+
+-- PONTOS
+
+INSERT INTO colaborador_ponto(id, id_colaborador, dias_trabalhados, faltas, horas_atraso, horas_50, horas_100, mes)
+VALUES (1, 1, 24, 0, 0, 15, 0, 'ABRIL');

@@ -1,13 +1,7 @@
 package fag.com.folhapagamento.controller;
 
-import fag.com.folhapagamento.core.dtos.ColaboradorBeneficioDTO;
-import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
-import fag.com.folhapagamento.core.dtos.ColaboradorDescontoDTO;
-import fag.com.folhapagamento.core.dtos.ContratoDTO;
-import fag.com.folhapagamento.service.ColaboradorBeneficioService;
-import fag.com.folhapagamento.service.ColaboradorDescontoService;
-import fag.com.folhapagamento.service.ColaboradorService;
-import fag.com.folhapagamento.service.ContratoService;
+import fag.com.folhapagamento.core.dtos.*;
+import fag.com.folhapagamento.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +22,18 @@ public class ColaboradorController {
 
     private final ColaboradorDescontoService colaboradorDescontoService;
 
+    private final ColaboradorPontoService colaboradorPontoService;
+
+    private final DependenteService dependenteService;
+
     @Autowired
-    public ColaboradorController(ColaboradorService service, ColaboradorBeneficioService colaboradorBeneficioService, ContratoService contratoService, ColaboradorDescontoService colaboradorDescontoService) {
+    public ColaboradorController(ColaboradorService service, ColaboradorBeneficioService colaboradorBeneficioService, ContratoService contratoService, ColaboradorDescontoService colaboradorDescontoService, ColaboradorPontoService colaboradorPontoService, DependenteService dependenteService) {
         this.service = service;
         this.colaboradorBeneficioService = colaboradorBeneficioService;
         this.contratoService = contratoService;
         this.colaboradorDescontoService = colaboradorDescontoService;
+        this.colaboradorPontoService = colaboradorPontoService;
+        this.dependenteService = dependenteService;
     }
 
     @GetMapping
@@ -55,6 +55,20 @@ public class ColaboradorController {
         ContratoDTO contrato = contratoService.findByColaboradorId(id);
 
         return new ResponseEntity<>(contrato, contrato == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+    }
+
+    @GetMapping("{colaboradorId}/ponto")
+    public ResponseEntity<ColaboradorPontoDTO> findDependenteByColaboradorId(@PathVariable Long colaboradorId) {
+        ColaboradorPontoDTO ponto = this.colaboradorPontoService.findByColaboradorId(colaboradorId);
+
+        return new ResponseEntity<>(ponto, ponto == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+    }
+
+    @GetMapping("{colaboradorId}/dependentes/{dependenteId}")
+    public ResponseEntity<DependenteDTO> findDependenteByCollaboratorIdAndId(@PathVariable Long colaboradorId, @PathVariable Long dependenteId) {
+        DependenteDTO dependente = this.dependenteService.findByColaboradorIdAndId(colaboradorId, dependenteId);
+
+        return new ResponseEntity<>(dependente, dependente == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
     @GetMapping("{colaboradorId}/beneficios/{beneficioId}")

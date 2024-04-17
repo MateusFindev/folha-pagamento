@@ -14,6 +14,7 @@ public class DescontoMapper {
         dto.setDescricao(bo.getDescricao());
         dto.setAtivo(bo.isAtivo());
         dto.setTipoValor(bo.getTipoValor());
+        dto.setPrazo(bo.getPrazo());
         dto.setTipoDesconto(bo.getTipoDesconto());
         dto.setNome(bo.getNome());
 
@@ -29,6 +30,7 @@ public class DescontoMapper {
         bo.setDescricao(dto.getDescricao());
         bo.setAtivo(dto.isAtivo());
         bo.setTipoValor(dto.getTipoValor());
+        dto.setPrazo(bo.getPrazo());
         bo.setTipoDesconto(dto.getTipoDesconto());
         bo.setNome(bo.getNome());
 
