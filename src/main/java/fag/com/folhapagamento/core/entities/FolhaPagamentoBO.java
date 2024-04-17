@@ -1,10 +1,9 @@
 package fag.com.folhapagamento.core.entities;
 
-import fag.com.folhapagamento.core.enums.EnumMes;
-import fag.com.folhapagamento.core.enums.EnumTipoBeneficio;
-import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
+import fag.com.folhapagamento.core.enums.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class FolhaPagamentoBO {
 
@@ -28,6 +27,7 @@ public class FolhaPagamentoBO {
     }
 
     private BigDecimal calcularDescontos() {
+        BigDecimal salarioBase = colaborador.getSalarioBase();
         BigDecimal totalDescontos = BigDecimal.ZERO;
 
         for (ColaboradorDescontoBO colaboradorDesconto : colaborador.getDescontos()) {
@@ -42,9 +42,15 @@ public class FolhaPagamentoBO {
                 valorDesconto = desconto.calcularDescontoIRRF(colaborador.getSalarioBase());
 
                 colaboradorDesconto.setValor(valorDesconto);
-            }
+            } else {
+                if (desconto.getTipoValor() != EnumTipoValor.MOEDA) {
+                    valorDesconto = salarioBase.multiply(colaboradorDesconto.getValor().divide(BigDecimal.valueOf(100d), RoundingMode.HALF_EVEN));
 
-            totalDescontos = totalDescontos.add(valorDesconto);
+                    colaboradorDesconto.setValor(valorDesconto);
+                }
+
+                totalDescontos = totalDescontos.add(valorDesconto);
+            }
         }
 
         return totalDescontos;
