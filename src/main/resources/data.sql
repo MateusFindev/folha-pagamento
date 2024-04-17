@@ -133,7 +133,7 @@ INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, pr
 VALUES (10, 'VALE_CULTURA', 'Vale Cultura', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_CULTURA', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (11, 'SALARIO_FAMILIA', 'Salário Família', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'SALARIO_FAMILIA', TRUE);
+VALUES (11, 'SALARIO_FAMILIA', 'Salário Família', 'Para gastos com transporte', 62.04, 'MOEDA', 'MES', 'SALARIO_FAMILIA', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
 VALUES (12, 'AUXILIO_MATERNIDADE', 'Auxílio Maternidade', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_MATERNIDADE', TRUE);
@@ -183,6 +183,9 @@ VALUES (5, 1, 6, 200, FALSE, TRUE);
 
 INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
 VALUES (6, 1, 10, 100, FALSE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (7, 1, 11, 0, TRUE, TRUE);
 
 -- COLABORADOR DESCONTOS
 

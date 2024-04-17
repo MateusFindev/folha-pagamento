@@ -1,12 +1,10 @@
 package fag.com.folhapagamento.core.entities;
 
 import fag.com.folhapagamento.core.enums.EnumMes;
+import fag.com.folhapagamento.core.enums.EnumTipoBeneficio;
 import fag.com.folhapagamento.core.enums.EnumTipoDesconto;
 
 import java.math.BigDecimal;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.List;
 
 public class FolhaPagamentoBO {
 
@@ -26,22 +24,7 @@ public class FolhaPagamentoBO {
         BigDecimal totalDescontos = calcularDescontos();
         BigDecimal totalBeneficios = calcularBeneficios();
 
-        this.salarioLiquido = colaborador.getSalarioBase().subtract(totalDescontos);
-    }
-
-    public static int calcularDiasUteis(int ano, int mes) {
-        int totalDiasUteis = 0;
-        LocalDate data = LocalDate.of(ano, mes, 1);
-
-        while (data.getMonthValue() == mes) {
-            if (data.getDayOfWeek() != DayOfWeek.SATURDAY && data.getDayOfWeek() != DayOfWeek.SUNDAY) {
-                totalDiasUteis++;
-            }
-
-            data = data.plusDays(1);
-        }
-
-        return totalDiasUteis;
+        this.salarioLiquido = colaborador.getSalarioBase().subtract(totalDescontos).add(totalBeneficios);
     }
 
     private BigDecimal calcularDescontos() {
@@ -68,7 +51,28 @@ public class FolhaPagamentoBO {
     }
 
     private BigDecimal calcularBeneficios() {
-        return BigDecimal.ZERO;
+        BigDecimal salarioBase = colaborador.getSalarioBase();
+        BigDecimal totalBeneficios = BigDecimal.ZERO;
+
+        for (ColaboradorBeneficioBO colaboradorBeneficio : colaborador.getBeneficios()) {
+            BeneficioBO beneficio = colaboradorBeneficio.getBeneficio();
+
+            if (colaboradorBeneficio.isUsarPadrao()) {
+                totalBeneficios = totalBeneficios.add(beneficio.getValorPadrao());
+            } else {
+                totalBeneficios = totalBeneficios.add(colaboradorBeneficio.getValor());
+            }
+        }
+
+        ColaboradorBeneficioBO salarioFamilia = colaborador.getBeneficios().stream()
+                .filter(beneficio -> beneficio.getBeneficio().getTipoBeneficio() == EnumTipoBeneficio.SALARIO_FAMILIA)
+                .toList().stream().findFirst().orElse(null);
+
+        if (salarioFamilia != null) {
+            totalBeneficios = salarioFamilia.calcularSalarioFamilia(salarioBase.add(totalBeneficios));
+        }
+
+        return totalBeneficios;
     }
 
     public Long getId() {

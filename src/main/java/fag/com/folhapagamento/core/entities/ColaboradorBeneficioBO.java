@@ -1,5 +1,7 @@
 package fag.com.folhapagamento.core.entities;
 
+import fag.com.folhapagamento.core.enums.EnumTipoBeneficio;
+
 import java.math.BigDecimal;
 
 public class ColaboradorBeneficioBO {
@@ -16,15 +18,24 @@ public class ColaboradorBeneficioBO {
 
     private boolean ativo;
 
-    public static ColaboradorBeneficioBO criar(BeneficioBO beneficio) {
-        ColaboradorBeneficioBO colaboradorBeneficio = new ColaboradorBeneficioBO();
+    public BigDecimal calcularSalarioFamilia(BigDecimal salarioLiquido) {
+        BeneficioBO salarioFamilia = null;
 
-        colaboradorBeneficio.setBeneficio(beneficio);
-        colaboradorBeneficio.setValor(beneficio.getValorPadrao());
-        colaboradorBeneficio.setUsarPadrao(true);
-        colaboradorBeneficio.setAtivo(true);
+        if (beneficio.getTipoBeneficio() == EnumTipoBeneficio.SALARIO_FAMILIA) {
+            salarioFamilia = getBeneficio();
+        }
 
-        return colaboradorBeneficio;
+        if (salarioFamilia == null) {
+            return BigDecimal.ZERO;
+        }
+
+        if (salarioLiquido.compareTo(BigDecimal.valueOf(1819.26)) < 1) {
+            int dependentes = colaborador.getDependentes().size();
+
+            return salarioFamilia.getValorPadrao().multiply(BigDecimal.valueOf(dependentes));
+        }
+
+        return BigDecimal.ZERO;
     }
 
     public Long getId() {

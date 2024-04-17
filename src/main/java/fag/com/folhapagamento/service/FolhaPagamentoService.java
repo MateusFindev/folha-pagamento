@@ -2,6 +2,7 @@ package fag.com.folhapagamento.service;
 
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
 import fag.com.folhapagamento.core.dtos.FolhaPagamentoDTO;
+import fag.com.folhapagamento.core.entities.ColaboradorPontoBO;
 import fag.com.folhapagamento.core.entities.FolhaPagamentoBO;
 import fag.com.folhapagamento.core.enums.EnumMes;
 import fag.com.folhapagamento.core.exceptions.folhapagamento.FolhaPagamentoNaoCriada;
@@ -69,7 +70,7 @@ public class FolhaPagamentoService  implements ListarFolhaPagamento, BuscarFolha
 
         LocalDate hoje = LocalDate.now();
         dto.setMes(EnumMes.values()[hoje.getMonthValue()]);
-        dto.setDiasUteis(FolhaPagamentoBO.calcularDiasUteis(hoje.getYear(), hoje.getMonthValue()));
+        dto.setDiasUteis(ColaboradorPontoBO.calcularDiasUteis(hoje.getYear(), hoje.getMonthValue()));
 
         try {
             FolhaPagamentoBO entity = this.repository.create(FolhaPagamentoMapper.toBO(dto));
