@@ -24,13 +24,16 @@ public class ColaboradorController {
 
     private final ColaboradorPontoService colaboradorPontoService;
 
+    private final DependenteService dependenteService;
+
     @Autowired
-    public ColaboradorController(ColaboradorService service, ColaboradorBeneficioService colaboradorBeneficioService, ContratoService contratoService, ColaboradorDescontoService colaboradorDescontoService, ColaboradorPontoService colaboradorPontoService) {
+    public ColaboradorController(ColaboradorService service, ColaboradorBeneficioService colaboradorBeneficioService, ContratoService contratoService, ColaboradorDescontoService colaboradorDescontoService, ColaboradorPontoService colaboradorPontoService, DependenteService dependenteService) {
         this.service = service;
         this.colaboradorBeneficioService = colaboradorBeneficioService;
         this.contratoService = contratoService;
         this.colaboradorDescontoService = colaboradorDescontoService;
         this.colaboradorPontoService = colaboradorPontoService;
+        this.dependenteService = dependenteService;
     }
 
     @GetMapping
@@ -59,6 +62,13 @@ public class ColaboradorController {
         ColaboradorPontoDTO ponto = this.colaboradorPontoService.findByColaboradorId(colaboradorId);
 
         return new ResponseEntity<>(ponto, ponto == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+    }
+
+    @GetMapping("{colaboradorId}/dependentes/{dependenteId}")
+    public ResponseEntity<DependenteDTO> findDependenteByCollaboratorIdAndId(@PathVariable Long colaboradorId, @PathVariable Long dependenteId) {
+        DependenteDTO dependente = this.dependenteService.findByColaboradorIdAndId(colaboradorId, dependenteId);
+
+        return new ResponseEntity<>(dependente, dependente == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
     @GetMapping("{colaboradorId}/beneficios/{beneficioId}")
