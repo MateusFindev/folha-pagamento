@@ -24,9 +24,8 @@ VALUES (5, 'Analista Financeiro', 'Responsável pela gestão financeira da empre
 INSERT INTO cargo (id, nome, descricao, nivel, funcao, salario_base, ad_periculosidade, ad_insalubridade, ad_funcao, comissao, id_departamento)
 VALUES (6, 'Gerente de Vendas', 'Coordenação da equipe de vendas e elaboração de estratégias de vendas', 4, 'Gerente de Vendas', 5000, FALSE, FALSE, FALSE, FALSE, 1);
 
-
-
 -- CONTRATOS
+
 INSERT INTO contrato (id, tipo, carga_horaria, tipo_filiacao, id_cargo, id_empresa)
 VALUES (1, 'CLT', 44, 'EMPREGADO', 1, 1);
 
@@ -69,9 +68,8 @@ VALUES (1, '08640463913', '16487593', '342342', 'Mateus Pfeffer', 'mpfeffer@minh
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (2, '08640463931', '16487593', '342342', 'Rafael Mendes', 'rafaelmendes@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 2, 'MASCULINO');
 
-
-
 -- COLABORADORES
+
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (3, '08640463920', '16487593', '342342', 'João Silva', 'joaosilva@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 3, 'MASCULINO');
 
@@ -101,7 +99,6 @@ VALUES (11, '08640463929', '16487593', '342342', 'Carolina Souza', 'carolinasouz
 
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (12, '08640463930', '16487593', '342342', 'Patrícia Costa', 'patriciacosta@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 12, 'FEMININO');
-
 
 --  BENEFÍCIOS
 
@@ -173,7 +170,19 @@ INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_
 VALUES (1, 1, 1, 0, TRUE, TRUE);
 
 INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
-VALUES (2, 1, 2, 0, 275, TRUE);
+VALUES (2, 1, 2, 275, FALSE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (3, 1, 5, 100, FALSE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (4, 1, 8, 150, FALSE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (5, 1, 6, 200, FALSE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
+VALUES (6, 1, 10, 100, FALSE, TRUE);
 
 -- COLABORADOR DESCONTOS
 
