@@ -14,6 +14,7 @@ public class CargoMapper {
         dto.setNivel(bo.getNivel());
         dto.setFuncao(bo.getFuncao());
         dto.setSalarioBase(bo.getSalarioBase());
+        dto.setDepartamento(DepartamentoMapper.toDTO(bo.getDepartamento()));
         dto.setAdPericulosidade(bo.isAdPericulosidade());
         dto.setAdInsalubridade(bo.isAdInsalubridade());
         dto.setAdFuncao(bo.isAdFuncao());
@@ -31,6 +32,7 @@ public class CargoMapper {
         bo.setNivel(dto.getNivel());
         bo.setFuncao(dto.getFuncao());
         bo.setSalarioBase(dto.getSalarioBase());
+        bo.setDepartamento(DepartamentoMapper.toBO(dto.getDepartamento()));
         bo.setAdPericulosidade(dto.isAdPericulosidade());
         bo.setAdInsalubridade(dto.isAdInsalubridade());
         bo.setAdFuncao(dto.isAdFuncao());

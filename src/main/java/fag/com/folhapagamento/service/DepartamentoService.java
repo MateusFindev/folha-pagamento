@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.service;
 
+import fag.com.folhapagamento.core.dtos.CargoDTO;
 import fag.com.folhapagamento.core.dtos.DepartamentoDTO;
 import fag.com.folhapagamento.core.usecases.departamento.ListarDepartamentos;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaDepartamentoRepository;
@@ -21,6 +22,11 @@ public class DepartamentoService implements ListarDepartamentos {
     @Override
     public List<DepartamentoDTO> listAll() {
         return this.repository.listAll();
+    }
+
+    @Override
+    public List<CargoDTO> listAllCargos(Long id) {
+        return this.repository.listAllCargos(id);
     }
 
 }

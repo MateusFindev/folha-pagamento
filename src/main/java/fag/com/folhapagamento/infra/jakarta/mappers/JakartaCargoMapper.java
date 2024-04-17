@@ -14,6 +14,7 @@ public class JakartaCargoMapper {
         domain.setNivel(entity.getNivel());
         domain.setFuncao(entity.getFuncao());
         domain.setSalarioBase(entity.getSalarioBase());
+        domain.setDepartamento(JakartaDepartamentoMapper.toDomain(entity.getDepartamento()));
         domain.setAdPericulosidade(entity.isAdPericulosidade());
         domain.setAdInsalubridade(entity.isAdInsalubridade());
         domain.setAdFuncao(entity.isAdFuncao());
@@ -31,6 +32,7 @@ public class JakartaCargoMapper {
         entity.setNivel(domain.getNivel());
         entity.setFuncao(domain.getFuncao());
         entity.setSalarioBase(domain.getSalarioBase());
+        entity.setDepartamento(JakartaDepartamentoMapper.toEntity(domain.getDepartamento()));
         entity.setAdPericulosidade(domain.isAdPericulosidade());
         entity.setAdInsalubridade(domain.isAdInsalubridade());
         entity.setAdFuncao(domain.isAdFuncao());

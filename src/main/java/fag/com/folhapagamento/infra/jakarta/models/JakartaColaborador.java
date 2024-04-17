@@ -55,12 +55,4 @@ public class JakartaColaborador {
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.LAZY)
     private List<JakartaColaboradorDesconto> descontos = new ArrayList<>();
 
-    public void adicionarBeneficio(JakartaColaboradorBeneficio beneficio) {
-        this.beneficios.add(beneficio);
-    }
-
-    public void adicionarDesconto(JakartaColaboradorDesconto desconto) {
-        this.descontos.add(desconto);
-    }
-
 }

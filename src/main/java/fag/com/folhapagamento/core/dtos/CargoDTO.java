@@ -16,6 +16,8 @@ public class CargoDTO {
 
     private BigDecimal salarioBase;
 
+    private DepartamentoDTO departamento;
+
     private boolean adPericulosidade;
 
     private boolean adInsalubridade;
@@ -70,6 +72,14 @@ public class CargoDTO {
 
     public void setSalarioBase(BigDecimal salarioBase) {
         this.salarioBase = salarioBase;
+    }
+
+    public DepartamentoDTO getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(DepartamentoDTO departamento) {
+        this.departamento = departamento;
     }
 
     public boolean isAdPericulosidade() {
