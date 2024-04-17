@@ -94,7 +94,7 @@ VALUES (9, '08640463927', '16487593', '342342', 'Maria Santos', 'mariasantos@emp
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
 VALUES (10, '08640463928', '16487593', '342342', 'Juliana Silva', 'julianasilva@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 10, 'FEMININO');
 
-INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
+INSERT INTO colaborador (id, cpf, rg, cnh, nome, email  , admissao, id_contrato, genero)
 VALUES (11, '08640463929', '16487593', '342342', 'Carolina Souza', 'carolinasouza@empresa.com', TIMESTAMP '2020-06-15 00:00:00', 11, 'FEMININO');
 
 INSERT INTO colaborador (id, cpf, rg, cnh, nome, email, admissao, id_contrato, genero)
