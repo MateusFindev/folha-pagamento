@@ -45,18 +45,23 @@ public class FolhaPagamentoBO {
     }
 
     private BigDecimal calcularDescontos() {
-        List<DescontoBO> descontos = colaborador.getDescontos().stream().map(ColaboradorDescontoBO::getDesconto).toList();
-
         BigDecimal totalDescontos = BigDecimal.ZERO;
 
-        for (DescontoBO desconto : descontos) {
+        for (ColaboradorDescontoBO colaboradorDesconto : colaborador.getDescontos()) {
+            DescontoBO desconto = colaboradorDesconto.getDesconto();
+
+            BigDecimal valorDesconto = BigDecimal.ZERO;
             if (desconto.getTipoDesconto() == EnumTipoDesconto.INSS) {
-                totalDescontos = totalDescontos.add(desconto.calcularDescontoINSS(colaborador.getSalarioBase()));
+                valorDesconto = desconto.calcularDescontoINSS(colaborador.getSalarioBase());
+
+                colaboradorDesconto.setValor(valorDesconto);
+            } else if (desconto.getTipoDesconto() == EnumTipoDesconto.IRRF) {
+                valorDesconto = desconto.calcularDescontoIRRF(colaborador.getSalarioBase());
+
+                colaboradorDesconto.setValor(valorDesconto);
             }
 
-            if (desconto.getTipoDesconto() == EnumTipoDesconto.IRRF) {
-                totalDescontos = totalDescontos.add(desconto.calcularDescontoIRRF(colaborador.getSalarioBase()));
-            }
+            totalDescontos = totalDescontos.add(valorDesconto);
         }
 
         return totalDescontos;
