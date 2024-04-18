@@ -53,6 +53,14 @@ public class FolhaPagamentoBO {
             }
         }
 
+        ColaboradorPontoBO ultimoPonto = colaborador.getPontos().get(colaborador.getPontos().size() - 1);
+        ultimoPonto.setColaborador(colaborador); // isso aqui é gambiarra
+
+        BigDecimal horasFaltas = ultimoPonto.calcularValorFaltas();
+        BigDecimal horasAtraso = ultimoPonto.calcularValorHorasAtraso();
+
+        totalDescontos = totalDescontos.add(horasFaltas).add(horasAtraso);
+
         return totalDescontos;
     }
 
@@ -69,6 +77,13 @@ public class FolhaPagamentoBO {
                 totalBeneficios = totalBeneficios.add(colaboradorBeneficio.getValor());
             }
         }
+
+        ColaboradorPontoBO ultimoPonto = colaborador.getPontos().get(colaborador.getPontos().size() - 1);
+        ultimoPonto.setColaborador(colaborador); // isso aqui é gambiarra
+
+        BigDecimal horasExtras = ultimoPonto.calcularValorHorasExtras();
+
+        totalBeneficios = totalBeneficios.add(horasExtras);
 
         ColaboradorBeneficioBO salarioFamilia = colaborador.getBeneficios().stream()
                 .filter(beneficio -> beneficio.getBeneficio().getTipoBeneficio() == EnumTipoBeneficio.SALARIO_FAMILIA)

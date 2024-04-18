@@ -1,6 +1,7 @@
 package fag.com.folhapagamento.core.entities;
 
 import fag.com.folhapagamento.core.enums.EnumMes;
+import fag.com.folhapagamento.core.enums.EnumTipoBeneficio;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -27,11 +28,31 @@ public class ColaboradorPontoBO {
 
     private BigDecimal calcularValorHora() {
         BigDecimal salarioBase = colaborador.getSalarioBase();
-        Integer cargaHoraria = colaborador.getContrato().getCargaHoraria();
+        int cargaHoraria = colaborador.getContrato().getCargaHoraria();
 
-        int horasTrabalhadas = diasTrabalhados * (cargaHoraria / 7);
+        int horasMensais = cargaHoraria * 5;
 
-        return salarioBase.divide(new BigDecimal(horasTrabalhadas), RoundingMode.HALF_EVEN);
+        BigDecimal valorHora = salarioBase.divide(new BigDecimal(horasMensais), RoundingMode.HALF_EVEN);
+
+        if (colaborador.getContrato().getCargo().isAdInsalubridade()) {
+            ColaboradorBeneficioBO adicionalInsalubridade = colaborador.getBeneficios().stream()
+                    .filter(beneficio -> beneficio.getBeneficio().getTipoBeneficio() == EnumTipoBeneficio.ADICIONAL_INSALUBRIDADE)
+                    .toList().stream().findFirst().orElse(null);
+
+            BigDecimal porcentagemInsalubridade = BigDecimal.valueOf(10);
+
+            if (adicionalInsalubridade != null) {
+                porcentagemInsalubridade = adicionalInsalubridade.getValor();
+            }
+
+            valorHora = valorHora.multiply(BigDecimal.valueOf(1).add(porcentagemInsalubridade.divide(BigDecimal.valueOf(100), RoundingMode.HALF_EVEN)));
+        }
+
+        if (colaborador.getContrato().getCargo().isAdPericulosidade()) {
+            valorHora = valorHora.multiply(BigDecimal.valueOf(1.30)); // Adiciona 30% de adicional de periculosidade
+        }
+
+        return valorHora;
     }
 
     public BigDecimal calcularValorHorasExtras() {
@@ -55,7 +76,7 @@ public class ColaboradorPontoBO {
     public BigDecimal calcularValorHorasAtraso() {
         BigDecimal valorHora = this.calcularValorHora();
 
-        return colaborador.getSalarioBase().multiply(new BigDecimal(horasAtraso));
+        return valorHora.multiply(new BigDecimal(horasAtraso));
     }
 
     public static int calcularDiasUteis(int ano, int mes) {

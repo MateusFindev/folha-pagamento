@@ -28,11 +28,17 @@ public class JakartaColaboradorMapper {
             if (entity.getDependentes() != null && !entity.getDependentes().isEmpty()) {
                 domain.setDependentes(entity.getDependentes().stream().map(JakartaDependenteMapper::toDomain).collect(Collectors.toList()));
             }
+
             if (entity.getBeneficios() != null && !entity.getBeneficios().isEmpty()) {
                 domain.setBeneficios(entity.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toDomain(beneficio, false)).collect(Collectors.toList()));
             }
+
             if (entity.getDescontos() != null && !entity.getDescontos().isEmpty()) {
                 domain.setDescontos(entity.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toDomain(desconto, false)).collect(Collectors.toList()));
+            }
+
+            if (entity.getPontos() != null && !entity.getPontos().isEmpty()) {
+                domain.setPontos(entity.getPontos().stream().map(ponto -> JakartaColaboradorPontoMapper.toDomain(ponto, false)).collect(Collectors.toList()));
             }
         }
 
@@ -60,11 +66,17 @@ public class JakartaColaboradorMapper {
             if (domain.getDependentes() != null && !domain.getDependentes().isEmpty()) {
                 entity.setDependentes(domain.getDependentes().stream().map(JakartaDependenteMapper::toEntity).collect(Collectors.toList()));
             }
+
             if (domain.getBeneficios() != null && !domain.getBeneficios().isEmpty()) {
                 entity.setBeneficios(domain.getBeneficios().stream().map(beneficio -> JakartaColaboradorBeneficioMapper.toEntity(beneficio, false)).collect(Collectors.toList()));
             }
+
             if (domain.getDescontos() != null && !domain.getDescontos().isEmpty()) {
                 entity.setDescontos(domain.getDescontos().stream().map(desconto -> JakartaColaboradorDescontoMapper.toEntity(desconto, false)).collect(Collectors.toList()));
+            }
+
+            if (domain.getPontos() != null && !domain.getPontos().isEmpty()) {
+                entity.setPontos(domain.getPontos().stream().map(ponto -> JakartaColaboradorPontoMapper.toEntity(ponto, false)).collect(Collectors.toList()));
             }
         }
 

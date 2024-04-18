@@ -34,6 +34,10 @@ public class ColaboradorMapper {
             if (bo.getDescontos() != null && !bo.getDescontos().isEmpty()) {
                 dto.setDescontos(bo.getDescontos().stream().map(ColaboradorDescontoMapper::toDTO).toList());
             }
+
+            if (bo.getPontos() != null && !bo.getPontos().isEmpty()) {
+                dto.setPontos(bo.getPontos().stream().map(ColaboradorPontoMapper::toDTO).toList());
+            }
         }
 
         return dto;
@@ -67,6 +71,10 @@ public class ColaboradorMapper {
 
             if (dto.getDescontos() != null && !dto.getDescontos().isEmpty()) {
                 bo.setDescontos(dto.getDescontos().stream().map(ColaboradorDescontoMapper::toBO).toList());
+            }
+
+            if (dto.getPontos() != null && !dto.getPontos().isEmpty()) {
+                bo.setPontos(dto.getPontos().stream().map(ColaboradorPontoMapper::toBO).toList());
             }
         }
 

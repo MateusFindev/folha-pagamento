@@ -14,6 +14,7 @@ public enum EnumTipoBeneficio {
     VALE_CULTURA,
     SALARIO_FAMILIA,
     AUXILIO_MATERNIDADE,
+    ADICIONAL_INSALUBRIDADE,
     OUTRO
 
 }

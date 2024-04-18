@@ -33,6 +33,8 @@ public class ColaboradorDTO {
 
     private List<ColaboradorDescontoDTO> descontos = new ArrayList<>();
 
+    private List<ColaboradorPontoDTO> pontos = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -131,6 +133,14 @@ public class ColaboradorDTO {
 
     public BigDecimal getSalarioBase() {
         return contrato.getCargo().getSalarioBase();
+    }
+
+    public List<ColaboradorPontoDTO> getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(List<ColaboradorPontoDTO> pontos) {
+        this.pontos = pontos;
     }
 
 }

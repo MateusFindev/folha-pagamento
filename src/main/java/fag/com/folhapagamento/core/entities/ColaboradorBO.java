@@ -33,6 +33,8 @@ public class ColaboradorBO {
 
     private List<ColaboradorDescontoBO> descontos = new ArrayList<>();
 
+    private List<ColaboradorPontoBO> pontos = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -131,6 +133,14 @@ public class ColaboradorBO {
 
     public void setDescontos(List<ColaboradorDescontoBO> descontos) {
         this.descontos = descontos;
+    }
+
+    public List<ColaboradorPontoBO> getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(List<ColaboradorPontoBO> pontos) {
+        this.pontos = pontos;
     }
 
 }
