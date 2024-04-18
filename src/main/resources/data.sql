@@ -109,34 +109,37 @@ INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, pr
 VALUES (2, 'VALE_TRANSPORTE', 'Vale-Transporte', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_TRANSPORTE', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (3, 'ADICIONAL_PERICULOSIDADE', 'Adicional de Periculosidade', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'ADICIONAL_PERICULOSIDADE', TRUE);
+VALUES (3, 'ADICIONAL_PERICULOSIDADE', 'Adicional de Periculosidade', 'Adicional de periculosidade', 30, 'PORCENTAGEM', 'MES', 'ADICIONAL_PERICULOSIDADE', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (4, 'ADICIONAL_FUNCAO', 'Adicional de Função', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'ADICIONAL_FUNCAO', TRUE);
+VALUES (4, 'ADICIONAL_FUNCAO', 'Adicional de Função', 'Adicional de Função', 250, 'MOEDA', 'MES', 'ADICIONAL_FUNCAO', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (5, 'PLANO_SAUDE', 'Plano de Saúde', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'PLANO_SAUDE', TRUE);
+VALUES (5, 'PLANO_SAUDE', 'Plano de Saúde', 'Plano de Saúde', 250, 'MOEDA', 'MES', 'PLANO_SAUDE', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (6, 'PLANO_ODONTOLOGICO', 'Plano Odontológico', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'PLANO_ODONTOLOGICO', TRUE);
+VALUES (6, 'PLANO_ODONTOLOGICO', 'Plano Odontológico', 'Plano Odontológico', 250, 'MOEDA', 'MES', 'PLANO_ODONTOLOGICO', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (7, 'AUXILIO_CRECHE', 'Auxílio Creche', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_CRECHE', TRUE);
+VALUES (7, 'AUXILIO_CRECHE', 'Auxílio Creche', 'Auxílio Creche', 250, 'MOEDA', 'MES', 'AUXILIO_CRECHE', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (8, 'AUXILIO_EDUCACAO', 'Auxílio Educação', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_EDUCACAO', TRUE);
+VALUES (8, 'AUXILIO_EDUCACAO', 'Auxílio Educação', 'Auxílio Educação', 250, 'MOEDA', 'MES', 'AUXILIO_EDUCACAO', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (9, 'VALE_ACADEMIA', 'Gym Pass', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_ACADEMIA', TRUE);
+VALUES (9, 'VALE_ACADEMIA', 'Gym Pass', 'Gym Pass', 250, 'MOEDA', 'MES', 'VALE_ACADEMIA', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (10, 'VALE_CULTURA', 'Vale Cultura', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'VALE_CULTURA', TRUE);
+VALUES (10, 'VALE_CULTURA', 'Vale Cultura', 'Vale Cultura', 250, 'MOEDA', 'MES', 'VALE_CULTURA', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (11, 'SALARIO_FAMILIA', 'Salário Família', 'Para gastos com transporte', 62.04, 'MOEDA', 'MES', 'SALARIO_FAMILIA', TRUE);
+VALUES (11, 'SALARIO_FAMILIA', 'Salário Família', 'Salário Família', 62.04, 'MOEDA', 'MES', 'SALARIO_FAMILIA', TRUE);
 
 INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
-VALUES (12, 'AUXILIO_MATERNIDADE', 'Auxílio Maternidade', 'Para gastos com transporte', 250, 'MOEDA', 'MES', 'AUXILIO_MATERNIDADE', TRUE);
+VALUES (12, 'AUXILIO_MATERNIDADE', 'Auxílio Maternidade', 'Auxílio Maternidade', 250, 'MOEDA', 'MES', 'AUXILIO_MATERNIDADE', TRUE);
+
+INSERT INTO beneficio (id, codigo, nome, descricao, valor_padrao, tipo_valor, prazo, tipo, ativo)
+VALUES (13, 'ADICIONAL_INSALUBRIDADE', 'Adicional de Insalubridade', 'Adicional de insalubridade', 10, 'PORCENTAGEM', 'MES', 'ADICIONAL_INSALUBRIDADE', TRUE);
 
 --  DESCONTOS
 
@@ -176,23 +179,91 @@ INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_
 VALUES (3, 1, 5, 100, FALSE, TRUE);
 
 INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo)
-VALUES (7, 1, 11, 0, TRUE, TRUE);
+VALUES (4, 1, 11, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (5, 2, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (6, 2, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (7, 2, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (8, 2, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (9, 3, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (10, 3, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (11, 3, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (12, 3, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (13, 4, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (14, 4, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (15, 4, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (16, 4, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (17, 5, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (18, 5, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (19, 5, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (20, 5, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (21, 6, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (22, 6, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (23, 6, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (24, 6, 11, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (25, 7, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (26, 7, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (27, 7, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (28, 7, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (29, 8, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (30, 8, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (31, 8, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (32, 8, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (33, 9, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (34, 9, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (35, 9, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (36, 9, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (37, 10, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (38, 10, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (39, 10, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (40, 10, 11, 0, TRUE, TRUE);
+
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (41, 11, 1, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (42, 11, 2, 275, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (43, 11, 5, 100, FALSE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (44, 11, 11, 0, TRUE, TRUE);
+INSERT INTO colaborador_beneficio(id, id_colaborador, id_beneficio, valor, usar_padrao, ativo) VALUES (45, 10, 7, 200, FALSE, TRUE);
+
 
 -- COLABORADOR DESCONTOS
 
-INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
-VALUES (1, 1, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (1, 1, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (2, 1, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (3, 1, 3, 5, TRUE);
 
-INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
-VALUES (2, 1, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (4, 2, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (5, 2, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (6, 2, 3, 5, TRUE);
 
-INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo)
-VALUES (3, 1, 3, 5, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (7, 3, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (8, 3, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (9, 3, 3, 5, TRUE);
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (10, 4, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (11, 4, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (12, 4, 3, 5, TRUE);
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (13, 5, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (14, 5, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (15, 5, 3, 5, TRUE);
+
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (16, 6, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (17, 6, 2, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (18, 6, 3, 5, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (19, 10, 1, 0, TRUE);
+INSERT INTO colaborador_desconto(id, id_colaborador, id_desconto, valor, ativo) VALUES (20, 10, 2, 0, TRUE);
+
 
 -- DEPENDENTES
 
 INSERT INTO dependente(id, nome, nascimento, parentesco, id_colaborador)
-VALUES (1, 'Mateus Pfeffer Júnior', NOW(), 'FILHO', 1);
+VALUES (1, 'Nome do dependente', NOW(), 'FILHO', 7);
 
 -- PONTOS
 
