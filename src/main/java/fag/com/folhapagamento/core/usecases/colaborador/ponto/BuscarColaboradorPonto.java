@@ -4,7 +4,4 @@ import fag.com.folhapagamento.core.dtos.ColaboradorPontoDTO;
 import fag.com.folhapagamento.core.usecases.Buscar;
 
 public interface BuscarColaboradorPonto extends Buscar<ColaboradorPontoDTO> {
-
-    ColaboradorPontoDTO findByColaboradorId(Long colaboradorId);
-
 }
