@@ -14,6 +14,7 @@ public class FolhaPagamentoMapper {
         dto.setSalarioLiquido(bo.getSalarioLiquido());
         dto.setMes(bo.getMes());
         dto.setDiasUteis(bo.getDiasUteis());
+        dto.setTotalColaboradoras(bo.getTotalColaboradoras());
 
         return dto;
     }
@@ -27,6 +28,7 @@ public class FolhaPagamentoMapper {
         bo.setSalarioLiquido(dto.getSalarioLiquido());
         bo.setMes(dto.getMes());
         bo.setDiasUteis(dto.getDiasUteis());
+        bo.setTotalColaboradoras(dto.getTotalColaboradoras());
 
         return bo;
     }

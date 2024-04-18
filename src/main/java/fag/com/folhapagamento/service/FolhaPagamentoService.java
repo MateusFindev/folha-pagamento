@@ -1,5 +1,6 @@
 package fag.com.folhapagamento.service;
 
+import fag.com.folhapagamento.core.dtos.ColaboradorBeneficioDTO;
 import fag.com.folhapagamento.core.dtos.ColaboradorDTO;
 import fag.com.folhapagamento.core.dtos.FolhaPagamentoDTO;
 import fag.com.folhapagamento.core.entities.ColaboradorPontoBO;
@@ -10,6 +11,7 @@ import fag.com.folhapagamento.core.mappers.FolhaPagamentoMapper;
 import fag.com.folhapagamento.core.usecases.folhapagamento.BuscarFolhaPagamento;
 import fag.com.folhapagamento.core.usecases.folhapagamento.ListarFolhaPagamento;
 import fag.com.folhapagamento.infra.jakarta.mappers.JakartaFolhaPagamentoMapper;
+import fag.com.folhapagamento.infra.jakarta.models.JakartaColaborador;
 import fag.com.folhapagamento.infra.jakarta.models.JakartaFolhaPagamento;
 import fag.com.folhapagamento.infra.jakarta.repositories.JakartaFolhaPagamentoRepository;
 import jakarta.transaction.Transactional;
@@ -64,9 +66,12 @@ public class FolhaPagamentoService  implements ListarFolhaPagamento, BuscarFolha
     public FolhaPagamentoDTO create(Long idColaborador) {
         ColaboradorDTO colaborador = this.colaboradorService.customFindById(idColaborador);
 
+        List<JakartaColaborador> colaboradoras = this.colaboradorService.listColaboradoras();
+
         FolhaPagamentoDTO dto = new FolhaPagamentoDTO();
         dto.setColaborador(colaborador);
         dto.setSalarioBruto(colaborador.getSalarioBase());
+        dto.setTotalColaboradoras(colaboradoras.size());
 
         LocalDate hoje = LocalDate.now();
         dto.setMes(EnumMes.values()[hoje.getMonthValue()]);

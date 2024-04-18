@@ -16,6 +16,8 @@ public class FolhaPagamentoDTO {
 
     EnumMes mes;
 
+    int totalColaboradoras;
+
     Integer diasUteis;
 
     public Long getId() {
@@ -66,4 +68,11 @@ public class FolhaPagamentoDTO {
         this.diasUteis = diasUteis;
     }
 
+    public int getTotalColaboradoras() {
+        return totalColaboradoras;
+    }
+
+    public void setTotalColaboradoras(int totalColaboradoras) {
+        this.totalColaboradoras = totalColaboradoras;
+    }
 }

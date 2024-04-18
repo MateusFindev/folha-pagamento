@@ -19,7 +19,7 @@ public class JakartaColaborador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cpf", nullable = false, unique = true)
+    @Column(name = "cpf", nullable = false)
     private String cpf;
 
     @Column(name = "rg")
@@ -31,7 +31,7 @@ public class JakartaColaborador {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Temporal(TemporalType.TIMESTAMP)

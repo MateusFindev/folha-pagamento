@@ -39,4 +39,8 @@ public class ColaboradorService implements ListarColaborador, BuscarColaborador 
         return ColaboradorMapper.toDTO(JakartaColaboradorMapper.toDomain(colaborador, true));
     }
 
+    public List<JakartaColaborador> listColaboradoras() {
+        return this.repository.listColaboradoras();
+    }
+
 }

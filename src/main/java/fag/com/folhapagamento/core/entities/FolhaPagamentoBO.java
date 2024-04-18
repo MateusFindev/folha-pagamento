@@ -15,6 +15,8 @@ public class FolhaPagamentoBO {
 
     BigDecimal salarioLiquido;
 
+    int totalColaboradoras;
+
     EnumMes mes;
 
     Integer diasUteis;
@@ -63,11 +65,32 @@ public class FolhaPagamentoBO {
         for (ColaboradorBeneficioBO colaboradorBeneficio : colaborador.getBeneficios()) {
             BeneficioBO beneficio = colaboradorBeneficio.getBeneficio();
 
-            if (colaboradorBeneficio.isUsarPadrao()) {
-                totalBeneficios = totalBeneficios.add(beneficio.getValorPadrao());
+            BigDecimal valorBeneficio = BigDecimal.ZERO;
+            if (beneficio.getTipoBeneficio() == EnumTipoBeneficio.ADICIONAL_INSALUBRIDADE) {
+                BigDecimal valor = colaboradorBeneficio.isUsarPadrao() ? beneficio.getValorPadrao() : colaboradorBeneficio.getValor();
+
+                valorBeneficio = beneficio.calcularAdicionarInsalubridade(colaborador.getSalarioBase(), valor);
+            } else if (beneficio.getTipoBeneficio() == EnumTipoBeneficio.ADICIONAL_PERICULOSIDADE) {
+                BigDecimal valor = colaboradorBeneficio.isUsarPadrao() ? beneficio.getValorPadrao() : colaboradorBeneficio.getValor();
+
+                valorBeneficio = beneficio.calcularAdicionarPericulosidade(colaborador.getSalarioBase(), valor);
+            } else if (beneficio.getTipoBeneficio() == EnumTipoBeneficio.AUXILIO_CRECHE) {
+                if (totalColaboradoras < 30) {
+                    continue;
+                }
             } else {
-                totalBeneficios = totalBeneficios.add(colaboradorBeneficio.getValor());
+                if (colaboradorBeneficio.isUsarPadrao()) {
+                    valorBeneficio = totalBeneficios.add(beneficio.getValorPadrao());
+                } else {
+                    valorBeneficio = totalBeneficios.add(colaboradorBeneficio.getValor());
+                }
+
+                if (beneficio.getTipoValor() != EnumTipoValor.MOEDA) {
+                    colaboradorBeneficio.setValor(valorBeneficio);
+                }
             }
+
+            totalBeneficios = totalBeneficios.add(valorBeneficio);
         }
 
         ColaboradorBeneficioBO salarioFamilia = colaborador.getBeneficios().stream()
@@ -127,6 +150,14 @@ public class FolhaPagamentoBO {
 
     public void setDiasUteis(Integer diasUteis) {
         this.diasUteis = diasUteis;
+    }
+
+    public int getTotalColaboradoras() {
+        return totalColaboradoras;
+    }
+
+    public void setTotalColaboradoras(int totalColaboradoras) {
+        this.totalColaboradoras = totalColaboradoras;
     }
 
 }

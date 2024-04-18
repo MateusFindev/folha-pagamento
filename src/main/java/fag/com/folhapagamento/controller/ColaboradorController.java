@@ -57,7 +57,7 @@ public class ColaboradorController {
         return new ResponseEntity<>(contrato, contrato == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
     }
 
-    @GetMapping("{colaboradorId}/ponto")
+    @GetMapping("{colaboradorId}/pontos")
     public ResponseEntity<ColaboradorPontoDTO> findDependenteByColaboradorId(@PathVariable Long colaboradorId) {
         ColaboradorPontoDTO ponto = this.colaboradorPontoService.findByColaboradorId(colaboradorId);
 

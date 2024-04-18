@@ -5,6 +5,7 @@ import fag.com.folhapagamento.core.enums.EnumTipoBeneficio;
 import fag.com.folhapagamento.core.enums.EnumTipoValor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class BeneficioBO {
 
@@ -25,6 +26,15 @@ public class BeneficioBO {
     private EnumTipoBeneficio tipoBeneficio;
 
     private boolean ativo;
+
+
+    public BigDecimal calcularAdicionarInsalubridade(BigDecimal salarioBase, BigDecimal porcentagem) {
+        return salarioBase.multiply(porcentagem.divide(BigDecimal.valueOf(100), RoundingMode.HALF_EVEN));
+    }
+
+    public BigDecimal calcularAdicionarPericulosidade(BigDecimal salarioBase, BigDecimal porcentagem) {
+        return salarioBase.multiply(porcentagem.divide(BigDecimal.valueOf(100), RoundingMode.HALF_EVEN));
+    }
 
     public Long getId() {
         return id;
