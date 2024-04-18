@@ -1,14 +1,12 @@
 package fag.com.folhapagamento.controller;
 
 import fag.com.folhapagamento.core.dtos.BeneficioDTO;
+import fag.com.folhapagamento.core.dtos.DescontoDTO;
 import fag.com.folhapagamento.service.BeneficioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +27,10 @@ public class BeneficioController {
         return new ResponseEntity<>(beneficios, HttpStatus.OK);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<BeneficioDTO> findById(@PathVariable Long id) {
+        BeneficioDTO beneficio = this.service.customFindById(id);
+
+        return new ResponseEntity<>(beneficio, beneficio == null ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+    }
 }
